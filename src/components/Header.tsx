@@ -26,16 +26,18 @@ function Header() {
                         </div>
                     </div>
                 </div>
-                <div className="header__info info">
-                    <p className="info__about">О компании</p>
-                    <p className="info__shipment">Доставка и оплата</p>
-                    <p className="info__returns">Возврат</p>
-                    <p className="info__contacts">Контакты</p>
+                <div className="header__info-header info-header">
+                    <a className="info-header__link" href="#">О компании</a>
+                    <a className="info-header__link" href="#">Доставка и оплата</a>
+                    <a className="info-header__link" href="#">Возврат</a>
+                    <a className="info-header__link" href="#">Контакты</a>
                 </div>
             </div>
             <img src={line} alt="line" />
             <div className="_container header-main">
-                <img className="header-main__logo" src={logo} alt="logo" />
+                <a href="#">
+                    <img className="header-main__logo" src={logo} alt="logo" />
+                </a>
                 <div className="header-main__catalogue">КАТАЛОГ</div>
                 <div className="header-main__search">ПОИСК</div>
                 <div className="header-main__hotline-header hotline-header">

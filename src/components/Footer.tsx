@@ -10,7 +10,9 @@ function Footer() {
         <footer className="footer-section">
             <div className="_container footer">
                 <div className="footer__info-footer info-footer">
-                    <img className="info-footer__logo" src={logoWhite} alt="logo" />
+                    <a href="#">
+                        <img className="info-footer__logo" src={logoWhite} alt="logo" />
+                    </a>
                     <div className="info-footer__description">
                         Компания «Султан» — снабжаем <br />
                         розничные магазины товарами <br />
@@ -40,8 +42,12 @@ function Footer() {
                     <div className="">КНОПКА</div>
                     <p className="price-footer__social">Связь в мессенджерах:</p>
                     <div className="price-footer__icons icons">
-                        <img className="icons__whatsapp" src={whatsapp} alt="whatsapp" />
-                        <img className="icons__telegram" src={telegram} alt="telegram" />
+                        <a href="#">
+                            <img className="icons__whatsapp" src={whatsapp} alt="whatsapp" />
+                        </a>
+                        <a href="#">
+                            <img className="icons__telegram" src={telegram} alt="telegram" />
+                        </a>
                     </div>
                 </div>
                 <div className="footer__contacts-footer contacts-footer">

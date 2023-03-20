@@ -2,12 +2,14 @@
 @import '../helpers/Media-mixin.scss';
 
 .footer-section {
+
     height: 500px;
     background-color: $--2--black-secondary;
     color: $--0--white;
 }
 
 .footer {
+
     display: flex;
     justify-content: space-between;
     padding: 70px 0 0 0;
@@ -23,15 +25,18 @@
 }
 
 .info-footer {
+
     &__logo {
         width: 155px;
         margin: 0 0 15px 0;
     }
+
     &__description {
         font-size: 18px;
         line-height: 1.5;
         margin: 0 0 45px 0;
     }
+
     &__advertisement {
         font-size: $--font-secondary;
         margin: 0 0 15px 0;
@@ -57,6 +62,7 @@
 }
 
 .price-footer {
+
     &__icons {
         display: flex;
         gap: 10px;
@@ -64,9 +70,11 @@
 }
 
 .contacts-footer {
+
     &__email {
         margin: 25px 0;
     }
+
     &__cards {
         display: flex;
         gap: 5px;
@@ -74,15 +82,31 @@
 }
 
 .call {
+
     &__number {
         font-weight: $--weight-semibold;
     }
+
     &__schedule {
         font-size: $--font-secondary;
+        font-weight: $--weight-light;
         margin: 5px 0;
     }
+    
     &__order {
         font-size: $--font-small;
         color: $--0--white;
+    }
+}
+
+.email {
+
+    &__address {
+        font-weight: $--weight-semibold;
+    }
+    
+    &__status {
+        font-size: $--font-secondary;
+        font-weight: $--weight-light;
     }
 }
