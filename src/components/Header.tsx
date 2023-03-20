@@ -1,10 +1,14 @@
 import '../scss/components/header.scss';
 import location from '../assets/icons/location.svg';
 import inbox from '../assets/icons/inbox.svg';
+import line from '../assets/images/line.png';
+import logo from '../assets/icons/logo.svg';
+import avatar from '../assets/images/avatar.png';
+import cart from '../assets/icons/cart.svg';
 
 function Header() {
     return (
-        <section className="header-section">
+        <header className="header-section">
             <div className="_container header">
                 <div className="header__contacts contacts">
                     <div className="contacts__address address">
@@ -29,16 +33,31 @@ function Header() {
                     <p className="info__contacts">Контакты</p>
                 </div>
             </div>
+            <img src={line} alt="line" />
             <div className="_container header-main">
-                <div className="header-main__logo">СУЛТАН</div>
+                <img className="header-main__logo" src={logo} alt="logo" />
                 <div className="header-main__catalogue">КАТАЛОГ</div>
                 <div className="header-main__search">ПОИСК</div>
-                <div className="header-main__hotline">ХОТЛАЙН</div>
-                <div className="header-main__price">ПРАЙС-ЛИСТ</div>
-                <div className="header-main__bin">КОРЗИНА</div>
+                <div className="header-main__hotline-header hotline-header">
+                    <div className="hotline-header__info-contacts info-contacts">
+                        <div className="info-contacts__number">+7 (777) 490-00-91</div>
+                        <div className="info-contacts__schedule">время работы: 9:00-20:00</div>
+                        <a className="info-contacts__call" href="#">Заказать звонок</a>
+                    </div>
+                    <img className="hotline__avatar" src={avatar} alt="avatar" />
+                </div>
+                <div className="header-main__price-header">ПРАЙС-ЛИСТ</div>
+                <div className="header-main__cart header-cart">
+                    <img className="header-cart__icon" src={cart} alt="cart"></img>
+                    <div className="header-cart__header-info-cart header-info-cart">
+                        <div className="header-info-cart__name">Корзина</div>
+                        <div className="header-info-cart__price">12 478 ₸</div>
+                    </div>
+                </div>
             </div>
-        </section>
+            <img src={line} alt="line" />
+        </header>
     );
-  }
+}
   
-  export default Header;
+export default Header;
