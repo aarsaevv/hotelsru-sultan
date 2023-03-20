@@ -1,0 +1,43 @@
+@import '../helpers/Variables.scss';
+
+.header-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+
+    &__contacts {
+        width: 494px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__info {
+        width: 512px;
+        display: flex;
+        justify-content: space-between;
+        color: $--2--black-secondary;
+    }
+}
+
+.contacts {
+
+    &__address, 
+    &__email {
+        font-weight: 600;
+        display: flex;
+        gap: 15px;
+    }
+
+    &__address span,
+    &__email span {
+        font-size: $--font-secondary;
+        font-weight: 300;
+        color: $--2--black-secondary;
+    }
+}

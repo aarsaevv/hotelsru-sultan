@@ -1,0 +1,13 @@
+@import './helpers/Media-mixin.scss';
+@import './helpers/Variables.scss';
+
+body {
+    font-family: Inter, sans-serif;
+    font-size: $--font-primary;
+    background-color: $--0--white;
+}
+
+._container {
+    width: 1370px;
+    margin: 0 auto;
+}
