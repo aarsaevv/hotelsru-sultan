@@ -1,6 +1,6 @@
-import "../scss/components/item.scss";
+import "./Item.scss";
 import ariel from "../assets/images/ariel.png";
-import Button from "../components/Button";
+import BaseButton from "./UI/Buttons/BaseButton";
 
 function Item() {
   return (
@@ -11,7 +11,7 @@ function Item() {
       <div className="item__description description">
         <h6 className="description__weight">15X28.8 г</h6>
         <h3 className="description__name">
-          <span>ARIEL</span> Автмат Гель СМС жидкое в растворимых капсулах
+          <span>ARIEL</span> Автомат Гель СМС жидкое в растворимых капсулах
           Liquid Capsules Горный родник
         </h3>
         <h5 className="description__manufacturer">
@@ -27,7 +27,7 @@ function Item() {
       <div className="purchase">
         <h3 className="purchase__price">48,76 ₸</h3>
         <div className="_button-small purchase__button">
-          <Button />
+          <BaseButton />
         </div>
       </div>
     </div>

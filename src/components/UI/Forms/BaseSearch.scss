@@ -1,12 +1,12 @@
-@import '../helpers/Media-mixin.scss';
-@import '../helpers/Variables.scss';
+@import '../../../helpers/Variables.scss';
+@import '../../../helpers/Media-mixin.scss';
 
 .search {
     display: flex;
     align-items: center;
     position: relative;
     height: 60px;
-
+    cursor: pointer;
 }
 
 .search {

@@ -1,5 +1,5 @@
-@import '../helpers/Media-mixin.scss';
-@import '../helpers/Variables.scss';
+@import '../../../helpers/Variables.scss';
+@import '../../../helpers/Media-mixin.scss';
 
 .button {
     width: 100%;
@@ -11,6 +11,7 @@
     font-weight: $--weight-bold;
     color: $--0--white;
     background-color: $--6--yellow-secondary;
+    cursor: pointer;
 }
 
 ._button-large {

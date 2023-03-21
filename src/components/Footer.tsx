@@ -1,9 +1,11 @@
-import '../scss/components/footer.scss';
+import './Footer.scss';
 import logoWhite from '../assets/icons/logo-white.svg';
 import whatsapp from '../assets/icons/whatsapp.svg';
 import telegram from '../assets/icons/telegram.svg';
 import visa from '../assets/icons/visa.svg';
 import mastercard from '../assets/icons/mastercard.svg';
+import ButtonLarge from './UI/Buttons/ButtonLarge';
+import SearchLarge from './UI/Forms/SearchLarge';
 
 function Footer() {
     return(
@@ -20,7 +22,7 @@ function Footer() {
                         области
                     </div>
                     <div className="info-footer__advertisement">Подпишись на скидки и акции</div>
-                    <div className="">ВВЕДИТЕ ЕМАЙЛ</div>
+                    <div className=""><SearchLarge /></div>
                 </div>
                 <div className="footer__menu-footer menu-footer">
                     <p className="menu-footer__title">Меню сайта:</p>
@@ -39,7 +41,7 @@ function Footer() {
                 </div>
                 <div className="footer__price price-footer">
                     <p className="price-footer__title">Скачать прайс-лист:</p>
-                    <div className="">КНОПКА</div>
+                    <div className=""><ButtonLarge /></div>
                     <p className="price-footer__social">Связь в мессенджерах:</p>
                     <div className="price-footer__icons icons">
                         <a href="#">
