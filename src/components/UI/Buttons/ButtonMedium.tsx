@@ -1,9 +1,9 @@
 import BaseButton from "./BaseButton";
 
-function ButtonMedium() {
+function ButtonMedium({textContent = ""}) {
     return(
         <div className="_button-medium">
-            <BaseButton />
+            <BaseButton textContent={textContent} />
         </div>
     )
 }

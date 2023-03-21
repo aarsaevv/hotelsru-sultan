@@ -1,9 +1,9 @@
 import BaseSearch from "./BaseSearch";
 
-function SearchMedium() {
+function SearchMedium({placeholder = "", iconSrc = ""}) {
   return (
     <div className="_search-medium">
-        <BaseSearch />
+        <BaseSearch placeholder={placeholder} iconSrc={iconSrc} />
     </div>
   );
 }

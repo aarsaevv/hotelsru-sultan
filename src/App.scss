@@ -10,13 +10,12 @@ body {
     padding: 0;
 }
 
+p {
+    margin: 0;
+    padding: 0;
+}
+
 ._container {
     width: 1360px;
     margin: 0 auto;
-}
-
-//temporary
-.catalogue {
-    display: flex;
-    flex-wrap: wrap;
 }

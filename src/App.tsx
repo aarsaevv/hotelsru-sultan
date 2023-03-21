@@ -1,7 +1,7 @@
 import './App.scss';
 import Header from './components/Header';
-import Item from './components/Item';
 import Footer from './components/Footer';
+import Catalogue from './components/Catalogue';
 // import ButtonLarge from './components/UI/Buttons/ButtonLarge';
 // import ButtonMedium from './components/UI/Buttons/ButtonMedium';
 // import ButtonSmall from './components/UI/Buttons/ButtonSmall';
@@ -17,11 +17,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <div className="catalogue">
-        {[...Array(10)].map((x, i) =>
-          <Item key={i} />
-        )}
-      </div>
+      <Catalogue />
       <Footer />
     </div>
   );
