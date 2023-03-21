@@ -1,14 +1,12 @@
-@import '../helpers/Variables.scss';
-@import '../helpers/Media-mixin.scss';
+@import "../helpers/Variables.scss";
+@import "../helpers/Media-mixin.scss";
 
 .header-section {
-
     display: flex;
     flex-direction: column;
 }
 
 .header {
-
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -29,7 +27,6 @@
 }
 
 .info-header {
-    
     &__link {
         text-decoration: none;
         color: $--2--black-secondary;
@@ -37,7 +34,6 @@
 }
 
 .header-main {
-
     height: 110px;
     display: flex;
     justify-content: space-between;
@@ -50,8 +46,7 @@
 }
 
 .contacts {
-
-    &__address, 
+    &__address,
     &__email {
         font-weight: $--weight-semibold;
         display: flex;
@@ -66,15 +61,12 @@
     }
 }
 
-
 .hotline-header {
-
     display: flex;
     gap: 14px;
 }
 
 .info-contacts {
-
     text-align: right;
     display: flex;
     flex-direction: column;
@@ -101,13 +93,11 @@
 }
 
 .header-cart {
-
     display: flex;
     gap: 24px;
 }
 
 .header-info-cart {
-
     &__name {
         font-weight: $--weight-light;
         font-size: $--font-secondary;

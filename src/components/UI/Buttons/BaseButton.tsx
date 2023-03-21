@@ -1,6 +1,6 @@
 import "./BaseButton.scss";
 
-function Button({textContent = "", iconSrc = ""}) {
+function Button({ textContent = "", iconSrc = "" }) {
   return (
     <button className="button">
       {textContent}

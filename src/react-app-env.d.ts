@@ -1,7 +1,7 @@
 /// <reference types="react-scripts" />
 
 declare namespace JSX {
-    interface IntrinsicAttributes {
-      [someAttribute: string]: any;
-    }
+  interface IntrinsicAttributes {
+    [someAttribute: string]: any;
+  }
 }

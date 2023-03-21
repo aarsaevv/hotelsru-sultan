@@ -1,6 +1,6 @@
 import "./Item.scss";
 import ariel from "../assets/images/ariel.png";
-import basketWhite from '../assets/icons/basket-white.svg';
+import basketWhite from "../assets/icons/basket-white.svg";
 import BaseButton from "./UI/Buttons/BaseButton";
 
 function Item() {

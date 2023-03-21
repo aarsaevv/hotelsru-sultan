@@ -1,5 +1,5 @@
-@import '../helpers/Media-mixin.scss';
-@import '../helpers/Variables.scss';
+@import "../helpers/Media-mixin.scss";
+@import "../helpers/Variables.scss";
 
 .item {
     display: flex;
@@ -28,7 +28,7 @@
         color: $--2--black-secondary;
         margin: 0 0 10px 0;
     }
-    
+
     &__name {
         font-size: 16px;
         font-weight: $--weight-semibold;
@@ -62,7 +62,7 @@
         margin: 5px 0;
     }
 
-    &__manufacturer span, 
+    &__manufacturer span,
     &__barcode span,
     &__brand span {
         font-weight: $--weight-bold;

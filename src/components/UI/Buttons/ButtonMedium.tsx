@@ -1,11 +1,11 @@
 import BaseButton from "./BaseButton";
 
-function ButtonMedium({textContent = ""}) {
-    return(
-        <div className="_button-medium">
-            <BaseButton textContent={textContent} />
-        </div>
-    )
+function ButtonMedium({ textContent = "", iconSrc = "" }) {
+  return (
+    <div className="_button-medium">
+      <BaseButton textContent={textContent} iconSrc={iconSrc} />
+    </div>
+  );
 }
 
 export default ButtonMedium;

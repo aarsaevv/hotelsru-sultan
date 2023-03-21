@@ -1,0 +1,55 @@
+@import "../helpers/Media-mixin.scss";
+@import "../helpers/Variables.scss";
+
+.item-card {
+    width: 1300px;
+    &__breadcrumbs {
+        padding: 45px 0;
+    }
+
+    &__breadcrumbs a {
+        text-decoration: none;
+        color: $--2--black-secondary;
+    }
+
+    &__breadcrumbs span {
+        opacity: 0.7;
+    }
+
+    &__product {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.share-price {
+    &__buttons {
+        height: 77px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+}
+
+.product {
+    &__image {
+        width: 480px;
+    }
+
+    &__image img {
+        width: 100%;
+    }
+
+    &__product-info {
+        width: 720px;
+    }
+}
+
+.product-info {
+    &__cart {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 500px;
+    }
+}
