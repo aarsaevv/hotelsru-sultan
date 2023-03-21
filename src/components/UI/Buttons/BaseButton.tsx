@@ -1,7 +1,12 @@
 import "./BaseButton.scss";
 
-function Button() {
-  return <button className="button"></button>;
+function Button({textContent = "", iconSrc = ""}) {
+  return (
+    <button className="button">
+      {textContent}
+      <img src={iconSrc} alt="" className="button__icon" />
+    </button>
+  );
 }
 
 export default Button;

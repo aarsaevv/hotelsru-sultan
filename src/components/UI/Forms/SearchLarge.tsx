@@ -1,9 +1,9 @@
 import BaseSearch from "./BaseSearch";
 
-function SearchLarge() {
+function SearchLarge({placeholder = "", iconSrc = ""}) {
   return (
     <div className="_search-large">
-        <BaseSearch />
+        <BaseSearch placeholder={placeholder} iconSrc={iconSrc} />
     </div>
   );
 }

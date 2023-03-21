@@ -1,5 +1,6 @@
 import "./Item.scss";
 import ariel from "../assets/images/ariel.png";
+import basketWhite from '../assets/icons/basket-white.svg';
 import BaseButton from "./UI/Buttons/BaseButton";
 
 function Item() {
@@ -27,7 +28,7 @@ function Item() {
       <div className="purchase">
         <h3 className="purchase__price">48,76 ₸</h3>
         <div className="_button-small purchase__button">
-          <BaseButton />
+          <BaseButton textContent="В корзину" iconSrc={basketWhite} />
         </div>
       </div>
     </div>

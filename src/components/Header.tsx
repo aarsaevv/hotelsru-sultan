@@ -7,6 +7,9 @@ import avatar from '../assets/images/avatar.png';
 import cart from '../assets/icons/cart.svg';
 import ButtonLarge from './UI/Buttons/ButtonLarge';
 import SearchLarge from './UI/Forms/SearchLarge';
+import catalogue from '../assets/icons/catalogue.svg';
+import download from '../assets/icons/download.svg'
+import search from '../assets/icons/search.svg'
 
 function Header() {
     return (
@@ -40,8 +43,8 @@ function Header() {
                 <a href="#">
                     <img className="header-main__logo" src={logo} alt="logo" />
                 </a>
-                <div className="header-main__catalogue"><ButtonLarge /></div>
-                <div className="header-main__search"><SearchLarge /></div>
+                <div className="header-main__catalogue"><ButtonLarge textContent="Каталог" iconSrc={catalogue} /></div>
+                <div className="header-main__search"><SearchLarge placeholder="Поиск..." iconSrc={search} /></div>
                 <div className="header-main__hotline-header hotline-header">
                     <div className="hotline-header__info-contacts info-contacts">
                         <div className="info-contacts__number">+7 (777) 490-00-91</div>
@@ -50,7 +53,7 @@ function Header() {
                     </div>
                     <img className="hotline__avatar" src={avatar} alt="avatar" />
                 </div>
-                <div className="header-main__price-header"><ButtonLarge /></div>
+                <div className="header-main__price-header"><ButtonLarge textContent='Прайс-лист' iconSrc={download} /></div>
                 <div className="header-main__cart header-cart">
                     <img className="header-cart__icon" src={cart} alt="cart"></img>
                     <div className="header-cart__header-info-cart header-info-cart">
