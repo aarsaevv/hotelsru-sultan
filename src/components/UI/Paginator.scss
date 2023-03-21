@@ -1,0 +1,51 @@
+@import "../helpers/Media-mixin.scss";
+@import "../helpers/Variables.scss";
+
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 240px;
+    height: 35px;
+
+    &__button {
+        width: 20px;
+        height: 20px;
+        border: none;
+        background-color: transparent;
+    }
+}
+
+.button {
+    &__right {
+        transform: rotate(180deg);
+    }
+}
+
+.list {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    &__number {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 20px;
+        height: 20px;
+        font-size: $--font-primary;
+        font-weight: $--weight-semibold;
+        color: $--2--black-secondary;
+        text-decoration: none;
+        margin: 0;
+    }
+}
+
+.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: 7px solid rgba(255, 198, 80, 0.3);
+    border-radius: 50%;
+    background-color: rgba(255, 198, 80, 0.3);
+}
