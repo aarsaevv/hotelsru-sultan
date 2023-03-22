@@ -1,14 +1,15 @@
 //@ts-nocheck
 
 import "./Catalogue.scss";
-import Item from "./Item";
-import ButtonMedium from "./UI/Buttons/ButtonMedium";
-import RoundButtonLarge from "./UI/Buttons/RoundButtonLarge";
-import SearchMedium from "./UI/Forms/SearchMedium";
-import search from "../assets/icons/search.svg";
-import PriceSelector from "./UI/Forms/PriceSelector";
-import bin from "../assets/icons/bin.svg";
 import { useEffect, useState } from "react";
+import bin from "../assets/icons/bin.svg";
+import ButtonMedium from "./UI/Buttons/ButtonMedium";
+import Item from "./Item";
+import Paginator from "./UI/Paginator";
+import PriceSelector from "./UI/Forms/PriceSelector";
+import RoundButtonLarge from "./UI/Buttons/RoundButtonLarge";
+import search from "../assets/icons/search.svg";
+import SearchMedium from "./UI/Forms/SearchMedium";
 
 function Catalogue({ json = [{}] }) {
   const [itemsJSON, setItemsJSON] = useState(json);
@@ -116,16 +117,16 @@ function Catalogue({ json = [{}] }) {
             <a className="manufacturer__show-all">Показать все ⏷</a>
           </div>
 
-          <div className="aside__brand brand">
-            <p className="brand__heading">Бренд</p>
-            <SearchMedium placeholder="Поиск..." iconSrc={search} />
-            Здесь будет генериться список из JSON <br />
-            <a className="brand__show-all">Показать все ⏷</a>
-          </div>
-
           <div className="aside__filter-buttons">
             <ButtonMedium textContent="Показать" />
             <RoundButtonLarge iconSrc={bin} />
+          </div>
+
+          <div className="aside__care care">
+            <p className="care__body">УХОД ЗА ТЕЛОМ</p>
+            <p className="care__hands">УХОД ЗА РУКАМИ</p>
+            <p className="care__legs">УХОД ЗА НОГАМИ</p>
+            <p className="care__face">УХОД ЗА ЛИЦОМ</p>
           </div>
         </div>
         <div className="catalogue__items">
@@ -145,6 +146,7 @@ function Catalogue({ json = [{}] }) {
           })}
         </div>
       </div>
+      <Paginator />
     </section>
   );
 }

@@ -86,13 +86,19 @@
     &__price {
         font-weight: $--weight-light;
     }
-}
 
-.aside {
     &__filter-buttons {
         display: flex;
         gap: 10px;
     }
+
+    &__care {
+        font-size: 16px;
+    }
+}
+
+.care > p {
+    margin: 0 0 25px 0;
 }
 
 .manufacturer__heading,

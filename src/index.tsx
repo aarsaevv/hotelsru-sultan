@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { BrowserRouter as Router } from "react-router-dom";
 import App from "./App";
 
 let json: any[] = [
@@ -277,7 +278,9 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <App json={json} />
+    <Router>
+      <App json={json} />
+    </Router>
   </React.StrictMode>
 );
 
@@ -287,3 +290,4 @@ root.render(
 // Адаптив
 // Админка
 // Фильтры уход
+// Пагинация

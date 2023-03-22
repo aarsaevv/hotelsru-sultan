@@ -14,4 +14,21 @@
     &__breadcrumbs span {
         opacity: 0.7;
     }
+
+    &__heading {
+        margin: 0 0 50px 0;
+    }
+
+    &__order {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 30px 0;
+    }
+}
+
+.order {
+    &__price {
+        font-size: $--font-xl;
+    }
 }
