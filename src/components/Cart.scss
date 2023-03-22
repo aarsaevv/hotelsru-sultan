@@ -1,0 +1,17 @@
+@import "../helpers/Media-mixin.scss";
+@import "../helpers/Variables.scss";
+
+.cart {
+    &__breadcrumbs {
+        padding: 45px 0;
+    }
+
+    &__breadcrumbs a {
+        text-decoration: none;
+        color: $--2--black-secondary;
+    }
+
+    &__breadcrumbs span {
+        opacity: 0.7;
+    }
+}

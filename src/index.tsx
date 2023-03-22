@@ -2,9 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 
-let itemsJSON = [
+let json: any[] = [
   {
-    imageSrc: "./assets/images/spray.jpg",
+    imageSrc: require("../src/assets/images/spray.jpg"),
     title: 'Парфюмированный спрей для тела "Капля росы',
     sizeType: "объем, мл",
     size: 100,
@@ -17,8 +17,8 @@ let itemsJSON = [
     careType: ["Уход за телом"],
   },
   {
-    imageSrc: "./assets/images/cream-lotion.jpg",
-    title: "D`Michael Крем-лосьон для рук и тела Les notes de Bisou du soleil",
+    imageSrc: require("../src/assets/images/cream-lotion.jpg"),
+    title: "Крем-лосьон для рук и тела Les notes de Bisou du soleil",
     sizeType: "объем, мл",
     size: 200,
     barcode: 109200025,
@@ -30,8 +30,8 @@ let itemsJSON = [
     careType: ["Уход за телом", "Уход за руками"],
   },
   {
-    imageSrc: "./assets/images/body-milk-strawberry.jpg",
-    title: "DOLCE MILK Молочко для тела «Мисс Клубничный компромисс»",
+    imageSrc: require("../src/assets/images/body-milk-strawberry.jpg"),
+    title: "Молочко для тела «Мисс Клубничный компромисс»",
     sizeType: "объем, мл",
     size: 200,
     barcode: 81500030,
@@ -43,22 +43,22 @@ let itemsJSON = [
     careType: ["Уход за телом"],
   },
   {
-    imageSrc: "./assets/images/body-butter.jpg",
+    imageSrc: require("../src/assets/images/body-butter.jpg"),
     title:
-      "SEACARE Омолаживающее масло для тела с минералами Мертвого Моря и натуральными маслами",
+      "Омолаживающее масло для тела с минералами Мертвого Моря и натуральными маслами",
     sizeType: "объем, мл",
     size: 250,
     barcode: 100600089,
     manufacturer: "SEACARE",
     brand: "SEACARE",
     description:
-      "SeaCare Масло для Тела является исключительно обогащенным кремом, содержащим тщательно подобранные комбинации масел, витаминов и минералов. Обладает успокаивающим ароматом. Формула обогащена минералами Мертвого моря, и создана в соответствии со стандартами Израильской ассоциации производителей косметики.",
+      "Масло для Тела является исключительно обогащенным кремом, содержащим тщательно подобранные комбинации масел, витаминов и минералов. Обладает успокаивающим ароматом. Формула обогащена минералами Мертвого моря, и создана в соответствии со стандартами Израильской ассоциации производителей косметики.",
     price: 1011,
     careType: ["Уход за телом", "Уход за ногами"],
   },
   {
-    imageSrc: "./assets/images/body-balm.jpg",
-    title: "AVENE BODY Увлажняющий бальзам с тающей текстурой",
+    imageSrc: require("../src/assets/images/body-balm.jpg"),
+    title: "Увлажняющий бальзам с тающей текстурой",
     sizeType: "объем, мл",
     size: 250,
     barcode: 67100004,
@@ -70,8 +70,8 @@ let itemsJSON = [
     careType: ["Уход за телом"],
   },
   {
-    imageSrc: "./assets/images/cream-mea.jpg",
-    title: "MEA Увлажняющий крем для рук «Догорающее солнце»",
+    imageSrc: require("../src/assets/images/cream-mea.jpg"),
+    title: "Увлажняющий крем для рук «Догорающее солнце»",
     sizeType: "объем, мл",
     size: 50,
     barcode: 111501257,
@@ -83,8 +83,8 @@ let itemsJSON = [
     careType: ["Уход за руками"],
   },
   {
-    imageSrc: "./assets/images/cream-dolchemilk.jpg",
-    title: "DOLCE MILK Крем для рук «Ханна Банана»",
+    imageSrc: require("../src/assets/images/cream-dolchemilk.jpg"),
+    title: "Крем для рук «Ханна Банана»",
     sizeType: "объем, мл",
     size: 75,
     barcode: 81500025,
@@ -96,8 +96,8 @@ let itemsJSON = [
     careType: ["Уход за руками"],
   },
   {
-    imageSrc: "./assets/images/fluid-mea.jpg",
-    title: "MEA Бархатистый флюид для рук «Жидкое небо»",
+    imageSrc: require("../src/assets/images/fluid-mea.jpg"),
+    title: "Бархатистый флюид для рук «Жидкое небо»",
     sizeType: "объем, мл",
     size: 100,
     barcode: 129000732,
@@ -109,9 +109,9 @@ let itemsJSON = [
     careType: ["Уход за руками"],
   },
   {
-    imageSrc: "./assets/images/cream-seacare.jpg",
+    imageSrc: require("../src/assets/images/cream-seacare.jpg"),
     title:
-      "SEACARE Омолаживающий крем для рук с минералами Мертвого Моря и натуральными маслами",
+      "Омолаживающий крем для рук с минералами Мертвого Моря и натуральными маслами",
     sizeType: "объем, мл",
     size: 150,
     barcode: 100600094,
@@ -123,8 +123,8 @@ let itemsJSON = [
     careType: ["Уход за руками"],
   },
   {
-    imageSrc: "./assets/images/cream-drjart.jpg",
-    title: "DR. JART+ Крем для рук Ceramidin",
+    imageSrc: require("../src/assets/images/cream-drjart.jpg"),
+    title: "Крем для рук Ceramidin",
     sizeType: "объем, мл",
     size: 50,
     barcode: 92400102,
@@ -136,8 +136,8 @@ let itemsJSON = [
     careType: ["Уход за руками"],
   },
   {
-    imageSrc: "./assets/images/foot-dolchemilk.jpg",
-    title: "DOLCE MILK Крем для ног «Дикий инжир»",
+    imageSrc: require("../src/assets/images/foot-dolchemilk.jpg"),
+    title: "Крем для ног «Дикий инжир»",
     sizeType: "объем, мл",
     size: 100,
     barcode: 88800072,
@@ -149,9 +149,8 @@ let itemsJSON = [
     careType: ["Уход за ногами"],
   },
   {
-    imageSrc: "./assets/images/foot-lotion.jpg",
-    title:
-      "ARAVIA PROFESSIONAL Лосьон для удаления мозолей и натоптышей «Жидкий педикюр»",
+    imageSrc: require("../src/assets/images/foot-lotion.jpg"),
+    title: "Лосьон для удаления мозолей и натоптышей «Жидкий педикюр»",
     sizeType: "объем, мл",
     size: 150,
     barcode: 122800074,
@@ -163,9 +162,9 @@ let itemsJSON = [
     careType: ["Уход за ногами"],
   },
   {
-    imageSrc: "./assets/images/foot-cream.jpg",
+    imageSrc: require("../src/assets/images/foot-cream.jpg"),
     title:
-      "ARAVIA PROFESSIONAL Активный увлажняющий крем для ног с гиалуроновой кислотой Active Cream",
+      "Активный увлажняющий крем для ног с гиалуроновой кислотой Active Cream",
     sizeType: "объем, мл",
     size: 150,
     barcode: 107600035,
@@ -177,9 +176,8 @@ let itemsJSON = [
     careType: ["Уход за ногами"],
   },
   {
-    imageSrc: "./assets/images/foot-mask.jpg",
-    title:
-      "KOCOSTAR Педикюрная маска «Гладкие пяточки» (носочки) FOOT PEELING PACK",
+    imageSrc: require("../src/assets/images/foot-mask.jpg"),
+    title: "Педикюрная маска «Гладкие пяточки» (носочки) FOOT PEELING PACK",
     sizeType: "объем, мл",
     size: 40,
     barcode: 105100280,
@@ -191,9 +189,9 @@ let itemsJSON = [
     careType: ["Уход за ногами"],
   },
   {
-    imageSrc: "./assets/images/foot-and-hand-cream.jpg",
+    imageSrc: require("../src/assets/images/foot-and-hand-cream.jpg"),
     title:
-      "VILLAGE 11 FACTORY Парфюмированный крем для рук и ног Hand&Foot Perfume Cream #Lumineux Gardénia",
+      "Парфюмированный крем для рук и ног Hand&Foot Perfume Cream #Lumineux Gardénia",
     sizeType: "объем, мл",
     size: 100,
     barcode: 105100054,
@@ -205,9 +203,9 @@ let itemsJSON = [
     careType: ["Уход за ногами", "Уход за руками"],
   },
   {
-    imageSrc: "./assets/images/face-serum.jpg",
+    imageSrc: require("../src/assets/images/face-serum.jpg"),
     title:
-      "ARAVIA LABORATORIES Увлажняющая сыворотка с гиалуроновой кислотой Hyaluronic Active Serum",
+      "Увлажняющая сыворотка с гиалуроновой кислотой Hyaluronic Active Serum",
     sizeType: "объем, мл",
     size: 30,
     barcode: 107300092,
@@ -219,9 +217,9 @@ let itemsJSON = [
     careType: ["Уход за лицом"],
   },
   {
-    imageSrc: "./assets/images/face-cream.jpg",
+    imageSrc: require("../src/assets/images/face-cream.jpg"),
     title:
-      "SEACARE Антивозрастной Ночной Крем для Лица с Матриксил, Минералами Мертвого Моря и Маслами",
+      "Антивозрастной Ночной Крем для Лица с Матриксил, Минералами Мертвого Моря и Маслами",
     sizeType: "объем, мл",
     size: 50,
     barcode: 100600074,
@@ -233,9 +231,8 @@ let itemsJSON = [
     careType: ["Уход за лицом"],
   },
   {
-    imageSrc: "./assets/images/face-cream-clinique.jpg",
-    title:
-      "CLINIQUE Увлажняющий крем-гель для проблемной кожи Anti-Blemish Solutions",
+    imageSrc: require("../src/assets/images/face-cream-clinique.jpg"),
+    title: "Увлажняющий крем-гель для проблемной кожи Anti-Blemish Solutions",
     sizeType: "объем, мл",
     size: 15,
     barcode: 9365,
@@ -247,9 +244,9 @@ let itemsJSON = [
     careType: ["Уход за лицом"],
   },
   {
-    imageSrc: "./assets/images/face-mask.jpg",
+    imageSrc: require("../src/assets/images/face-mask.jpg"),
     title:
-      "CLINIQUE Очищающая, контролирующая излишки жира маска Anti-Blemish Solutions Oil-Control Cleansing Mask",
+      "Очищающая, контролирующая излишки жира маска Anti-Blemish Solutions Oil-Control Cleansing Mask",
     sizeType: "объем, мл",
     size: 100,
     barcode: 9055,
@@ -261,8 +258,8 @@ let itemsJSON = [
     careType: ["Уход за лицом"],
   },
   {
-    imageSrc: "./assets/images/face-lotion.jpg",
-    title: "AVENE Лосьон мягкий",
+    imageSrc: require("../src/assets/images/face-lotion.jpg"),
+    title: "Лосьон мягкий",
     sizeType: "объем, мл",
     size: 100,
     barcode: 67100009,
@@ -280,18 +277,13 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <App json={json} />
   </React.StrictMode>
 );
 
 // ПЕРВООЧЕРЕДНОЕ
 
-// Стили
-// Пагинатор, Селектор
+// localStorage
 // Адаптив
 // Админка
-// Сортировка
-
-// ВТОРООЧЕРЕДНОЕ
-
-// Все остальное
+// Фильтры уход

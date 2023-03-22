@@ -1,2 +1,52 @@
 @import "../helpers/Media-mixin.scss";
 @import "../helpers/Variables.scss";
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1365px;
+}
+
+.cart-image {
+    width: 250px;
+    height: 250px;
+
+    &__image {
+        width: 250px;
+        height: 250px;
+    }
+}
+
+.cart-information {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.cart-specification {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 480px;
+
+    &__value-weight {
+        font-size: $--font-secondary;
+        font-weight: $--weight-regular;
+        color: $--2--black-secondary;
+        margin: 0;
+    }
+
+    &__name {
+        font-size: $--font-xl;
+        font-weight: $--weight-bold;
+        color: $--1--black-primary;
+        margin: 0;
+    }
+
+    &__description {
+        font-size: $--font-secondary;
+        font-weight: $--weight-regular;
+        color: $--2--black-secondary;
+    }
+}

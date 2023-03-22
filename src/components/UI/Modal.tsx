@@ -1,6 +1,6 @@
-import "../scss/components/modal.scss";
-import cross from "../assets/icons/cross-yellow.svg";
-import doubleTick from "../assets/icons/double-tick.svg";
+import "./Modal.scss";
+import cross from "../../assets/icons/cross-yellow.svg";
+import doubleTick from "../../assets/icons/double-tick.svg";
 
 function Modal() {
   return (

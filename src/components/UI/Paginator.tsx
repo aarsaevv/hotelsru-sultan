@@ -1,5 +1,5 @@
-import "../scss/components/pagination.scss";
-import arrow from "../assets/icons/arrow.svg";
+import "./Paginator.scss";
+import arrow from "../../assets/icons/arrow.svg";
 
 function Paginator() {
   return (
