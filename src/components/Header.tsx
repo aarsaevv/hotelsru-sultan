@@ -1,16 +1,16 @@
-import { Link } from "react-router-dom";
 import "./Header.scss";
-import location from "../assets/icons/location.svg";
-import inbox from "../assets/icons/inbox.svg";
-import line from "../assets/images/line.png";
-import logo from "../assets/icons/logo.svg";
+import { Link } from "react-router-dom";
 import avatar from "../assets/images/avatar.png";
-import cart from "../assets/icons/cart.svg";
 import ButtonLarge from "./UI/Buttons/ButtonLarge";
-import SearchLarge from "./UI/Forms/SearchLarge";
+import cart from "../assets/icons/cart.svg";
 import catalogue from "../assets/icons/catalogue.svg";
 import download from "../assets/icons/download.svg";
+import inbox from "../assets/icons/inbox.svg";
+import line from "../assets/images/line.png";
+import location from "../assets/icons/location.svg";
+import logo from "../assets/icons/logo.svg";
 import search from "../assets/icons/search.svg";
+import SearchLarge from "./UI/Forms/SearchLarge";
 
 function Header() {
   return (

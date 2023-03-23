@@ -1,7 +1,7 @@
 import "./Item.scss";
-import basketWhite from "../assets/icons/basket-white.svg";
-import BaseButton from "./UI/Buttons/BaseButton";
 import { Link } from "react-router-dom";
+import BaseButton from "./UI/Buttons/BaseButton";
+import basketWhite from "../assets/icons/basket-white.svg";
 
 function Item({
   imageSrc,
@@ -33,7 +33,7 @@ function Item({
         </h5>
       </div>
       <div className="purchase">
-        <h3 className="purchase__price">{(price * 5.7).toFixed(1)} ₸</h3>
+        <h3 className="purchase__price">{Number(price).toFixed(2)} ₸</h3>
         <div className="_button-small purchase__button">
           <BaseButton textContent="В корзину" iconSrc={basketWhite} />
         </div>

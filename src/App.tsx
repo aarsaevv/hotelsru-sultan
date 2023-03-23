@@ -1,10 +1,10 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.scss";
+import ScrollToTop from "./helpers/ScrollToTop";
 import Catalogue from "./components/Catalogue";
 import ItemCard from "./components/ItemCard";
 import Cart from "./components/Cart";
 import Layout from "./Layout";
-import ScrollToTop from "./helpers/ScrollToTop";
 
 function App({ json = [{}] }) {
   return (

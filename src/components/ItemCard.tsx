@@ -1,23 +1,20 @@
-//@ts-nocheck
-
 import "./ItemCard.scss";
-import doggo from "../assets/images/remove__after__test__doggo.jpg";
-import share from "../assets/icons/share.svg";
-import basketWhite from "../assets/icons/basket-white.svg";
-import ButtonMedium from "./UI/Buttons/ButtonMedium";
 import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import basketWhite from "../assets/icons/basket-white.svg";
+import ButtonMedium from "./UI/Buttons/ButtonMedium";
 import CountSelector from "./UI/Forms/CountSelector";
+import doggo from "../assets/images/remove__after__test__doggo.jpg";
+import share from "../assets/icons/share.svg";
 
 function ItemCard({ json = [{}] }) {
   const params = useParams();
-  const [itemCards, setItemCards] = useState(json);
+  const [itemCards, setItemCards] = useState<Array<any>>(json);
 
   useEffect(() => {
     let id = Object.values(params).join("");
-    console.log(id);
     let copyItemCards = [...itemCards];
-    copyItemCards = copyItemCards.filter((el) => el.barcode == id);
+    copyItemCards = copyItemCards.filter((el: any) => el.barcode == id);
     setItemCards(copyItemCards);
   }, []);
 
@@ -29,7 +26,7 @@ function ItemCard({ json = [{}] }) {
           <Link to="/catalogue">Каталог | </Link>
         </span>
         <span>
-          <Link>ТОВАР</Link>
+          <Link to="">ТОВАР</Link>
         </span>
       </div>
       <div className="item-card__product product">
@@ -45,9 +42,7 @@ function ItemCard({ json = [{}] }) {
             {itemCards[0].size + " " + itemCards[0].sizeType.split(", ")[1]}
           </h6>
           <div className="product-info__cart cart">
-            <h2 className="cart__price">
-              {(itemCards[0].price * 5.7).toFixed(1)} ₸
-            </h2>
+            <h2 className="cart__price">{itemCards[0].price.toFixed(2)} ₸</h2>
             <div className="selector">
               <CountSelector />
             </div>

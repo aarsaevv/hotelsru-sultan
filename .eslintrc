@@ -5,9 +5,12 @@
   ],
     "rules": {
       "jsx-a11y/anchor-is-valid": "off",
-      "jsx-a11y/anchor-has-content": "off"
+      "jsx-a11y/anchor-has-content": "off",
+      "react-hooks/exhaustive-deps": "off",
+      "eqeqeq": "off"
     },
     "plugins": [
-      "jsx-a11y"
+      "jsx-a11y",
+      "react-hooks"
     ]
   }

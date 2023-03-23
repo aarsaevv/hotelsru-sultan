@@ -1,19 +1,16 @@
-// @ts-nocheck
-
 import "./CartItem.scss";
-import RoundButtonLarge from "./UI/Buttons/RoundButtonLarge";
-import CountSelector from "./UI/Forms/CountSelector";
 import cartSeparator from "../assets/images/cart-separator.png";
+import CountSelector from "./UI/Forms/CountSelector";
+import RoundButtonLarge from "./UI/Buttons/RoundButtonLarge";
 
 function CartItem({
   iconSrc = "",
-  imageSrc,
-  size,
-  brand,
-  title,
-  barcode,
-  price,
-  description,
+  imageSrc = "",
+  size = "",
+  brand = "",
+  title = "",
+  price = "",
+  description = "",
 }) {
   return (
     <div className="wrapper">
@@ -34,7 +31,7 @@ function CartItem({
         </div>
         <CountSelector />
         <div className="cart-item__cart-price cart-price">
-          <h2>{(price * 5.7).toFixed(1)} ₸</h2>
+          <h2>{Number(price).toFixed(2)} ₸</h2>
         </div>
         <RoundButtonLarge iconSrc={iconSrc} />
       </div>

@@ -1,11 +1,9 @@
-//@ts-nocheck
-
-import { useState } from "react";
 import "./Cart.scss";
-import CartItem from "./CartItem";
+import { Link } from "react-router-dom";
+import { useState } from "react";
 import bin from "../assets/icons/bin.svg";
 import ButtonLarge from "./UI/Buttons/ButtonLarge";
-import { Link } from "react-router-dom";
+import CartItem from "./CartItem";
 
 function Cart({ json = [{}] }) {
   const [itemsJSON, setItemsJSON] = useState(json);
@@ -15,7 +13,7 @@ function Cart({ json = [{}] }) {
       <div className="cart__breadcrumbs">
         <Link to="/">Главная | </Link>
         <span>
-          <Link>Корзина</Link>
+          <Link to="">Корзина</Link>
         </span>
       </div>
       <div className="cart__heading heading">

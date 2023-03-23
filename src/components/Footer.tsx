@@ -1,13 +1,13 @@
 import "./Footer.scss";
-import logoWhite from "../assets/icons/logo-white.svg";
-import whatsapp from "../assets/icons/whatsapp.svg";
-import telegram from "../assets/icons/telegram.svg";
-import download from "../assets/icons/download.svg";
-import visa from "../assets/icons/visa.svg";
-import mastercard from "../assets/icons/mastercard.svg";
 import arrowRightWhite from "../assets/icons/arrow-right-white.svg";
 import ButtonLarge from "./UI/Buttons/ButtonLarge";
+import download from "../assets/icons/download.svg";
+import logoWhite from "../assets/icons/logo-white.svg";
+import mastercard from "../assets/icons/mastercard.svg";
 import SearchLarge from "./UI/Forms/SearchLarge";
+import telegram from "../assets/icons/telegram.svg";
+import visa from "../assets/icons/visa.svg";
+import whatsapp from "../assets/icons/whatsapp.svg";
 
 function Footer() {
   return (
