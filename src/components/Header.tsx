@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./Header.scss";
 import location from "../assets/icons/location.svg";
 import inbox from "../assets/icons/inbox.svg";
@@ -48,11 +49,13 @@ function Header() {
       </div>
       <img src={line} alt="line" />
       <div className="_container header-main">
-        <a href="#">
+        <Link to="/catalogue">
           <img className="header-main__logo" src={logo} alt="logo" />
-        </a>
+        </Link>
         <div className="header-main__catalogue">
-          <ButtonLarge textContent="Каталог" iconSrc={catalogue} />
+          <Link to="/catalogue">
+            <ButtonLarge textContent="Каталог" iconSrc={catalogue} />
+          </Link>
         </div>
         <div className="header-main__search">
           <SearchLarge placeholder="Поиск..." iconSrc={search} />
@@ -73,11 +76,16 @@ function Header() {
           <ButtonLarge textContent="Прайс-лист" iconSrc={download} />
         </div>
         <div className="header-main__cart header-cart">
-          <img className="header-cart__icon" src={cart} alt="cart"></img>
-          <div className="header-cart__header-info-cart header-info-cart">
-            <div className="header-info-cart__name">Корзина</div>
-            <div className="header-info-cart__price">12 478 ₸</div>
-          </div>
+          <Link
+            to="/cart"
+            className="header-cart__header-info-cart header-info-cart"
+          >
+            <img className="header-info-cart__icon" src={cart} alt="cart"></img>
+            <div className="">
+              <div className="header-info-cart__name">Корзина</div>
+              <div className="header-info-cart__price">12 478 ₸</div>
+            </div>
+          </Link>
         </div>
       </div>
       <img src={line} alt="line" />

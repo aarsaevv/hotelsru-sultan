@@ -1,25 +1,26 @@
-import { Route, Routes } from "react-router";
-import { useLocation } from "react-router";
+import { Route, Routes } from "react-router-dom";
 import "./App.scss";
-import Header from "./components/Header";
 import Catalogue from "./components/Catalogue";
 import ItemCard from "./components/ItemCard";
 import Cart from "./components/Cart";
-import Footer from "./components/Footer";
+import Layout from "./Layout";
+import ScrollToTop from "./helpers/ScrollToTop";
 
 function App({ json = [{}] }) {
-  const location = useLocation();
   return (
     <div className="App">
-      <Header />
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<Catalogue json={json} />}></Route>
-        <Route path="/cart" element={<Cart json={json} />}></Route>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Catalogue json={json} />}></Route>
+          <Route path="catalogue" element={<Catalogue json={json} />}></Route>
+          <Route
+            path="catalogue/:id"
+            element={<ItemCard json={json} />}
+          ></Route>
+          <Route path="cart" element={<Cart json={json} />}></Route>
+        </Route>
       </Routes>
-      {/* <Catalogue json={json} />
-      <ItemCard json={json} />
-      <Cart json={json} /> */}
-      <Footer />
     </div>
   );
 }

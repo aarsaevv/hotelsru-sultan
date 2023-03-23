@@ -1,6 +1,7 @@
 import "./Item.scss";
 import basketWhite from "../assets/icons/basket-white.svg";
 import BaseButton from "./UI/Buttons/BaseButton";
+import { Link } from "react-router-dom";
 
 function Item({
   imageSrc,
@@ -16,9 +17,11 @@ function Item({
       <img className="item__image" src={imageSrc} alt={brand} />
       <div className="item__description description">
         <h6 className="description__weight">{size}</h6>
-        <h3 className="description__name">
-          <span>{brand}</span> {title}
-        </h3>
+        <Link to={`/catalogue/${barcode}`}>
+          <h3 className="description__name">
+            <span>{brand}</span> {title}
+          </h3>
+        </Link>
         <h5 className="description__manufacturer">
           Штрихкод:<span>{barcode}</span>
         </h5>

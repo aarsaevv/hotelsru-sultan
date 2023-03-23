@@ -39,6 +39,10 @@
     justify-content: space-between;
     align-items: center;
 
+    &__catalogue > * {
+        text-decoration: none;
+    }
+
     &__hotline-header {
         display: flex;
         align-items: center;
@@ -98,6 +102,9 @@
 }
 
 .header-info-cart {
+    text-decoration: none;
+    display: flex;
+    gap: 10px;
     &__name {
         font-weight: $--weight-light;
         font-size: $--font-secondary;
@@ -106,5 +113,6 @@
 
     &__price {
         font-weight: $--weight-semibold;
+        color: $--2--black-secondary;
     }
 }
