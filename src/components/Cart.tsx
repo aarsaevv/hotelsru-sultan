@@ -5,6 +5,7 @@ import "./Cart.scss";
 import CartItem from "./CartItem";
 import bin from "../assets/icons/bin.svg";
 import ButtonLarge from "./UI/Buttons/ButtonLarge";
+import { Link } from "react-router-dom";
 
 function Cart({ json = [{}] }) {
   const [itemsJSON, setItemsJSON] = useState(json);
@@ -12,9 +13,9 @@ function Cart({ json = [{}] }) {
   return (
     <div className="_container cart">
       <div className="cart__breadcrumbs">
-        <a href="#">Главная | </a>
+        <Link to="/">Главная | </Link>
         <span>
-          <a href="#">Корзина</a>
+          <Link>Корзина</Link>
         </span>
       </div>
       <div className="cart__heading heading">

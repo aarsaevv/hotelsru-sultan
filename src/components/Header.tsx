@@ -49,7 +49,7 @@ function Header() {
       </div>
       <img src={line} alt="line" />
       <div className="_container header-main">
-        <Link to="/catalogue">
+        <Link to="/">
           <img className="header-main__logo" src={logo} alt="logo" />
         </Link>
         <div className="header-main__catalogue">

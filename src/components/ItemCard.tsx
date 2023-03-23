@@ -5,7 +5,7 @@ import doggo from "../assets/images/remove__after__test__doggo.jpg";
 import share from "../assets/icons/share.svg";
 import basketWhite from "../assets/icons/basket-white.svg";
 import ButtonMedium from "./UI/Buttons/ButtonMedium";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import CountSelector from "./UI/Forms/CountSelector";
 
@@ -24,12 +24,12 @@ function ItemCard({ json = [{}] }) {
   return (
     <div className="_container item-card">
       <div className="item-card__breadcrumbs">
-        <a href="#">Главная | </a>
+        <Link to="/">Главная | </Link>
         <span>
-          <a href="#">Каталог | </a>
+          <Link to="/catalogue">Каталог | </Link>
         </span>
         <span>
-          <a href="#">ТОВАР</a>
+          <Link>ТОВАР</Link>
         </span>
       </div>
       <div className="item-card__product product">
