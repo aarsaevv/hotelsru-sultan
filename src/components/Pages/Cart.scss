@@ -37,7 +37,9 @@
     }
 
     button {
-        width: 200px;
-        height: 60px;
+        @include _600 {
+            width: 180px;
+            font-size: $--font-primary;
+        }
     }
 }
