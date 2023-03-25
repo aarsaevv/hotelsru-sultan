@@ -21,13 +21,16 @@ function CartItem({ iconSrc = "", imageSrc = "", size = "", brand = "", title = 
 						<p className="cart-specification__description">{description}</p>
 					</div>
 				</div>
-				<CountSelector />
-				<div className="cart-item__cart-price cart-price">
-					<h2>{Number(price).toFixed(2)} ₸</h2>
+				<div className="cart-item__buy buy">
+					<CountSelector />
+					<div className="buy__price">
+						<h2 className="price__value">{Number(price).toFixed(2)} ₸</h2>
+					</div>
+					<RoundButtonLarge iconSrc={iconSrc} />
 				</div>
-				<RoundButtonLarge iconSrc={iconSrc} />
 			</div>
 			<img
+				className="cart-line"
 				src={cartSeparator}
 				alt=""
 			/>

@@ -4,6 +4,10 @@
 .cart {
     &__breadcrumbs {
         padding: 45px 0;
+
+        @include _480 {
+            padding: 20px 0;
+        }
     }
 
     &__breadcrumbs a {
@@ -30,5 +34,10 @@
 .order {
     &__price {
         font-size: $--font-xl;
+    }
+
+    button {
+        width: 200px;
+        height: 60px;
     }
 }

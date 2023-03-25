@@ -5,10 +5,45 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 1365px;
 
-    &__cart-price {
-        font-size: $--font-large;
+    @include _768 {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+}
+
+.buy {
+    display: flex;
+    align-items: center;
+    gap: 85px;
+
+    @include _1400 {
+        gap: 50px;
+    }
+
+    @include _1170 {
+        gap: 35px;
+    }
+
+    @include _979 {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 200px;
+        gap: 20px;
+    }
+
+    @include _768 {
+        width: 580px;
+    }
+}
+
+.price {
+    &__value {
+        font-size: $--font-xl;
+
+        @include _1170 {
+            font-size: $--font-large;
+        }
     }
 }
 
@@ -16,9 +51,39 @@
     width: 250px;
     height: 250px;
 
+    @include _1170 {
+        width: 200px;
+        height: 200px;
+    }
+
+    @include _979 {
+        width: 150px;
+        height: 150px;
+    }
+
+    @include _480 {
+        width: 200px;
+        height: 200px;
+    }
+
     &__image {
         width: 250px;
         height: 250px;
+
+        @include _1170 {
+            width: 200px;
+            height: 200px;
+        }
+
+        @include _979 {
+            width: 150px;
+            height: 150px;
+        }
+
+        @include _480 {
+            width: 200px;
+            height: 200px;
+        }
     }
 }
 
@@ -26,6 +91,35 @@
     display: flex;
     align-items: center;
     gap: 20px;
+
+    @include _1400 {
+        width: 650px;
+    }
+
+    @include _1170 {
+        width: 600px;
+        gap: 10px;
+    }
+
+    @include _979 {
+        width: 500px;
+        gap: 0;
+    }
+
+    @include _768 {
+        width: 580px;
+    }
+
+    @include _600 {
+        width: 460px;
+    }
+
+    @include _480 {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 330px;
+    }
+
 }
 
 .cart-specification {
@@ -33,6 +127,15 @@
     flex-direction: column;
     gap: 10px;
     width: 480px;
+
+    @include _1400 {
+        width: 400px;
+    }
+
+    @include _768 {
+        width: 430px;
+    }
+
 
     &__value-weight {
         font-size: $--font-secondary;
@@ -46,11 +149,41 @@
         font-weight: $--weight-bold;
         color: $--1--black-primary;
         margin: 0;
+
+        @include _1170 {
+            font-size: $--font-large;
+        }
     }
 
     &__description {
         font-size: $--font-secondary;
         font-weight: $--weight-regular;
         color: $--2--black-secondary;
+    }
+}
+
+.cart-line {
+    @include _1400 {
+        width: 1140px;
+    }
+
+    @include _1170 {
+        width: 950px;
+    }
+
+    @include _979 {
+        width: 720px;
+    }
+
+    @include _768 {
+        width: 580px;
+    }
+
+    @include _600 {
+        width: 460px;
+    }
+
+    @include _480 {
+        width: 330px;
     }
 }
