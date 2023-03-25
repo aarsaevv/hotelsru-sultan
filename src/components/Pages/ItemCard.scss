@@ -1,11 +1,15 @@
-@import "../helpers/Media-mixin.scss";
-@import "../helpers/Variables.scss";
+@import "../../helpers/Media-mixin.scss";
+@import "../../helpers/Variables.scss";
 
 .item-card {
-    width: 1300px;
     padding: 0 0 40px 0;
+
     &__breadcrumbs {
         padding: 45px 0;
+
+        @include _480 {
+            padding: 20px 0;
+        }
     }
 
     &__breadcrumbs a {
@@ -20,6 +24,11 @@
     &__product {
         display: flex;
         justify-content: space-between;
+
+        @include _768 {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
     }
 }
 
@@ -29,12 +38,35 @@
         display: flex;
         justify-content: flex-start;
         align-items: center;
+
+        @include _480 {
+            height: 170px;
+            width: 300px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
     }
 }
 
 .product {
     &__image {
         width: 480px;
+
+        @include _1170 {
+            width: 400px;
+        }
+
+        @include _979 {
+            width: 300px;
+        }
+
+        @include _768 {
+            width: 400px;
+        }
+
+        @include _480 {
+            width: 300px;
+        }
     }
 
     &__image img {
@@ -43,6 +75,30 @@
 
     &__product-info {
         width: 720px;
+
+        @include _1400 {
+            width: 620px;
+        }
+
+        @include _1170 {
+            width: 520px;
+        }
+
+        @include _979 {
+            width: 420px;
+        }
+
+        @include _768 {
+            width: 520px;
+        }
+
+        @include _600 {
+            width: 460px;
+        }
+
+        @include _480 {
+            width: 300px;
+        }
     }
 }
 
@@ -59,6 +115,10 @@
         font-weight: $--weight-regular;
         color: $--1--black-primary;
         margin: 10px 0;
+
+        @include _979 {
+            font-size: $--font-large;
+        }
     }
 
     &__name span {
@@ -78,6 +138,25 @@
         align-items: center;
         width: 500px;
         margin: 15px 0 0 0;
+
+        @include _979 {
+            width: 420px;
+        }
+
+        @include _768 {
+            width: 520px;
+        }
+
+        @include _600 {
+            width: 460px;
+        }
+
+        @include _480 {
+            width: 300px;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            gap: 15px;
+        }
     }
 
     &__info {
@@ -93,6 +172,10 @@
         font-size: $--font-xl;
         font-weight: 800;
         color: $--1--black-primary;
+
+        @include _979 {
+            font-size: $--font-large;
+        }
     }
 }
 
@@ -100,6 +183,10 @@
     display: flex;
     gap: 10px;
     margin: 20px 0 0 0;
+
+    @include _480 {
+        margin: 5px 0 0 0;
+    }
 
     &__share {
         display: flex;
@@ -125,6 +212,10 @@
     background-color: $--0--white;
     box-shadow: 0px 15px 70px -11px rgba(43, 28, 1, 0.04);
 
+    @include _480 {
+        width: 210px;
+    }
+
     &__text {
         text-align: center;
         font-size: $--font-secondary;
@@ -146,6 +237,10 @@
     border-radius: 10px;
     background-color: $--0--white;
     box-shadow: 0px 15px 70px -11px rgba(43, 28, 1, 0.04);
+
+    @include _480 {
+        width: 300px;
+    }
 
     &__anchor {
         font-size: $--font-primary;

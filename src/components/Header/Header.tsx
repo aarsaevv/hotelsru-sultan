@@ -1,16 +1,19 @@
-import "./Header.scss"
 import { Link } from "react-router-dom"
-import avatar from "../assets/images/avatar.png"
-import ButtonLarge from "./UI/Buttons/ButtonLarge"
-import cart from "../assets/icons/cart.svg"
-import catalogue from "../assets/icons/catalogue.svg"
-import download from "../assets/icons/download.svg"
-import inbox from "../assets/icons/inbox.svg"
-import line from "../assets/images/line.png"
-import location from "../assets/icons/location.svg"
-import logo from "../assets/icons/logo.svg"
-import search from "../assets/icons/search.svg"
-import SearchLarge from "./UI/Forms/SearchLarge"
+import "./Header.scss"
+import avatar from "../../assets/images/avatar.png"
+import burger from "../../assets/icons/burger.svg"
+import cart from "../../assets/icons/cart.svg"
+import catalogue from "../../assets/icons/catalogue.svg"
+import download from "../../assets/icons/download.svg"
+import inbox from "../../assets/icons/inbox.svg"
+import line from "../../assets/images/line.png"
+import location from "../../assets/icons/location.svg"
+import logo from "../../assets/icons/logo.svg"
+import search from "../../assets/icons/search.svg"
+import ButtonLarge from "../UI/Buttons/ButtonLarge"
+import MobileButton from "../UI/Buttons/MobileButton"
+import RoundButtonSmall from "../UI/Buttons/RoundButtonSmall"
+import SearchLarge from "../UI/Forms/SearchLarge"
 
 function Header() {
 	return (
@@ -43,26 +46,22 @@ function Header() {
 				<div className="header__info-header info-header">
 					<a
 						className="info-header__link"
-						href="#"
-					>
+						href="#">
 						О компании
 					</a>
 					<a
 						className="info-header__link"
-						href="#"
-					>
+						href="#">
 						Доставка и оплата
 					</a>
 					<a
 						className="info-header__link"
-						href="#"
-					>
+						href="#">
 						Возврат
 					</a>
 					<a
 						className="info-header__link"
-						href="#"
-					>
+						href="#">
 						Контакты
 					</a>
 				</div>
@@ -72,6 +71,11 @@ function Header() {
 				alt="line"
 			/>
 			<div className="_container header-main">
+				<Link
+					className="header-main__burger"
+					to="/">
+					<RoundButtonSmall iconSrc={burger} />
+				</Link>
 				<Link to="/">
 					<img
 						className="header-main__logo"
@@ -79,11 +83,33 @@ function Header() {
 						alt="logo"
 					/>
 				</Link>
+				<div className="header-main__cart--mobile header-cart--mobile">
+					<Link
+						to="/cart"
+						className="header-cart__header-info-cart--mobile header-info-cart--mobile">
+						<img
+							className="header-info-cart__icon"
+							src={cart}
+							alt="cart"></img>
+						<div className="">
+							<div className="header-info-cart__name">Корзина</div>
+							<div className="header-info-cart__price">12 478 ₸</div>
+						</div>
+					</Link>
+				</div>
 				<div className="header-main__catalogue">
 					<Link to="/catalogue">
 						<ButtonLarge
 							textContent="Каталог"
 							iconSrc={catalogue}
+						/>
+						<MobileButton
+							textContent="Каталог"
+							iconSrc=""
+						/>
+						<MobileButton
+							textContent="Поиск"
+							iconSrc=""
 						/>
 					</Link>
 				</div>
@@ -96,13 +122,10 @@ function Header() {
 				<div className="header-main__hotline-header hotline-header">
 					<div className="hotline-header__info-contacts info-contacts">
 						<div className="info-contacts__number">+7 (777) 490-00-91</div>
-						<div className="info-contacts__schedule">
-							время работы: 9:00-20:00
-						</div>
+						<div className="info-contacts__schedule">время работы: 9:00-20:00</div>
 						<a
 							className="info-contacts__call"
-							href="#"
-						>
+							href="#">
 							Заказать звонок
 						</a>
 					</div>
@@ -121,13 +144,11 @@ function Header() {
 				<div className="header-main__cart header-cart">
 					<Link
 						to="/cart"
-						className="header-cart__header-info-cart header-info-cart"
-					>
+						className="header-cart__header-info-cart header-info-cart">
 						<img
 							className="header-info-cart__icon"
 							src={cart}
-							alt="cart"
-						></img>
+							alt="cart"></img>
 						<div className="">
 							<div className="header-info-cart__name">Корзина</div>
 							<div className="header-info-cart__price">12 478 ₸</div>
@@ -136,6 +157,7 @@ function Header() {
 				</div>
 			</div>
 			<img
+				className="header-section__line"
 				src={line}
 				alt="line"
 			/>

@@ -1,0 +1,231 @@
+@import "../../helpers/Variables.scss";
+@import "../../helpers/Media-mixin.scss";
+
+.footer-section {
+    height: 500px;
+    background-color: $--2--black-secondary;
+    color: $--0--white;
+
+    @include _768 {
+        height: 600px;
+    }
+
+    @include _480 {
+        height: 800px;
+    }
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 70px 0 0 0;
+
+    @include _768 {
+        padding: 25px 0 0 0;
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+
+    @include _600 {
+        gap: 20px 10px;
+    }
+
+    @include _480 {
+        padding: 20px 0 0 0;
+        gap: 15px;
+    }
+
+    &__info-footer,
+    &__menu-footer,
+    &__categories-footer,
+    &__price-footer,
+    &__contacts-footer {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.info-footer {
+
+    @include _979 {
+        width: 200px;
+    }
+
+    @include _768 {
+        width: 580px;
+        display: flex;
+        align-items: center;
+    }
+
+    &__logo {
+        width: 155px;
+        margin: 0 0 15px 0;
+
+        @include _768 {
+            margin: 0 0 5px 0;
+        }
+    }
+
+    &__description {
+        font-size: 18px;
+        line-height: 1.5;
+        margin: 0 0 45px 0;
+
+        @include _1170 {
+            font-size: $--font-primary;
+        }
+
+        @include _979 {
+            font-size: $--font-secondary;
+        }
+
+        @include _768 {
+            width: 240px;
+            text-align: center;
+            margin: 0 0 20px 0;
+        }
+    }
+
+    &__advertisement {
+        font-size: $--font-secondary;
+        margin: 0 0 15px 0;
+
+        @include _600 {
+            margin: 0 0 10px 0;
+        }
+    }
+}
+
+.menu-footer {
+
+    @include _979 {
+        width: 90px;
+    }
+
+    @include _480 {
+        width: 150px;
+    }
+}
+
+.categories-footer {
+
+    @include _979 {
+        width: 110px;
+    }
+
+    @include _480 {
+        width: 150px;
+    }
+}
+
+.menu-footer__title,
+.categories-footer__title,
+.price-footer__title,
+.contacts-footer__title {
+    margin: 0 0 25px 0;
+    font-size: $--font-large;
+    font-weight: $--weight-semibold;
+
+    @include _1170 {
+        font-size: 18px;
+    }
+
+    @include _979 {
+        font-size: $--font-primary;
+    }
+}
+
+.menu-footer__link,
+.categories-footer__link {
+    margin: 0 0 20px 0;
+    text-decoration: none;
+    color: $--0--white;
+
+    @include _1170 {
+        font-size: $--font-secondary;
+    }
+}
+
+.price-footer {
+
+    @include _600 {
+        width: 110px;
+    }
+
+    @include _480 {
+        width: 150px;
+    }
+
+    &__icons {
+        display: flex;
+        gap: 10px;
+    }
+
+    &__social {
+        margin: 15px 0;
+
+        @include _1170 {
+            font-size: $--font-secondary;
+        }
+    }
+}
+
+.contacts-footer {
+
+    @include _979 {
+        width: 120px;
+    }
+
+    @include _600 {
+        width: 120px;
+    }
+
+    @include _480 {
+        width: 150px;
+    }
+
+    &__email {
+        margin: 25px 0;
+    }
+
+    &__cards {
+        display: flex;
+        gap: 5px;
+    }
+}
+
+.call {
+    &__number {
+        font-weight: $--weight-semibold;
+
+        @include _1170 {
+            font-size: $--font-secondary;
+        }
+    }
+
+    &__schedule {
+        font-size: $--font-secondary;
+        font-weight: $--weight-light;
+        margin: 5px 0;
+    }
+
+    &__order {
+        font-size: $--font-small;
+        color: $--0--white;
+    }
+}
+
+.email {
+    &__address {
+        font-weight: $--weight-semibold;
+
+        @include _1170 {
+            font-size: $--font-secondary;
+        }
+    }
+
+    &__status {
+        font-size: $--font-secondary;
+        font-weight: $--weight-light;
+    }
+}

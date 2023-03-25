@@ -1,9 +1,9 @@
-import "./Cart.scss"
-import { Link } from "react-router-dom"
 import { useState } from "react"
-import bin from "../assets/icons/bin.svg"
-import ButtonLarge from "./UI/Buttons/ButtonLarge"
-import CartItem from "./CartItem"
+import { Link } from "react-router-dom"
+import "./Cart.scss"
+import bin from "../../assets/icons/bin.svg"
+import ButtonLarge from "../UI/Buttons/ButtonLarge"
+import CartItem from "../CartItem"
 
 function Cart({ json = [{}] }) {
 	const [itemsJSON, setItemsJSON] = useState(json)

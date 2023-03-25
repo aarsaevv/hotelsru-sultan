@@ -18,4 +18,28 @@ p {
 ._container {
     width: 1360px;
     margin: 0 auto;
+
+    @include _1400 {
+        width: 1140px;
+    }
+
+    @include _1170 {
+        width: 950px;
+    }
+
+    @include _979 {
+        width: 720px;
+    }
+
+    @include _768 {
+        width: 580px;
+    }
+
+    @include _600 {
+        width: 460px;
+    }
+
+    @include _480 {
+        width: 330px;
+    }
 }

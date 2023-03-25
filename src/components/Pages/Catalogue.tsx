@@ -1,14 +1,14 @@
 //@ts-nocheck
-import "./Catalogue.scss"
 import { useEffect, useState } from "react"
-import bin from "../assets/icons/bin.svg"
-import ButtonMedium from "./UI/Buttons/ButtonMedium"
-import Item from "./Item"
-import Paginator from "./UI/Paginator"
-import PriceSelector from "./UI/Forms/PriceSelector"
-import RoundButtonLarge from "./UI/Buttons/RoundButtonLarge"
-import search from "../assets/icons/search.svg"
-import SearchMedium from "./UI/Forms/SearchMedium"
+import "./Catalogue.scss"
+import bin from "../../assets/icons/bin.svg"
+import search from "../../assets/icons/search.svg"
+import ButtonMedium from "../UI/Buttons/ButtonMedium"
+import Item from "../Item"
+import Paginator from "../UI/Buttons/Paginator"
+import PriceSelector from "../UI/Forms/PriceSelector"
+import RoundButtonLarge from "../UI/Buttons/RoundButtonLarge"
+import SearchMedium from "../UI/Forms/SearchMedium"
 
 function Catalogue({ json = [{}] }) {
 	/** Создаем стейт из данных */
@@ -92,6 +92,7 @@ function Catalogue({ json = [{}] }) {
 	}
 	/** Обработчик кнопки ухода */
 	function handleCareButtonClick(e: React.MouseEvent<HTMLButtonElement>) {
+		setCurrentPage(1)
 		const target = e.target as HTMLButtonElement
 		const careButtons: NodeListOf<HTMLDivElement> = document.querySelectorAll(".categories__item")
 		const radioButtons: NodeListOf<HTMLInputElement> = document.querySelectorAll("input[type=radio]")
@@ -112,6 +113,7 @@ function Catalogue({ json = [{}] }) {
 	}
 	/** Обработчик кнопки ухода из левой панели */
 	function handleCareRadioClick(e: React.MouseEvent<HTMLInputElement | HTMLLabelElement>) {
+		setCurrentPage(1)
 		const target = e.target as HTMLInputElement | HTMLLabelElement
 		const careButtons: NodeListOf<HTMLDivElement> = document.querySelectorAll(".categories__item")
 		for (let button of careButtons) {

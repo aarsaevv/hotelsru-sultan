@@ -1,17 +1,9 @@
 import "./CartItem.scss"
 import cartSeparator from "../assets/images/cart-separator.png"
-import CountSelector from "./UI/Forms/CountSelector"
+import CountSelector from "./UI/Buttons/CountSelector"
 import RoundButtonLarge from "./UI/Buttons/RoundButtonLarge"
 
-function CartItem({
-	iconSrc = "",
-	imageSrc = "",
-	size = "",
-	brand = "",
-	title = "",
-	price = "",
-	description = "",
-}) {
+function CartItem({ iconSrc = "", imageSrc = "", size = "", brand = "", title = "", price = "", description = "" }) {
 	return (
 		<div className="wrapper">
 			<div className="cart-item">

@@ -6,6 +6,11 @@
 
 //media_mixin.scss
 
+@mixin _1400 {
+    @media (max-width: 1400px) {
+        @content;
+    }
+}
 @mixin _1170 {
     @media (max-width: 1170px) {
         @content;

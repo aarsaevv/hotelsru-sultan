@@ -1,6 +1,6 @@
 //@ts-nocheck
 import "./Paginator.scss"
-import arrow from "../../assets/icons/arrow.svg"
+import arrow from "../../../assets/icons/arrow.svg"
 
 function Paginator({ totalItems, itemsPerPage, currentPage, setCurrentPage }) {
 	/** Формируем массив кнопок для каждой страницы и его отрисовываем.

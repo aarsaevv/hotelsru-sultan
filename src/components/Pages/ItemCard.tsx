@@ -1,11 +1,10 @@
-import "./ItemCard.scss"
-import { useParams, Link } from "react-router-dom"
 import { useState, useEffect } from "react"
-import basketWhite from "../assets/icons/basket-white.svg"
-import ButtonMedium from "./UI/Buttons/ButtonMedium"
-import CountSelector from "./UI/Forms/CountSelector"
-import doggo from "../assets/images/remove__after__test__doggo.jpg"
-import share from "../assets/icons/share.svg"
+import { useParams, Link } from "react-router-dom"
+import "./ItemCard.scss"
+import basketWhite from "../../assets/icons/basket-white.svg"
+import share from "../../assets/icons/share.svg"
+import ButtonMedium from "../UI/Buttons/ButtonMedium"
+import CountSelector from "../UI/Buttons/CountSelector"
 
 function ItemCard({ json = [{}] }) {
 	const params = useParams()
@@ -33,7 +32,7 @@ function ItemCard({ json = [{}] }) {
 				<div className="product__image">
 					<img
 						src={itemCards[0].imageSrc}
-						alt={doggo}
+						alt="Картинка товара"
 					/>
 				</div>
 				<div className="product__product-info product-info">
@@ -64,15 +63,13 @@ function ItemCard({ json = [{}] }) {
 							</div>
 							<div className="buttons__advertisement advertisement">
 								<h6 className="advertisement__text">
-									При покупке от <span>10 000 ₸</span> бесплатная доставка по
-									Кокчетаву и области
+									При покупке от <span>10 000 ₸</span> бесплатная доставка по Кокчетаву и области
 								</h6>
 							</div>
 							<div className="buttons__price price">
 								<a
 									href="#"
-									className="price__anchor"
-								>
+									className="price__anchor">
 									Прайс-лист
 								</a>
 							</div>
@@ -93,9 +90,7 @@ function ItemCard({ json = [{}] }) {
 						</h5>
 						<div className="info__description card-description">
 							<h3 className="card-description__heading">Описание</h3>
-							<p className="card-description__text">
-								{itemCards[0].description}
-							</p>
+							<p className="card-description__text">{itemCards[0].description}</p>
 						</div>
 						<div className="info__characteristics characteristics">
 							<h3 className="characteristics__heading">Характеристики</h3>
@@ -118,20 +113,10 @@ function ItemCard({ json = [{}] }) {
 								Штрихкод: <span>{itemCards[0].barcode}</span>
 							</h5>
 							<h5 className="characteristics__value">
-								Вес:{" "}
-								<span>
-									{itemCards[0].size +
-										" " +
-										itemCards[0].sizeType.split(", ")[1]}
-								</span>
+								Вес: <span>{itemCards[0].size + " " + itemCards[0].sizeType.split(", ")[1]}</span>
 							</h5>
 							<h5 className="characteristics__weight">
-								Объем:{" "}
-								<span>
-									{itemCards[0].size +
-										" " +
-										itemCards[0].sizeType.split(", ")[1]}
-								</span>
+								Объем: <span>{itemCards[0].size + " " + itemCards[0].sizeType.split(", ")[1]}</span>
 							</h5>
 						</div>
 					</div>

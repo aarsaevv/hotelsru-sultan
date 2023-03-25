@@ -16,11 +16,48 @@
     align-items: center;
     justify-content: center;
     gap: 6px;
+
+    @include _600 {
+        font-size: $--font-secondary;
+    }
+
+    @include _480 {
+        font-size: $--font-primary;
+    }
 }
 
 ._button-large {
     width: 200px;
     height: 60px;
+
+    @include _1400 {
+        width: 180px;
+        height: 55px;
+    }
+
+    @include _1170 {
+        width: 180px;
+        height: 55px;
+    }
+
+    @include _979 {
+        width: 160px;
+        height: 50px;
+    }
+
+    @include _768 {
+        width: 150px;
+    }
+
+    @include _600 {
+        width: 110px;
+        height: 50px;
+    }
+
+    @include _480 {
+        width: 150px;
+        height: 50px;
+    }
 }
 
 ._button-medium {
@@ -51,4 +88,35 @@
     position: absolute;
     right: 10px;
     border-radius: 50%;
+
+    @include _1400 {
+        width: 35px;
+        height: 35px;
+    }
+
+    @include _1170 {
+        width: 35px;
+        height: 35px;
+    }
+
+    @include _979 {
+        width: 30px;
+        height: 30px;
+    }
+
+    @include _768 {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+._button--mobile {
+    display: none;
+
+    @include _480 {
+        border-collapse: collapse;
+        display: flex;
+        width: 165px;
+        height: 50px;
+    }
 }

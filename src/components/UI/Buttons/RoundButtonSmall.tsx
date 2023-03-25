@@ -1,9 +1,9 @@
 import BaseButton from "./BaseButton"
 
-function RoundButtonSmall() {
+function RoundButtonSmall({ iconSrc = "" }) {
 	return (
 		<div className="_button-round-small">
-			<BaseButton />
+			<BaseButton iconSrc={iconSrc} />
 		</div>
 	)
 }
