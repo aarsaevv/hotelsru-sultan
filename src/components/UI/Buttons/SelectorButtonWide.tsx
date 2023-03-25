@@ -1,12 +1,12 @@
-import "./SelectorButton.scss";
-import BaseButton from "./BaseButton";
+import "./SelectorButton.scss"
+import BaseButton from "./BaseButton"
 
 function SelectorButtonWide({ textContent = "" }) {
-  return (
-    <div className="_selector-wide">
-      <BaseButton textContent={textContent} />
-    </div>
-  );
+	return (
+		<div className="_selector-wide">
+			<BaseButton textContent={textContent} />
+		</div>
+	)
 }
 
-export default SelectorButtonWide;
+export default SelectorButtonWide

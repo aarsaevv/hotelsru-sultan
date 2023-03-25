@@ -1,5 +1,5 @@
 function Selector() {
-  return <div className=""></div>;
+	return <div className=""></div>
 }
 
-export default Selector;
+export default Selector
