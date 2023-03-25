@@ -1,4 +1,3 @@
-//@ts-nocheck
 import { useEffect, useState } from "react"
 import "./Catalogue.scss"
 import bin from "../../assets/icons/bin.svg"

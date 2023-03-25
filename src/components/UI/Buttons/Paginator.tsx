@@ -1,8 +1,13 @@
-//@ts-nocheck
 import "./Paginator.scss"
 import arrow from "../../../assets/icons/arrow.svg"
 
-function Paginator({ totalItems, itemsPerPage, currentPage, setCurrentPage }) {
+function Paginator({ totalItems, itemsPerPage, currentPage, setCurrentPage }: any) {
+	function toTopOnClick() {
+		window.scrollTo({
+			top: 240,
+			behavior: "smooth",
+		})
+	}
 	/** Формируем массив кнопок для каждой страницы и его отрисовываем.
 	 * Действия здесь - кнопка слева/справа для последовательного перемещения по каталогу,
 	 * и кнопки-цифры.
@@ -17,7 +22,12 @@ function Paginator({ totalItems, itemsPerPage, currentPage, setCurrentPage }) {
 		<div className="items__pagination">
 			<div className="pagination">
 				<button
-					onClick={() => (currentPage != 1 ? setCurrentPage(--currentPage) : "")}
+					onClick={() => {
+						if (currentPage != 1) {
+							toTopOnClick()
+							return setCurrentPage(--currentPage)
+						}
+					}}
 					className="pagination__button button">
 					<img
 						className="button__left"
@@ -30,7 +40,12 @@ function Paginator({ totalItems, itemsPerPage, currentPage, setCurrentPage }) {
 						return (
 							<button
 								key={idx}
-								onClick={() => setCurrentPage(page)}
+								onClick={() => {
+									if (currentPage != page) {
+										toTopOnClick()
+										return setCurrentPage(page)
+									}
+								}}
 								className={`list__number ${page == currentPage ? "active" : ""}`}>
 								{page}
 							</button>
@@ -38,7 +53,12 @@ function Paginator({ totalItems, itemsPerPage, currentPage, setCurrentPage }) {
 					})}
 				</div>
 				<button
-					onClick={() => (currentPage < allPages ? setCurrentPage(++currentPage) : "")}
+					onClick={() => {
+						if (currentPage < allPages) {
+							toTopOnClick()
+							return setCurrentPage(++currentPage)
+						}
+					}}
 					className="pagination__button">
 					<img
 						className="button__right"

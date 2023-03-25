@@ -278,10 +278,11 @@ let json: {
 ]
 
 ;(function setJsonToLocalStorage() {
-	if (localStorage.getItem("catalogue")) {
+	if (localStorage.getItem("catalogue") && localStorage.getItem("cart")) {
 		return
 	} else {
 		localStorage.setItem("catalogue", `${JSON.stringify(json)}`)
+		localStorage.setItem("cart", `[]`)
 	}
 })()
 ;(function readCatalogueFromLocalStorage() {
@@ -290,6 +291,10 @@ let json: {
 		return json
 	}
 })()
+
+window.onbeforeunload = function () {
+	window.scrollTo(0, 0)
+}
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
 root.render(
