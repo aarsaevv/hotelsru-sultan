@@ -5,8 +5,8 @@ import bin from "../../assets/icons/bin.svg"
 import ButtonLarge from "../UI/Buttons/ButtonLarge"
 import CartItem from "../CartItem"
 
-function Cart({ json = [{}] }) {
-	const [itemsJSON, setItemsJSON] = useState(json)
+function Cart(props: any) {
+	const [itemsJSON, setItemsJSON] = useState(props.data)
 
 	return (
 		<div className="_container cart">

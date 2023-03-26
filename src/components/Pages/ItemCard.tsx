@@ -6,9 +6,9 @@ import share from "../../assets/icons/share.svg"
 import ButtonMedium from "../UI/Buttons/ButtonMedium"
 import CountSelector from "../UI/Buttons/CountSelector"
 
-function ItemCard({ json = [{}] }) {
+function ItemCard(props: any) {
 	const params = useParams()
-	const [itemCards, setItemCards] = useState<Array<any>>(json)
+	const [itemCards, setItemCards] = useState<Array<any>>(props.data)
 
 	useEffect(() => {
 		let id = Object.values(params).join("")

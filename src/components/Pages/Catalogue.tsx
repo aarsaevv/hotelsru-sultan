@@ -1,17 +1,16 @@
 import { useEffect, useState } from "react"
 import "./Catalogue.scss"
 import bin from "../../assets/icons/bin.svg"
-import search from "../../assets/icons/search.svg"
 import ButtonMedium from "../UI/Buttons/ButtonMedium"
 import Item from "../Item"
 import Paginator from "../UI/Buttons/Paginator"
 import PriceSelector from "../UI/Forms/PriceSelector"
 import RoundButtonLarge from "../UI/Buttons/RoundButtonLarge"
-import SearchMedium from "../UI/Forms/SearchMedium"
+import Manufacturers from "../Manufacturers"
 
-function Catalogue({ json = [{}] }) {
+function Catalogue(props: any) {
 	/** Создаем стейт из данных */
-	const [itemsJSON, setItemsJSON] = useState(json)
+	const [items, setItems] = useState(props.data)
 	/** Стейт текущей страницы каталога */
 	const [currentPage, setCurrentPage] = useState(1)
 	/** Сколько товаров должно быть на каждой странице */
@@ -21,7 +20,7 @@ function Catalogue({ json = [{}] }) {
 	/** Индекс первой вещи в разбитом массиве */
 	const firstItemIndex = lastItemIndex - itemsPerPage
 	/** Разбитый массив */
-	const currentItems = itemsJSON.slice(firstItemIndex, lastItemIndex)
+	const currentItems = items.slice(firstItemIndex, lastItemIndex)
 	/** Создаем массив из типов ухода */
 	let careTypesArray: { name: string; id: string }[] = [
 		{ name: "Уход за телом", id: "care__body" },
@@ -42,52 +41,53 @@ function Catalogue({ json = [{}] }) {
 		copyArr.sort((a, b) => {
 			return a.price > b.price ? 1 : -1
 		})
-		setItemsJSON(copyArr)
+		setItems(copyArr)
 	}
 	function priceDescend(arr: any[]) {
 		let copyArr = [...arr]
 		copyArr.sort((a, b) => {
 			return a.price < b.price ? 1 : -1
 		})
-		setItemsJSON(copyArr)
+		setItems(copyArr)
 	}
 	function nameAscend(arr: any[]) {
 		let copyArr = [...arr]
 		copyArr.sort((a, b) => {
 			return a.brand + " " + a.title > b.brand + " " + b.title ? 1 : -1
 		})
-		setItemsJSON(copyArr)
+		setItems(copyArr)
 	}
 	function nameDescend(arr: any[]) {
 		let copyArr = [...arr]
 		copyArr.sort((a, b) => {
 			return a.brand + " " + a.title < b.brand + " " + b.title ? 1 : -1
 		})
-		setItemsJSON(copyArr)
+		setItems(copyArr)
 	}
 
 	/** Функция фильтра в зависимости от типа ухода. Принимает массив данных и строку с типом ухода. */
 	function filterArrayByCare(arr: any[], careType: String) {
 		let copyArr = [...arr]
 		copyArr = copyArr.filter((el) => el.careType.includes(careType))
-		setItemsJSON(copyArr)
+		setItems(copyArr)
 		return copyArr
 	}
 	/** Обработчик селекта сортировки */
 	function handleSortClick(e: React.MouseEvent<HTMLSelectElement>) {
 		const target = e.target as HTMLSelectElement
 		if (target.value == "priceAscend") {
-			priceAscend(itemsJSON)
+			priceAscend(items)
 		}
 		if (target.value == "priceDescend") {
-			priceDescend(itemsJSON)
+			priceDescend(items)
 		}
 		if (target.value == "nameAscend") {
-			nameAscend(itemsJSON)
+			nameAscend(items)
 		}
 		if (target.value == "nameDescend") {
-			nameDescend(itemsJSON)
+			nameDescend(items)
 		}
+		setCurrentPage(1)
 	}
 	/** Обработчик кнопки ухода */
 	function handleCareButtonClick(e: React.MouseEvent<HTMLButtonElement>) {
@@ -107,7 +107,7 @@ function Catalogue({ json = [{}] }) {
 					radioButton.checked = true
 				}
 			}
-			return priceAscend(filterArrayByCare(json, target.textContent))
+			return priceAscend(filterArrayByCare(props.data, target.textContent))
 		}
 	}
 	/** Обработчик кнопки ухода из левой панели */
@@ -121,7 +121,7 @@ function Catalogue({ json = [{}] }) {
 				button.classList.add("active")
 			}
 		}
-		return priceAscend(filterArrayByCare(json, String(target.nextElementSibling?.textContent)))
+		return priceAscend(filterArrayByCare(props.data, String(target.nextElementSibling?.textContent)))
 	}
 	/** Функция очистки фильтра при нажатии на кнопку корзины в фильтре слева. */
 	function clearFilter(e: React.MouseEvent<HTMLDivElement>) {
@@ -136,12 +136,12 @@ function Catalogue({ json = [{}] }) {
 			careButton.classList.remove("active")
 		}
 		/** Сортируем в конце во избежания перемешивания элементов. */
-		priceAscend(json)
+		priceAscend(props.data)
 	}
 
 	useEffect(() => {
 		/** Сортируем список по умолчанию */
-		priceAscend(json)
+		priceAscend(props.data)
 	}, [])
 
 	return (
@@ -193,16 +193,7 @@ function Catalogue({ json = [{}] }) {
 					<div className="aside__range">
 						<PriceSelector />
 					</div>
-					{/** Фильтр по производителю */}
-					<div className="aside__manufacturer manufacturer">
-						<p className="manufacturer__heading">Производитель</p>
-						<SearchMedium
-							placeholder="Поиск..."
-							iconSrc={search}
-						/>
-						Здесь будет генериться список чекбоксов из JSON <br />
-						<a className="manufacturer__show-all">Показать все ⏷</a>
-					</div>
+					<Manufacturers data={props.data} />
 					{/** Кнопки действий с фильтрами - показать, удалить */}
 					<div className="aside__filter-buttons">
 						<ButtonMedium textContent="Показать" />
@@ -252,7 +243,7 @@ function Catalogue({ json = [{}] }) {
 					</div>
 					{/** Пагинация */}
 					<Paginator
-						totalItems={itemsJSON.length}
+						totalItems={items.length}
 						itemsPerPage={itemsPerPage}
 						currentPage={currentPage}
 						setCurrentPage={setCurrentPage}

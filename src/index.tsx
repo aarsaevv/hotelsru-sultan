@@ -3,7 +3,7 @@ import App from "./App"
 import React from "react"
 import ReactDOM from "react-dom/client"
 
-let json: {
+let data: {
 	imageSrc: string
 	title: string
 	sizeType: string
@@ -281,14 +281,14 @@ let json: {
 	if (localStorage.getItem("catalogue") && localStorage.getItem("cart")) {
 		return
 	} else {
-		localStorage.setItem("catalogue", `${JSON.stringify(json)}`)
+		localStorage.setItem("catalogue", `${JSON.stringify(data)}`)
 		localStorage.setItem("cart", `[]`)
 	}
 })()
 ;(function readCatalogueFromLocalStorage() {
 	if (localStorage.getItem("catalogue")) {
-		json = JSON.parse(String(localStorage.getItem("catalogue")))
-		return json
+		data = JSON.parse(String(localStorage.getItem("catalogue")))
+		return data
 	}
 })()
 
@@ -300,12 +300,13 @@ const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
 root.render(
 	<React.StrictMode>
 		<Router>
-			<App json={json} />
+			<App data={data} />
 		</Router>
 	</React.StrictMode>,
 )
 
 // ПЕРВООЧЕРЕДНОЕ
 
-// localStorage
 // Админка
+// Корзина
+// Адаптив

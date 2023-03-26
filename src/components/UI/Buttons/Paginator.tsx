@@ -4,7 +4,7 @@ import arrow from "../../../assets/icons/arrow.svg"
 function Paginator({ totalItems, itemsPerPage, currentPage, setCurrentPage }: any) {
 	function toTopOnClick() {
 		window.scrollTo({
-			top: 240,
+			top: 260,
 			behavior: "smooth",
 		})
 	}

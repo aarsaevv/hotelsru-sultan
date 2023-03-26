@@ -1,0 +1,8 @@
+@import "../helpers/Media-mixin.scss";
+@import "../helpers/Variables.scss";
+
+.manufacturer {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}

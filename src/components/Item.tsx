@@ -3,15 +3,7 @@ import { Link } from "react-router-dom"
 import BaseButton from "./UI/Buttons/BaseButton"
 import basketWhite from "../assets/icons/basket-white.svg"
 
-function Item({
-	imageSrc,
-	size,
-	brand,
-	title,
-	barcode,
-	manufacturer,
-	price,
-}: any) {
+function Item({ imageSrc = "", size = "", brand = "", title = "", barcode = "", manufacturer = "", price = "" }) {
 	return (
 		<div className="item">
 			<img
