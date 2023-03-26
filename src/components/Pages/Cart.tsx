@@ -5,8 +5,9 @@ import bin from "../../assets/icons/bin.svg"
 import ButtonLarge from "../UI/Buttons/ButtonLarge"
 import CartItem from "../CartItem"
 
-function Cart(props: any) {
-	const [itemsJSON, setItemsJSON] = useState(props.data)
+function Cart() {
+	const cartJSON: any[] = JSON.parse(localStorage.getItem("cart") || "")
+	const [cartItems, setCartItems] = useState(cartJSON)
 
 	return (
 		<div className="_container cart">
@@ -20,7 +21,7 @@ function Cart(props: any) {
 				<h1 className="heading__title">КОРЗИНА</h1>
 			</div>
 			<div className="cart__list">
-				{itemsJSON.map((el: any, idx: number) => {
+				{cartItems.map((el: any, idx: number) => {
 					return (
 						<CartItem
 							key={idx}
@@ -36,10 +37,24 @@ function Cart(props: any) {
 					)
 				})}
 			</div>
-			<div className="cart__order order">
-				<ButtonLarge textContent="Оформить заказ" />
-				<h2 className="order__price">1234,56 ₸</h2>
-			</div>
+			{cartItems.length ? (
+				<div className="cart__order order">
+					<ButtonLarge textContent="Оформить заказ" />
+					<h2 className="order__price">
+						{cartItems.reduce((a: { price: number }, b: { price: number }) => a.price + b.price, 0)} ₸
+					</h2>
+					{}
+				</div>
+			) : (
+				<div className="cart__empty empty">
+					<span className="empty__message">Корзина пуста.</span> <br />
+					<Link
+						to="/catalogue"
+						className="empty__link">
+						В каталог
+					</Link>
+				</div>
+			)}
 		</div>
 	)
 }

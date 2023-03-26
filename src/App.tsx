@@ -25,7 +25,7 @@ function App(props: any) {
 						element={<ItemCard data={props.data} />}></Route>
 					<Route
 						path="cart"
-						element={<Cart data={props.data} />}></Route>
+						element={<Cart />}></Route>
 				</Route>
 			</Routes>
 		</div>

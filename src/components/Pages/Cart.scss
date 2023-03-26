@@ -31,6 +31,17 @@
     }
 }
 
+.empty {
+    font-size: $--font-xl;
+    text-align: center;
+    margin: 0 0 40px 0;
+
+    &__link {
+        font-size: $--font-large;
+        color: $--2--black-secondary;
+    }
+}
+
 .order {
     &__price {
         font-size: $--font-xl;
