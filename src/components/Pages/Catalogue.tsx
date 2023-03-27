@@ -139,6 +139,7 @@ function Catalogue(props: { data: AppProps[] }) {
 		return priceAscend(filterArrayByCare(props.data, String(target.nextElementSibling?.textContent)))
 	}
 	function handleFilter(e: React.MouseEvent<HTMLDivElement>) {
+		setCurrentPage(1)
 		const target = e.target as Element
 		if (target && target.closest("._button-medium")) {
 			let checkboxes: NodeListOf<HTMLInputElement> = document.querySelectorAll(".list__checkbox")

@@ -2,7 +2,7 @@ import "./Paginator.scss"
 import arrow from "../../../assets/icons/arrow.svg"
 import { SetStateAction } from "react"
 
-function Paginator(totalItems: any, itemsPerPage: number, currentPage: number, setCurrentPage: any) {
+function Paginator({ totalItems, itemsPerPage, currentPage, setCurrentPage }: any) {
 	function toTopOnClick() {
 		window.scrollTo({
 			top: 260,
