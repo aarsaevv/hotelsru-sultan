@@ -1,19 +1,20 @@
 import { useState, useEffect } from "react"
 import { useParams, Link } from "react-router-dom"
+import { AppProps } from "../../helpers/types"
 import "./ItemCard.scss"
 import basketWhite from "../../assets/icons/basket-white.svg"
 import share from "../../assets/icons/share.svg"
 import ButtonMedium from "../UI/Buttons/ButtonMedium"
 import CountSelector from "../UI/Buttons/CountSelector"
 
-function ItemCard(props: any) {
+function ItemCard(props: { data: AppProps[] }) {
 	const params = useParams()
-	const [itemCards, setItemCards] = useState<Array<any>>(props.data)
+	const [itemCards, setItemCards] = useState(props.data)
 
 	useEffect(() => {
 		let id = Object.values(params).join("")
 		let copyItemCards = [...itemCards]
-		copyItemCards = copyItemCards.filter((el: any) => el.barcode == id)
+		copyItemCards = copyItemCards.filter((el: { barcode: string | number }) => el.barcode == id)
 		setItemCards(copyItemCards)
 	}, [])
 

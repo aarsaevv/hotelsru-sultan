@@ -6,7 +6,7 @@ import ButtonLarge from "../UI/Buttons/ButtonLarge"
 import CartItem from "../CartItem"
 
 function Cart() {
-	const cartJSON: any[] = JSON.parse(localStorage.getItem("cart") || "")
+	const cartJSON: any = JSON.parse(localStorage.getItem("cart") || "")
 	const [cartItems, setCartItems] = useState(cartJSON)
 
 	return (

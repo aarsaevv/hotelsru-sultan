@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { AppProps } from "../../helpers/types"
 import "./Catalogue.scss"
 import bin from "../../assets/icons/bin.svg"
 import ButtonMedium from "../UI/Buttons/ButtonMedium"
@@ -8,7 +9,7 @@ import PriceSelector from "../UI/Forms/PriceSelector"
 import RoundButtonLarge from "../UI/Buttons/RoundButtonLarge"
 import Manufacturers from "../Manufacturers"
 
-function Catalogue(props: any) {
+function Catalogue(props: { data: AppProps[] }) {
 	/** Создаем стейт из данных */
 	const [items, setItems] = useState(props.data)
 	/** Стейт текущей страницы каталога */
@@ -36,28 +37,28 @@ function Catalogue(props: any) {
 		{ value: "nameDescend", textContent: "Название по убыванию ⏷" },
 	]
 	/** Функции сортировок */
-	function priceAscend(arr: any[]) {
+	function priceAscend(arr: AppProps[]) {
 		let copyArr = [...arr]
 		copyArr.sort((a, b) => {
 			return a.price > b.price ? 1 : -1
 		})
 		setItems(copyArr)
 	}
-	function priceDescend(arr: any[]) {
+	function priceDescend(arr: AppProps[]) {
 		let copyArr = [...arr]
 		copyArr.sort((a, b) => {
 			return a.price < b.price ? 1 : -1
 		})
 		setItems(copyArr)
 	}
-	function nameAscend(arr: any[]) {
+	function nameAscend(arr: AppProps[]) {
 		let copyArr = [...arr]
 		copyArr.sort((a, b) => {
 			return a.brand + " " + a.title > b.brand + " " + b.title ? 1 : -1
 		})
 		setItems(copyArr)
 	}
-	function nameDescend(arr: any[]) {
+	function nameDescend(arr: AppProps[]) {
 		let copyArr = [...arr]
 		copyArr.sort((a, b) => {
 			return a.brand + " " + a.title < b.brand + " " + b.title ? 1 : -1
@@ -66,9 +67,23 @@ function Catalogue(props: any) {
 	}
 
 	/** Функция фильтра в зависимости от типа ухода. Принимает массив данных и строку с типом ухода. */
-	function filterArrayByCare(arr: any[], careType: String) {
+	function filterArrayByCare(arr: AppProps[], careType: string) {
 		let copyArr = [...arr]
 		copyArr = copyArr.filter((el) => el.careType.includes(careType))
+		setItems(copyArr)
+		return copyArr
+	}
+	/** Функция фильтра в зависимости от выбранных производителей. Принимает массив данных и массив строк - производителей */
+	function filterArrayByManufacturers(arr: AppProps[], arrayOfManufacturers: string[]) {
+		let copyArr = [...arr]
+		copyArr = copyArr.filter((el) => {
+			for (let item of arrayOfManufacturers) {
+				if (el.manufacturer == item) {
+					return el
+				}
+			}
+			return false
+		})
 		setItems(copyArr)
 		return copyArr
 	}
@@ -123,6 +138,21 @@ function Catalogue(props: any) {
 		}
 		return priceAscend(filterArrayByCare(props.data, String(target.nextElementSibling?.textContent)))
 	}
+	function handleFilter(e: React.MouseEvent<HTMLDivElement>) {
+		const target = e.target as Element
+		if (target && target.closest("._button-medium")) {
+			let checkboxes: NodeListOf<HTMLInputElement> = document.querySelectorAll(".list__checkbox")
+			let arrayOfChecked: Array<string> = []
+			for (let checkbox of checkboxes) {
+				if (checkbox.checked == true) {
+					arrayOfChecked.push(checkbox.id)
+				}
+			}
+			if (arrayOfChecked.length) {
+				priceAscend(filterArrayByManufacturers(props.data, arrayOfChecked))
+			}
+		}
+	}
 	/** Функция очистки фильтра при нажатии на кнопку корзины в фильтре слева. */
 	function clearFilter(e: React.MouseEvent<HTMLDivElement>) {
 		/** Удалили выделение с радиокнопок */
@@ -131,9 +161,14 @@ function Catalogue(props: any) {
 			radioButton.checked = false
 		}
 		/** Удалили выделение с кнопок ухода */
-		let careButtons: NodeListOf<HTMLDivElement> = document.querySelectorAll(".categories__item")
+		const careButtons: NodeListOf<HTMLDivElement> = document.querySelectorAll(".categories__item")
 		for (let careButton of careButtons) {
 			careButton.classList.remove("active")
+		}
+		/** Удалили выделение чекбоксов */
+		const checkboxes: NodeListOf<any> = document.querySelectorAll(".manufacturers__list > div")
+		for (let checkbox of checkboxes) {
+			checkbox.firstChild.checked = false
 		}
 		/** Сортируем в конце во избежания перемешивания элементов. */
 		priceAscend(props.data)
@@ -157,7 +192,7 @@ function Catalogue(props: any) {
 					Сортировка:
 					<span>
 						<select onClick={handleSortClick}>
-							{sortTypesArray.map((type, idx) => {
+							{sortTypesArray.map((type: any, idx: number) => {
 								return (
 									<option
 										key={idx}
@@ -172,7 +207,7 @@ function Catalogue(props: any) {
 			</div>
 			{/** Табы видов ухода */}
 			<div className="catalogue-section__categories categories">
-				{careTypesArray.map((care, idx) => {
+				{careTypesArray.map((care: any, idx: number) => {
 					return (
 						<button
 							onClick={handleCareButtonClick}
@@ -193,10 +228,13 @@ function Catalogue(props: any) {
 					<div className="aside__range">
 						<PriceSelector />
 					</div>
+					{/** Селектор по производителю */}
 					<Manufacturers data={props.data} />
 					{/** Кнопки действий с фильтрами - показать, удалить */}
 					<div className="aside__filter-buttons">
-						<ButtonMedium textContent="Показать" />
+						<div onClick={handleFilter}>
+							<ButtonMedium textContent="Показать" />
+						</div>
 						<div
 							onClick={clearFilter}
 							className="">
@@ -205,7 +243,7 @@ function Catalogue(props: any) {
 					</div>
 					{/** Боковые кнопки ухода */}
 					<div className="aside__care care">
-						{careTypesArray.map((care, idx) => {
+						{careTypesArray.map((care: any, idx: number) => {
 							return (
 								<div
 									key={idx}

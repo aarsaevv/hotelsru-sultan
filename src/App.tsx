@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom"
+import { AppProps } from "./helpers/types"
 import "./App.scss"
 import ScrollToTop from "./helpers/ScrollToTop"
 import Catalogue from "./components/Pages/Catalogue"
@@ -6,7 +7,7 @@ import ItemCard from "./components/Pages/ItemCard"
 import Cart from "./components/Pages/Cart"
 import Layout from "./router/Layout"
 
-function App(props: any) {
+function App(props: { data: AppProps[] }) {
 	return (
 		<div className="App">
 			<ScrollToTop />

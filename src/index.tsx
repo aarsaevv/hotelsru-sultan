@@ -1,20 +1,10 @@
 import { HashRouter as Router } from "react-router-dom"
+import { AppProps } from "./helpers/types"
 import App from "./App"
 import React from "react"
 import ReactDOM from "react-dom/client"
 
-let data: {
-	imageSrc: string
-	title: string
-	sizeType: string
-	size: number
-	barcode: number
-	manufacturer: string
-	brand: string
-	description: string
-	price: number
-	careType: string[]
-}[] = [
+let data: AppProps[] = [
 	{
 		imageSrc: require("../src/assets/images/spray.jpg"),
 		title: 'Парфюмированный спрей для тела "Капля росы',
@@ -277,6 +267,7 @@ let data: {
 	},
 ]
 
+// Помещаем данные в локальное хранилище и пустую корзину, если их нет
 ;(function setJsonToLocalStorage() {
 	if (localStorage.getItem("catalogue") && localStorage.getItem("cart")) {
 		return
@@ -285,6 +276,7 @@ let data: {
 		localStorage.setItem("cart", `[]`)
 	}
 })()
+// Сразу же читаем
 ;(function readCatalogueFromLocalStorage() {
 	if (localStorage.getItem("catalogue")) {
 		data = JSON.parse(String(localStorage.getItem("catalogue")))
@@ -292,6 +284,7 @@ let data: {
 	}
 })()
 
+// Сбрасываем скролл при обновлении
 window.onbeforeunload = function () {
 	window.scrollTo(0, 0)
 }
@@ -304,9 +297,3 @@ root.render(
 		</Router>
 	</React.StrictMode>,
 )
-
-// ПЕРВООЧЕРЕДНОЕ
-
-// Админка
-// Корзина
-// Адаптив

@@ -1,7 +1,8 @@
 import "./Paginator.scss"
 import arrow from "../../../assets/icons/arrow.svg"
+import { SetStateAction } from "react"
 
-function Paginator({ totalItems, itemsPerPage, currentPage, setCurrentPage }: any) {
+function Paginator(totalItems: any, itemsPerPage: number, currentPage: number, setCurrentPage: any) {
 	function toTopOnClick() {
 		window.scrollTo({
 			top: 260,
@@ -13,9 +14,9 @@ function Paginator({ totalItems, itemsPerPage, currentPage, setCurrentPage }: an
 	 * и кнопки-цифры.
 	 */
 	let pages: number[] = []
-	let allPages = Math.ceil(totalItems / itemsPerPage)
-	for (let pageNumber = 1; pageNumber <= allPages; pageNumber++) {
-		pages.push(pageNumber)
+	let allPages: number = Math.ceil(totalItems / itemsPerPage)
+	for (let pagenumber = 1; pagenumber <= allPages; pagenumber++) {
+		pages.push(pagenumber)
 	}
 
 	return (
@@ -36,7 +37,7 @@ function Paginator({ totalItems, itemsPerPage, currentPage, setCurrentPage }: an
 					/>
 				</button>
 				<div className="pagination__list list">
-					{pages.map((page, idx) => {
+					{pages.map((page: number, idx: number) => {
 						return (
 							<button
 								key={idx}

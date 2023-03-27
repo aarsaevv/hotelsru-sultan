@@ -6,8 +6,7 @@ function BaseSearch({ placeholder = "", iconSrc = "" }) {
 		<div className="search">
 			<input
 				className="search__input"
-				placeholder={placeholder}
-			></input>
+				placeholder={placeholder}></input>
 			<div className="_button-round-small search__button">
 				<BaseButton iconSrc={iconSrc} />
 			</div>
