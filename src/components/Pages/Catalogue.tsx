@@ -10,33 +10,16 @@ import RoundButtonLarge from "../UI/Buttons/RoundButtonLarge"
 import Manufacturers from "../Manufacturers"
 
 function Catalogue(props: { data: AppProps[] }) {
-	/** Создаем стейт из данных */
+	// ИНИЦИАЛИЗАЦИЯ
+	/** Стейт из пришедших данных */
 	const [items, setItems] = useState(props.data)
-	/** Стейт текущей страницы каталога */
-	const [currentPage, setCurrentPage] = useState(1)
-	/** Сколько товаров должно быть на каждой странице */
-	const [itemsPerPage, setItemsPerPage] = useState(6)
-	/** Индекс последней вещи в разбитом массиве */
-	const lastItemIndex = currentPage * itemsPerPage
-	/** Индекс первой вещи в разбитом массиве */
-	const firstItemIndex = lastItemIndex - itemsPerPage
-	/** Разбитый массив */
-	const currentItems = items.slice(firstItemIndex, lastItemIndex)
-	/** Создаем массив из типов ухода */
-	let careTypesArray: { name: string; id: string }[] = [
-		{ name: "Уход за телом", id: "care__body" },
-		{ name: "Уход за руками", id: "care__hands" },
-		{ name: "Уход за ногами", id: "care__legs" },
-		{ name: "Уход за лицом", id: "care__face" },
-	]
-	/** И из типов сортировок */
+	// СОРТИРОВКА
 	let sortTypesArray: { value: string; textContent: string }[] = [
 		{ value: "priceAscend", textContent: "Цена по возрастанию ⏶" },
 		{ value: "priceDescend", textContent: "Цена по убыванию ⏷" },
 		{ value: "nameAscend", textContent: "Название по возрастанию ⏶" },
 		{ value: "nameDescend", textContent: "Название по убыванию ⏷" },
 	]
-	/** Функции сортировок */
 	function priceAscend(arr: AppProps[]) {
 		let copyArr = [...arr]
 		copyArr.sort((a, b) => {
@@ -65,28 +48,6 @@ function Catalogue(props: { data: AppProps[] }) {
 		})
 		setItems(copyArr)
 	}
-
-	/** Функция фильтра в зависимости от типа ухода. Принимает массив данных и строку с типом ухода. */
-	function filterArrayByCare(arr: AppProps[], careType: string) {
-		let copyArr = [...arr]
-		copyArr = copyArr.filter((el) => el.careType.includes(careType))
-		setItems(copyArr)
-		return copyArr
-	}
-	/** Функция фильтра в зависимости от выбранных производителей. Принимает массив данных и массив строк - производителей */
-	function filterArrayByManufacturers(arr: AppProps[], arrayOfManufacturers: string[]) {
-		let copyArr = [...arr]
-		copyArr = copyArr.filter((el) => {
-			for (let item of arrayOfManufacturers) {
-				if (el.manufacturer == item) {
-					return el
-				}
-			}
-			return false
-		})
-		setItems(copyArr)
-		return copyArr
-	}
 	/** Обработчик селекта сортировки */
 	function handleSortClick(e: React.MouseEvent<HTMLSelectElement>) {
 		const target = e.target as HTMLSelectElement
@@ -103,6 +64,20 @@ function Catalogue(props: { data: AppProps[] }) {
 			nameDescend(items)
 		}
 		setCurrentPage(1)
+	}
+	// ТИПЫ УХОДА СВЕРХУ
+	let careTypesArray: { name: string; id: string }[] = [
+		{ name: "Уход за телом", id: "care__body" },
+		{ name: "Уход за руками", id: "care__hands" },
+		{ name: "Уход за ногами", id: "care__legs" },
+		{ name: "Уход за лицом", id: "care__face" },
+	]
+	/** Функция фильтра в зависимости от типа ухода. Принимает массив данных и строку с типом ухода. */
+	function filterArrayByCare(arr: AppProps[], careType: string) {
+		let copyArr = [...arr]
+		copyArr = copyArr.filter((el) => el.careType.includes(careType))
+		setItems(copyArr)
+		return copyArr
 	}
 	/** Обработчик кнопки ухода */
 	function handleCareButtonClick(e: React.MouseEvent<HTMLButtonElement>) {
@@ -125,6 +100,36 @@ function Catalogue(props: { data: AppProps[] }) {
 			return priceAscend(filterArrayByCare(props.data, target.textContent))
 		}
 	}
+	// БОКОВАЯ ПАНЕЛЬ ФИЛЬТРОВ
+	/** Функция фильтра в зависимости от выбранной цены. Принимает массив данных и верхнюю-нижнюю границу цен. */
+	function filterArrayByPrice(arr: AppProps[], numA: number | null, numB: number | null) {
+		let copyArr = [...arr]
+		if (numA && numB) {
+			copyArr = copyArr.filter((el) => el.price >= numA && el.price <= numB)
+		}
+		if (numA) {
+			copyArr = copyArr.filter((el) => el.price >= numA)
+		}
+		if (numB) {
+			copyArr = copyArr.filter((el) => el.price <= numB)
+		}
+		setItems(copyArr)
+		return copyArr
+	}
+	/** Функция фильтра в зависимости от выбранных производителей. Принимает массив данных и массив строк - производителей */
+	function filterArrayByManufacturers(arr: AppProps[], arrayOfManufacturers: string[]) {
+		let copyArr = [...arr]
+		copyArr = copyArr.filter((el) => {
+			for (let item of arrayOfManufacturers) {
+				if (el.manufacturer == item) {
+					return el
+				}
+			}
+			return false
+		})
+		setItems(copyArr)
+		return copyArr
+	}
 	/** Обработчик кнопки ухода из левой панели */
 	function handleCareRadioClick(e: React.MouseEvent<HTMLInputElement | HTMLLabelElement>) {
 		setCurrentPage(1)
@@ -138,6 +143,7 @@ function Catalogue(props: { data: AppProps[] }) {
 		}
 		return priceAscend(filterArrayByCare(props.data, String(target.nextElementSibling?.textContent)))
 	}
+	/** Функция обработки кнопки "Показать" */
 	function handleFilter(e: React.MouseEvent<HTMLDivElement>) {
 		setCurrentPage(1)
 		const target = e.target as Element
@@ -150,12 +156,19 @@ function Catalogue(props: { data: AppProps[] }) {
 				}
 			}
 			if (arrayOfChecked.length) {
-				priceAscend(filterArrayByManufacturers(props.data, arrayOfChecked))
+				return priceAscend(filterArrayByManufacturers(props.data, arrayOfChecked))
+			}
+			let numericInputs: NodeListOf<HTMLInputElement> = document.querySelectorAll("#price-low, #price-high")
+			let inputA = numericInputs[0].valueAsNumber
+			let inputB = numericInputs[1].valueAsNumber
+			if (inputA || inputB) {
+				return priceAscend(filterArrayByPrice(props.data, inputA, inputB))
 			}
 		}
 	}
 	/** Функция очистки фильтра при нажатии на кнопку корзины в фильтре слева. */
 	function clearFilter(e: React.MouseEvent<HTMLDivElement>) {
+		setCurrentPage(1)
 		/** Удалили выделение с радиокнопок */
 		const radioButtons: NodeListOf<HTMLInputElement> = document.querySelectorAll("input[type=radio]")
 		for (let radioButton of radioButtons) {
@@ -171,9 +184,25 @@ function Catalogue(props: { data: AppProps[] }) {
 		for (let checkbox of checkboxes) {
 			checkbox.firstChild.checked = false
 		}
+		/** Удалили значения из селектора цен */
+		const numericInputs: NodeListOf<HTMLInputElement> = document.querySelectorAll("#price-low, #price-high")
+		for (let input of numericInputs) {
+			input.value = ""
+		}
 		/** Сортируем в конце во избежания перемешивания элементов. */
 		priceAscend(props.data)
 	}
+	// ПАГИНАЦИЯ
+	/** Стейт текущей страницы каталога */
+	const [currentPage, setCurrentPage] = useState(1)
+	/** Сколько товаров должно быть на каждой странице */
+	const [itemsPerPage, setItemsPerPage] = useState(6)
+	/** Индекс последней вещи в разбитом массиве */
+	const lastItemIndex = currentPage * itemsPerPage
+	/** Индекс первой вещи в разбитом массиве */
+	const firstItemIndex = lastItemIndex - itemsPerPage
+	/** Разбитый массив */
+	const currentItems = items.slice(firstItemIndex, lastItemIndex)
 
 	useEffect(() => {
 		/** Сортируем список по умолчанию */
@@ -225,17 +254,18 @@ function Catalogue(props: { data: AppProps[] }) {
 				<div className="catalogue__aside aside">
 					<p className="aside__heading">ПОДБОР ПО ПАРАМЕТРАМ</p>
 					{/** Селектор по цене */}
-					<p className="aside__price">Цена ₸</p>
+					<p className="aside__price">Цена, ₸</p>
 					<div className="aside__range">
 						<PriceSelector />
 					</div>
 					{/** Селектор по производителю */}
 					<Manufacturers data={props.data} />
-					{/** Кнопки действий с фильтрами - показать, удалить */}
 					<div className="aside__filter-buttons">
+						{/** Кнопка ПОКАЗАТЬ */}
 						<div onClick={handleFilter}>
 							<ButtonMedium textContent="Показать" />
 						</div>
+						{/** Кнопка очистки фильтра */}
 						<div
 							onClick={clearFilter}
 							className="">
@@ -263,31 +293,36 @@ function Catalogue(props: { data: AppProps[] }) {
 					</div>
 				</div>
 				{/** Непосредственно сам каталог */}
-				<div className="catalogue__items items">
-					<div className="items__list">
-						{currentItems.map((el: any, idx: number) => {
-							return (
-								<Item
-									key={idx}
-									imageSrc={el.imageSrc}
-									size={el.size + " " + el.sizeType.split(", ")[1]}
-									brand={el.brand + " "}
-									title={el.title}
-									barcode={el.barcode}
-									manufacturer={el.manufacturer}
-									price={el.price}
-								/>
-							)
-						})}
+				{items.length ? (
+					<div className="catalogue__items items">
+						{/** Список товаров */}
+						<div className="items__list">
+							{currentItems.map((el: any, idx: number) => {
+								return (
+									<Item
+										key={idx}
+										imageSrc={el.imageSrc}
+										size={el.size + " " + el.sizeType.split(", ")[1]}
+										brand={el.brand + " "}
+										title={el.title}
+										barcode={el.barcode}
+										manufacturer={el.manufacturer}
+										price={el.price}
+									/>
+								)
+							})}
+						</div>
+						{/** Пагинация */}
+						<Paginator
+							totalItems={items.length}
+							itemsPerPage={itemsPerPage}
+							currentPage={currentPage}
+							setCurrentPage={setCurrentPage}
+						/>
 					</div>
-					{/** Пагинация */}
-					<Paginator
-						totalItems={items.length}
-						itemsPerPage={itemsPerPage}
-						currentPage={currentPage}
-						setCurrentPage={setCurrentPage}
-					/>
-				</div>
+				) : (
+					<span className="empty">Товара нет или он не соответствует выбранным фильтрам.</span>
+				)}
 			</div>
 		</section>
 	)

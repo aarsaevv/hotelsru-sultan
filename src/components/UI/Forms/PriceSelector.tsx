@@ -1,12 +1,19 @@
 import "./PriceSelector.scss"
-import SelectorButtonWide from "../Buttons/SelectorButtonWide"
 
 function PriceSelector() {
 	return (
 		<div className="price-selector">
-			<SelectorButtonWide textContent="0" />
+			<input
+				id="price-low"
+				type="number"
+				placeholder="1000"
+			/>
 			<p>-</p>
-			<SelectorButtonWide textContent="10000" />
+			<input
+				id="price-high"
+				type="number"
+				placeholder="10000"
+			/>
 		</div>
 	)
 }
