@@ -33,6 +33,7 @@ function Cart() {
 							price={el.price}
 							description={el.description}
 							iconSrc={bin}
+							count={el.count}
 						/>
 					)
 				})}
@@ -41,9 +42,8 @@ function Cart() {
 				<div className="cart__order order">
 					<ButtonLarge textContent="Оформить заказ" />
 					<h2 className="order__price">
-						{cartItems.reduce((a: { price: number }, b: { price: number }) => a.price + b.price, 0)} ₸
+						{cartItems.reduce((total: number, curr: { price: number }) => total + curr.price, 0).toFixed(2)} ₸
 					</h2>
-					{}
 				</div>
 			) : (
 				<div className="cart__empty empty">

@@ -39,7 +39,6 @@ function Manufacturers(props: { data: AppProps[] }) {
 			set.add(item.manufacturer)
 		}
 		const arr: any = Array.from(set.values())
-		console.log(arr)
 		setManufacturers(arr.sort())
 		return arr
 	}

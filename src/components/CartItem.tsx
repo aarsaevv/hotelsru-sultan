@@ -3,7 +3,16 @@ import cartSeparator from "../assets/images/cart-separator.png"
 import CountSelector from "./UI/Buttons/CountSelector"
 import RoundButtonLarge from "./UI/Buttons/RoundButtonLarge"
 
-function CartItem({ iconSrc = "", imageSrc = "", size = "", brand = "", title = "", price = "", description = "" }) {
+function CartItem({
+	iconSrc = "",
+	imageSrc = "",
+	size = "",
+	brand = "",
+	title = "",
+	price = "",
+	description = "",
+	count = 0,
+}) {
 	return (
 		<div className="wrapper">
 			<div className="cart-item">
@@ -22,7 +31,7 @@ function CartItem({ iconSrc = "", imageSrc = "", size = "", brand = "", title = 
 					</div>
 				</div>
 				<div className="cart-item__buy buy">
-					<CountSelector />
+					<CountSelector count={count} />
 					<div className="buy__price">
 						<h2 className="price__value">{Number(price).toFixed(2)} ₸</h2>
 					</div>

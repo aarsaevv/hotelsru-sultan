@@ -1,11 +1,12 @@
+//@ts-nocheck
 import "./CountSelector.scss"
 import SelectorButtonNarrow from "../Buttons/SelectorButtonNarrow"
 
-function CountSelector() {
+function CountSelector(props: object) {
 	return (
 		<div className="count-selector">
 			<SelectorButtonNarrow textContent="-" />
-			<p>1</p>
+			<p>{props.count}</p>
 			<SelectorButtonNarrow textContent="+" />
 		</div>
 	)

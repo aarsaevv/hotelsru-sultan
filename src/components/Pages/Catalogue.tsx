@@ -302,12 +302,14 @@ function Catalogue(props: { data: AppProps[] }) {
 									<Item
 										key={idx}
 										imageSrc={el.imageSrc}
-										size={el.size + " " + el.sizeType.split(", ")[1]}
+										size={el.size}
 										brand={el.brand + " "}
 										title={el.title}
 										barcode={el.barcode}
 										manufacturer={el.manufacturer}
 										price={el.price}
+										description={el.description}
+										sizeType={el.sizeType}
 									/>
 								)
 							})}

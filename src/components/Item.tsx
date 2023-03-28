@@ -1,9 +1,25 @@
 import "./Item.scss"
 import { Link } from "react-router-dom"
-import BaseButton from "./UI/Buttons/BaseButton"
 import basketWhite from "../assets/icons/basket-white.svg"
+import ButtonSmall from "./UI/Buttons/ButtonSmall"
+import { useState } from "react"
+import CountSelector from "./UI/Buttons/CountSelector"
 
-function Item({ imageSrc = "", size = "", brand = "", title = "", barcode = "", manufacturer = "", price = "" }) {
+function Item({ imageSrc, size, brand, title, barcode, manufacturer, price, description, sizeType }: any) {
+	const [inCart, setInCart] = useState(false)
+	function handleAddToCart(e: React.MouseEvent<HTMLDivElement>) {
+		const target = e.target as Element
+		if (target && target.closest("._button-small")) {
+			setInCart(!inCart)
+			if (localStorage.getItem("cart")) {
+				const arr = localStorage.getItem("cart")
+				const parsedArr = JSON.parse(arr ? arr : "")
+				parsedArr.push({ imageSrc, size, sizeType, barcode, brand, title, description, price, count: 1 })
+				const stringifiedArr = JSON.stringify(parsedArr)
+				localStorage.setItem("cart", stringifiedArr)
+			}
+		}
+	}
 	return (
 		<div className="item">
 			<img
@@ -30,11 +46,17 @@ function Item({ imageSrc = "", size = "", brand = "", title = "", barcode = "", 
 			</div>
 			<div className="purchase">
 				<h3 className="purchase__price">{Number(price).toFixed(2)} ₸</h3>
-				<div className="_button-small purchase__button">
-					<BaseButton
-						textContent="В корзину"
-						iconSrc={basketWhite}
-					/>
+				<div
+					onClick={handleAddToCart}
+					className="purchase__button">
+					{inCart ? (
+						<CountSelector />
+					) : (
+						<ButtonSmall
+							textContent="В корзину"
+							iconSrc={basketWhite}
+						/>
+					)}
 				</div>
 			</div>
 		</div>
