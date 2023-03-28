@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/hotelsru-sultan/static/css/main.b0ec311e.css",
-    "main.js": "/hotelsru-sultan/static/js/main.a547efee.js",
+    "main.css": "/hotelsru-sultan/static/css/main.ea960e61.css",
+    "main.js": "/hotelsru-sultan/static/js/main.f591de8a.js",
     "static/media/body-milk-strawberry.jpg": "/hotelsru-sultan/static/media/body-milk-strawberry.a2bcfba736d9d2791568.jpg",
     "static/media/foot-lotion.jpg": "/hotelsru-sultan/static/media/foot-lotion.15acfea48b29121a12c6.jpg",
     "static/media/cream-dolchemilk.jpg": "/hotelsru-sultan/static/media/cream-dolchemilk.3c70bb541b7122608bdc.jpg",
@@ -41,11 +41,11 @@
     "static/media/download.svg": "/hotelsru-sultan/static/media/download.59a1fc03947edcac974b66e9337ad602.svg",
     "static/media/arrow.svg": "/hotelsru-sultan/static/media/arrow.89403d33778fab72df04f133356fa82a.svg",
     "static/media/arrow-right-white.svg": "/hotelsru-sultan/static/media/arrow-right-white.8fe293a3f80ceb5af59dc5dafe70d49f.svg",
-    "main.b0ec311e.css.map": "/hotelsru-sultan/static/css/main.b0ec311e.css.map",
-    "main.a547efee.js.map": "/hotelsru-sultan/static/js/main.a547efee.js.map"
+    "main.ea960e61.css.map": "/hotelsru-sultan/static/css/main.ea960e61.css.map",
+    "main.f591de8a.js.map": "/hotelsru-sultan/static/js/main.f591de8a.js.map"
   },
   "entrypoints": [
-    "static/css/main.b0ec311e.css",
-    "static/js/main.a547efee.js"
+    "static/css/main.ea960e61.css",
+    "static/js/main.f591de8a.js"
   ]
 }
