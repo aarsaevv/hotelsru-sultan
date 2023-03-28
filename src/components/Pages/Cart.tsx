@@ -26,7 +26,7 @@ function Cart() {
 						<CartItem
 							key={idx}
 							imageSrc={el.imageSrc}
-							size={el.size + " " + el.sizeType.split(", ")[1]}
+							size={el.size}
 							brand={el.brand + " "}
 							title={el.title}
 							barcode={el.barcode}
