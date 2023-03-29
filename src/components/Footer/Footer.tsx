@@ -1,7 +1,7 @@
 import React from "react"
 import "./Footer.scss"
 import arrowRightWhite from "../../assets/icons/arrow-right-white.svg"
-import download from "../../assets/icons/download.svg"
+import download from "../../assets/icons/download-white.svg"
 import logoWhite from "../../assets/icons/logo-white.svg"
 import mastercard from "../../assets/icons/mastercard.svg"
 import telegram from "../../assets/icons/telegram.svg"
