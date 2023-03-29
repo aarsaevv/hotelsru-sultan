@@ -2,7 +2,7 @@
 
 declare namespace JSX {
 	interface IntrinsicAttributes {
-		[someAttribute: string]
-		[someArray: array]
+		[someAttribute: string]: any
+		[someArray: array]: any
 	}
 }

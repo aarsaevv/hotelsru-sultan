@@ -5,8 +5,11 @@
     &__breadcrumbs {
         padding: 45px 0;
 
+        @include _768 {
+            padding: 35px 0;
+        }
         @include _480 {
-            padding: 20px 0;
+            padding: 0 0 35px 0;
         }
     }
 
@@ -22,17 +25,11 @@
     &__heading {
         margin: 0 0 50px 0;
     }
-
-    &__order {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin: 30px 0;
-    }
 }
 
 .empty {
-    font-size: $--font-large;
+    font-size: $--font-xl;
+    height: 30vh;
     text-align: center;
 
     &__link {
@@ -42,14 +39,30 @@
 }
 
 .order {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 30px 0;
+
+    @include _480 {
+        flex-direction: column-reverse;
+        justify-content: center;
+        margin: 20px 0;
+    }
+
     &__price {
         font-size: $--font-xl;
     }
 
     button {
-        @include _600 {
-            width: 180px;
-            font-size: $--font-primary;
+        width: 200px;
+        height: 60px;
+        font-size: $--font-primary;
+        font-weight: $--weight-bold;
+
+        @include _480 {
+            width: 150px;
+            height: 50px;
         }
     }
 }

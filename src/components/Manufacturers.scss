@@ -5,4 +5,26 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+
+    @include _768 {
+        display: none;
+    }
+}
+
+.manufacturers {
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    &__list input {
+        margin: 0 10px 0 0;
+    }
+
+    &__list label {
+        font-size: $--font-primary;
+        font-weight: $--weight-regular;
+        color: $--2--black-secondary;
+    }
 }

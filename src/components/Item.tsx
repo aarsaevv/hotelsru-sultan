@@ -1,6 +1,7 @@
 import "./Item.scss"
 import { Link } from "react-router-dom"
 import basketWhite from "../assets/icons/basket-white.svg"
+import box from "../assets/icons/box.svg"
 import ButtonSmall from "./UI/Buttons/ButtonSmall"
 import { useState } from "react"
 import CountSelector from "./UI/Buttons/CountSelector"
@@ -28,7 +29,13 @@ function Item({ imageSrc, size, brand, title, barcode, manufacturer, price, desc
 				alt={brand}
 			/>
 			<div className="item__description description">
-				<h6 className="description__weight">{size}</h6>
+				<h6 className="description__weight">
+					<img
+						src={box}
+						alt=""
+					/>
+					{size}
+				</h6>
 				<Link to={`/catalogue/${barcode}`}>
 					<h3 className="description__name">
 						<span>{brand}</span> {title}

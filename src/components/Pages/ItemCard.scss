@@ -7,8 +7,12 @@
     &__breadcrumbs {
         padding: 45px 0;
 
+        @include _768 {
+            padding: 35px 0;
+        }
+
         @include _480 {
-            padding: 20px 0;
+            padding: 0 0 35px 0;
         }
     }
 
@@ -126,6 +130,9 @@
     }
 
     &__value-weight {
+        display: flex;
+        align-items: center;
+        gap: 5px;
         font-size: $--font-secondary;
         font-weight: $--weight-regular;
         color: $--2--black-secondary;
@@ -232,6 +239,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 10px;
     width: 185px;
     height: 80px;
     border-radius: 10px;

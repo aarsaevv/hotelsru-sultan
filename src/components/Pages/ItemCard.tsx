@@ -3,6 +3,8 @@ import { useParams, Link } from "react-router-dom"
 import { AppProps } from "../../helpers/types"
 import "./ItemCard.scss"
 import basketWhite from "../../assets/icons/basket-white.svg"
+import box from "../../assets/icons/box.svg"
+import download from "../../assets/icons/download.svg"
 import share from "../../assets/icons/share.svg"
 import ButtonMedium from "../UI/Buttons/ButtonMedium"
 import CountSelector from "../UI/Buttons/CountSelector"
@@ -42,6 +44,10 @@ function ItemCard(props: { data: AppProps[] }) {
 						<span>{itemCards[0].brand}</span> {itemCards[0].title}
 					</h2>
 					<h6 className="product-info__value-weight">
+						<img
+							src={box}
+							alt=""
+						/>
 						{itemCards[0].size + " " + itemCards[0].sizeType.split(", ")[1]}
 					</h6>
 					<div className="product-info__cart cart">
@@ -73,6 +79,10 @@ function ItemCard(props: { data: AppProps[] }) {
 									className="price__anchor">
 									Прайс-лист
 								</a>
+								<img
+									src={download}
+									alt=""
+								/>
 							</div>
 						</div>
 					</div>

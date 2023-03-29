@@ -22,14 +22,13 @@
     }
 
     @include _1170 {
-        gap: 35px;
+        gap: 20px;
     }
 
     @include _979 {
         flex-wrap: wrap;
         justify-content: center;
         width: 200px;
-        gap: 20px;
     }
 
     @include _768 {
@@ -119,7 +118,6 @@
         justify-content: center;
         width: 330px;
     }
-
 }
 
 .cart-specification {
@@ -127,6 +125,7 @@
     flex-direction: column;
     gap: 10px;
     width: 480px;
+    margin: 20px 0;
 
     @include _1400 {
         width: 400px;
@@ -136,12 +135,14 @@
         width: 430px;
     }
 
-
     &__value-weight {
         font-size: $--font-secondary;
         font-weight: $--weight-regular;
         color: $--2--black-secondary;
         margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 5px;
     }
 
     &__name {

@@ -4,7 +4,9 @@ import avatar from "../../assets/images/avatar.png"
 import burger from "../../assets/icons/burger.svg"
 import cart from "../../assets/icons/cart.svg"
 import catalogue from "../../assets/icons/catalogue.svg"
-import download from "../../assets/icons/download.svg"
+import download from "../../assets/icons/download-white.svg"
+import catalogueBlack from "../../assets/icons/catalogue-black.svg"
+import searchBlack from "../../assets/icons/search-black.svg"
 import inbox from "../../assets/icons/inbox.svg"
 import line from "../../assets/images/line.png"
 import location from "../../assets/icons/location.svg"
@@ -105,11 +107,11 @@ function Header() {
 						/>
 						<MobileButton
 							textContent="Каталог"
-							iconSrc=""
+							iconSrc={catalogueBlack}
 						/>
 						<MobileButton
 							textContent="Поиск"
-							iconSrc=""
+							iconSrc={searchBlack}
 						/>
 					</Link>
 				</div>

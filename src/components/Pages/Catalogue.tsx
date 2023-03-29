@@ -291,6 +291,22 @@ function Catalogue(props: { data: AppProps[] }) {
 							)
 						})}
 					</div>
+					<p className="aside__sort sort">
+						Сортировка:
+						<span>
+							<select onClick={handleSortClick}>
+								{sortTypesArray.map((type, idx) => {
+									return (
+										<option
+											key={idx}
+											value={type.value}>
+											{type.textContent}
+										</option>
+									)
+								})}
+							</select>
+						</span>
+					</p>
 				</div>
 				{/** Непосредственно сам каталог */}
 				{items.length ? (

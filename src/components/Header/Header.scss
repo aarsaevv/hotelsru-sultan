@@ -71,9 +71,13 @@
         top: 12px;
     }
 
+    &__burger {
+        display: none;
+    }
+
     &__burger ._button-round-small {
         display: none;
-        
+
         @include _480 {
             display: block;
             top: 6px;
@@ -82,7 +86,6 @@
     }
 
     &__logo {
-        
         @include _480 {
             width: 130px;
             height: 50px;
@@ -120,7 +123,7 @@
         }
     }
 
-    &__catalogue ._button-large{
+    &__catalogue ._button-large {
         @include _480 {
             display: none;
         }
@@ -134,7 +137,7 @@
 
     &__catalogue :nth-child(2)::after {
         // border: 1px solid red;
-        content: '';
+        content: "";
         width: 0px;
         height: 32px;
         border: 1px dashed $--2--black-secondary;
@@ -144,7 +147,7 @@
         left: 164px;
     }
 
-    &__catalogue ._button--mobile button{
+    &__catalogue ._button--mobile button {
         @include _480 {
             background-color: $--0--white;
             border: none;
@@ -235,7 +238,7 @@
     @include _768 {
         width: 150px;
         justify-content: center;
-        gap:15px;
+        gap: 15px;
     }
 
     @include _600 {
@@ -260,7 +263,6 @@
     }
 
     &__icon {
-
         @include _600 {
             width: 40px;
             height: 40px;

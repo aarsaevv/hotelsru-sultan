@@ -13,6 +13,10 @@
     background-color: $--0--white;
     box-shadow: 0px 1px 100px 1px rgba(100, 120, 140, 0.1);
 
+    @include _1400 {
+        width: 230px;
+    }
+
     &__image {
         width: 205px;
         height: 220px;
@@ -20,9 +24,10 @@
 }
 
 .description {
-    width: 280px;
-
     &__weight {
+        display: flex;
+        align-items: center;
+        gap: 5px;
         font-size: $--font-secondary;
         font-weight: $--weight-regular;
         color: $--2--black-secondary;
@@ -78,12 +83,23 @@
 .purchase {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 280px;
+
+    @include _1400 {
+        width: 240px;
+    }
+    @include _1170 {
+        width: 230px;
+    }
 
     &__price {
         font-size: 16px;
         font-weight: 800;
         color: $--1--black-primary;
-        margin: 15px 0 0 0;
+
+        @include _1170 {
+            font-size: $--font-primary;
+        }
     }
 }

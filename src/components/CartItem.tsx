@@ -1,4 +1,5 @@
 import "./CartItem.scss"
+import box from "../assets/icons/box.svg"
 import cartSeparator from "../assets/images/cart-separator.png"
 import CountSelector from "./UI/Buttons/CountSelector"
 import RoundButtonLarge from "./UI/Buttons/RoundButtonLarge"
@@ -25,7 +26,13 @@ function CartItem({
 						/>
 					</div>
 					<div className="cart-information__cart-specification cart-specification">
-						<h6 className="cart-specification__value-weight">{size}</h6>
+						<h6 className="cart-specification__value-weight">
+							<img
+								src={box}
+								alt=""
+							/>
+							{size}
+						</h6>
 						<h2 className="cart-specification__name">{brand + title}</h2>
 						<p className="cart-specification__description">{description}</p>
 					</div>
