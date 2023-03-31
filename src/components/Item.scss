@@ -103,3 +103,20 @@
         }
     }
 }
+
+.count-selector {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    button {
+        display: block;
+        font-size: $--font-secondary;
+        font-weight: $--weight-light;
+        color: $--2--black-secondary;
+    }
+
+    p {
+        color: $--2--black-secondary;
+    }
+}

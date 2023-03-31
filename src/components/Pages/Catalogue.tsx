@@ -9,7 +9,7 @@ import PriceSelector from "../UI/Forms/PriceSelector"
 import RoundButtonLarge from "../UI/Buttons/RoundButtonLarge"
 import Manufacturers from "../Manufacturers"
 
-function Catalogue(props: { data: AppProps[] }) {
+function Catalogue(props: { data: AppProps[]; cartData: any[] }) {
 	// ИНИЦИАЛИЗАЦИЯ
 	/** Стейт из пришедших данных */
 	const [items, setItems] = useState(props.data)
@@ -325,6 +325,7 @@ function Catalogue(props: { data: AppProps[] }) {
 										manufacturer={el.manufacturer}
 										price={el.price}
 										description={el.description}
+										cartData={props.cartData}
 									/>
 								)
 							})}

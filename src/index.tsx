@@ -284,6 +284,13 @@ let data: AppProps[] = [
 	}
 })()
 
+let cartData
+if (localStorage.getItem("cart")) {
+	cartData = JSON.parse(String(localStorage.getItem("cart")))
+} else {
+	cartData = []
+}
+
 // Сбрасываем скролл при обновлении
 window.onbeforeunload = function () {
 	window.scrollTo(0, 0)
@@ -293,7 +300,10 @@ const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
 root.render(
 	<React.StrictMode>
 		<Router>
-			<App data={data} />
+			<App
+				data={data}
+				cartData={cartData}
+			/>
 		</Router>
 	</React.StrictMode>,
 )

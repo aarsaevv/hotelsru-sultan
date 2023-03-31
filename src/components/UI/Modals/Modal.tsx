@@ -1,11 +1,13 @@
 import "./Modal.scss"
-import cross from "../../assets/icons/cross-yellow.svg"
-import doubleTick from "../../assets/icons/double-tick.svg"
+import cross from "../../../assets/icons/cross-yellow.svg"
+import doubleTick from "../../../assets/icons/double-tick.svg"
 
-function Modal() {
+function Modal(props: { showModal: any; handleCloseModal: any }) {
 	return (
 		<div className="modal">
-			<button className="modal__cross">
+			<button
+				onClick={props.handleCloseModal}
+				className="modal__cross">
 				<img
 					src={cross}
 					alt=""
@@ -18,9 +20,7 @@ function Modal() {
 					alt=""
 				/>
 				<h1 className="message__header">Спасибо за заказ</h1>
-				<h2 className="message__text">
-					Наш менеджер свяжется с вами в ближайшее время
-				</h2>
+				<h2 className="message__text">Наш менеджер свяжется с вами в ближайшее время</h2>
 			</div>
 		</div>
 	)

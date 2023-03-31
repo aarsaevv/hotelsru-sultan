@@ -1,3 +1,4 @@
+import { useEffect, useReducer, useState } from "react"
 import { Link } from "react-router-dom"
 import "./Header.scss"
 import avatar from "../../assets/images/avatar.png"
@@ -17,7 +18,21 @@ import MobileButton from "../UI/Buttons/MobileButton"
 import RoundButtonSmall from "../UI/Buttons/RoundButtonSmall"
 import SearchLarge from "../UI/Forms/SearchLarge"
 
-function Header() {
+function Header(props: { cartData: any }) {
+	const [total, setTotal] = useState(0)
+	const cartData = props.cartData
+	useEffect(() => {
+		let orderSum: number = 0
+		cartData.map((el: { price: number; count: number }) => {
+			if (el.price && el.count) {
+				orderSum += el.price * el.count
+			}
+			if (el.price && !el.count) {
+				orderSum += el.price
+			}
+		})
+		setTotal(orderSum)
+	}, [])
 	return (
 		<header className="header-section">
 			<div className="_container header">
@@ -95,12 +110,12 @@ function Header() {
 							alt="cart"></img>
 						<div className="">
 							<div className="header-info-cart__name">Корзина</div>
-							<div className="header-info-cart__price">12 478 ₸</div>
+							<div className="header-info-cart__price">{total == 0 ? "0.00" : total.toFixed(2)}</div>
 						</div>
 					</Link>
 				</div>
 				<div className="header-main__catalogue">
-					<Link to="/catalogue">
+					<a href="/catalogue">
 						<ButtonLarge
 							textContent="Каталог"
 							iconSrc={catalogue}
@@ -113,7 +128,7 @@ function Header() {
 							textContent="Поиск"
 							iconSrc={searchBlack}
 						/>
-					</Link>
+					</a>
 				</div>
 				<div className="header-main__search">
 					<SearchLarge
@@ -153,7 +168,7 @@ function Header() {
 							alt="cart"></img>
 						<div className="">
 							<div className="header-info-cart__name">Корзина</div>
-							<div className="header-info-cart__price">12 478 ₸</div>
+							<div className="header-info-cart__price">{total == 0 ? "0.00" : total.toFixed(2)}</div>
 						</div>
 					</Link>
 				</div>

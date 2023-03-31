@@ -1,19 +1,83 @@
+import { useState } from "react"
 import "./CartItem.scss"
 import box from "../assets/icons/box.svg"
 import cartSeparator from "../assets/images/cart-separator.png"
-import CountSelector from "./UI/Buttons/CountSelector"
 import RoundButtonLarge from "./UI/Buttons/RoundButtonLarge"
+import SelectorButtonNarrow from "./UI/Buttons/SelectorButtonNarrow"
 
 function CartItem({
-	iconSrc = "",
-	imageSrc = "",
-	size = "",
-	brand = "",
-	title = "",
-	price = "",
-	description = "",
-	count = 0,
-}) {
+	barcode,
+	brand,
+	cartItems,
+	setCartItems,
+	count,
+	description,
+	iconSrc,
+	imageSrc,
+	price,
+	size,
+	sizeType,
+	title,
+}: any) {
+	let [cartCount, setCartCount] = useState(count)
+	function handleAddToCart(e: React.MouseEvent<HTMLDivElement>) {
+		const target = e.target as Element
+		if (target.closest(".add-to-cart") || target.closest(".count-selector__plus")) {
+			if (cartItems.length) {
+				let contains = false
+				cartItems.map((el: { barcode: number; count: number }) => {
+					if (el.barcode == barcode) {
+						setCartCount(++cartCount)
+						el.count = cartCount
+						contains = true
+					}
+				})
+				if (!contains) {
+					cartItems.push({ imageSrc, size, sizeType, barcode, brand, title, description, price, count: 1 })
+				}
+			} else {
+				cartItems.push({ imageSrc, size, sizeType, barcode, brand, title, description, price, count: 1 })
+			}
+
+			const stringifiedArr = JSON.stringify(cartItems)
+			localStorage.setItem("cart", stringifiedArr)
+			let cart: NodeListOf<HTMLDivElement> = document.querySelectorAll(".header-info-cart__price")
+			cart[0].textContent = (Number(cart[0].textContent) + price).toFixed(2)
+			cart[1].textContent = (Number(cart[1].textContent) + price).toFixed(2)
+		}
+	}
+	function handleSubtractFromCart(e: React.MouseEvent<HTMLDivElement>) {
+		const target = e.target as Element
+		if (target.closest(".count-selector__minus")) {
+			if (cartItems.length) {
+				cartItems.map((el: { barcode: number; count: number }) => {
+					if (el.barcode == barcode) {
+						if (cartCount > 1) {
+							setCartCount(--cartCount)
+							el.count = cartCount
+							const stringifiedArr = JSON.stringify(cartItems)
+							localStorage.setItem("cart", stringifiedArr)
+							let cart: NodeListOf<HTMLDivElement> = document.querySelectorAll(".header-info-cart__price")
+							cart[0].textContent = (Number(cart[0].textContent) - price).toFixed(2)
+							cart[1].textContent = (Number(cart[1].textContent) - price).toFixed(2)
+						}
+					}
+				})
+			}
+		}
+	}
+	function handleRemoveFromCart(e: React.MouseEvent<HTMLDivElement>) {
+		const target = e.target as Element
+		cartItems = cartItems.filter((el: any) => el.barcode != barcode)
+		setCartItems(cartItems)
+		const stringifiedArr = JSON.stringify(cartItems)
+		localStorage.setItem("cart", stringifiedArr)
+		let cart: NodeListOf<HTMLDivElement> = document.querySelectorAll(".header-info-cart__price, .order__price")
+		cart[0].textContent = (Number(cart[0].textContent) - price).toFixed(2)
+		cart[1].textContent = (Number(cart[1].textContent) - price).toFixed(2)
+		cart[2].textContent = ""
+	}
+
 	return (
 		<div className="wrapper">
 			<div className="cart-item">
@@ -38,11 +102,25 @@ function CartItem({
 					</div>
 				</div>
 				<div className="cart-item__buy buy">
-					<CountSelector count={count} />
-					<div className="buy__price">
-						<h2 className="price__value">{Number(price).toFixed(2)} ₸</h2>
+					<div className="count-selector">
+						<div
+							onClick={handleSubtractFromCart}
+							className="count-selector__minus">
+							<SelectorButtonNarrow textContent="-" />
+						</div>
+						<p>{cartCount}</p>
+						<div
+							onClick={handleAddToCart}
+							className="count-selector__plus">
+							<SelectorButtonNarrow textContent="+" />
+						</div>
 					</div>
-					<RoundButtonLarge iconSrc={iconSrc} />
+					<div className="buy__price">
+						<h2 className="price__value">{price.toFixed(2)} ₸</h2>
+					</div>
+					<div onClick={handleRemoveFromCart}>
+						<RoundButtonLarge iconSrc={iconSrc} />
+					</div>
 				</div>
 			</div>
 			<img

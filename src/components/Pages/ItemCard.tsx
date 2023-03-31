@@ -7,11 +7,24 @@ import box from "../../assets/icons/box.svg"
 import download from "../../assets/icons/download.svg"
 import share from "../../assets/icons/share.svg"
 import ButtonMedium from "../UI/Buttons/ButtonMedium"
-import CountSelector from "../UI/Buttons/CountSelector"
+import SelectorButtonNarrow from "../UI/Buttons/SelectorButtonNarrow"
 
-function ItemCard(props: { data: AppProps[] }) {
+function ItemCard(props: { data: AppProps[]; cartData: any }) {
 	const params = useParams()
 	const [itemCards, setItemCards] = useState(props.data)
+
+	const imageSrc = itemCards[0].imageSrc
+	const size = itemCards[0].size
+	const sizeType = itemCards[0].sizeType
+	const barcode = itemCards[0].barcode
+	const brand = itemCards[0].brand
+	const title = itemCards[0].title
+	const description = itemCards[0].description
+	const price = itemCards[0].price
+
+	const cartData = props.cartData
+	const [inCart, setInCart] = useState(false)
+	let [count, setCount] = useState(1)
 
 	useEffect(() => {
 		let id = Object.values(params).join("")
@@ -19,6 +32,56 @@ function ItemCard(props: { data: AppProps[] }) {
 		copyItemCards = copyItemCards.filter((el: { barcode: string | number }) => el.barcode == id)
 		setItemCards(copyItemCards)
 	}, [])
+
+	function handleAddToCart(e: React.MouseEvent<HTMLDivElement>) {
+		const target = e.target as Element
+		if (target.closest("._button-medium") || target.closest(".count-selector__plus")) {
+			setInCart(!inCart)
+
+			if (cartData.length) {
+				let contains = false
+				cartData.map((el: { barcode: number; count: number }) => {
+					if (el.barcode == barcode) {
+						setCount(++count)
+						el.count = count
+						contains = true
+					}
+				})
+				if (!contains) {
+					cartData.push({ imageSrc, size, sizeType, barcode, brand, title, description, price, count: 1 })
+				}
+			} else {
+				cartData.push({ imageSrc, size, sizeType, barcode, brand, title, description, price, count: 1 })
+			}
+			const stringifiedArr = JSON.stringify(cartData)
+			localStorage.setItem("cart", stringifiedArr)
+			let cart: NodeListOf<HTMLDivElement> = document.querySelectorAll(".header-info-cart__price")
+			cart[0].textContent = (Number(cart[0].textContent) + price).toFixed(2)
+			cart[1].textContent = (Number(cart[1].textContent) + price).toFixed(2)
+		}
+	}
+	function handleRemoveFromCart(e: React.MouseEvent<HTMLDivElement>) {
+		const target = e.target as Element
+		if (target.closest(".count-selector__minus")) {
+			const arr: any = localStorage.getItem("cart")
+			const parsedArr: any[] = JSON.parse(arr ? arr : "[]")
+			if (parsedArr.length) {
+				parsedArr.map((el: { barcode: number; count: number }) => {
+					if (el.barcode == barcode) {
+						if (count > 1) {
+							setCount(--count)
+							el.count = count
+							const stringifiedArr = JSON.stringify(parsedArr)
+							localStorage.setItem("cart", stringifiedArr)
+							let cart: NodeListOf<HTMLDivElement> = document.querySelectorAll(".header-info-cart__price")
+							cart[0].textContent = (Number(cart[0].textContent) - price).toFixed(2)
+							cart[1].textContent = (Number(cart[1].textContent) - price).toFixed(2)
+						}
+					}
+				})
+			}
+		}
+	}
 
 	return (
 		<div className="_container item-card">
@@ -52,13 +115,28 @@ function ItemCard(props: { data: AppProps[] }) {
 					</h6>
 					<div className="product-info__cart cart">
 						<h2 className="cart__price">{itemCards[0].price.toFixed(2)} ₸</h2>
-						<div className="selector">
-							<CountSelector />
+						<div>
+							<div className="count-selector">
+								<div
+									onClick={handleRemoveFromCart}
+									className="count-selector__minus">
+									<SelectorButtonNarrow textContent="-" />
+								</div>
+								<p>{count}</p>
+								<div
+									onClick={handleAddToCart}
+									className="count-selector__plus">
+									<SelectorButtonNarrow textContent="+" />
+								</div>
+							</div>
 						</div>
-						<ButtonMedium
-							textContent="В корзину"
-							iconSrc={basketWhite}
-						/>
+						<div onClick={handleAddToCart}>
+							<ButtonMedium
+								onClick={handleAddToCart}
+								textContent="В корзину"
+								iconSrc={basketWhite}
+							/>
+						</div>
 					</div>
 					<div className="product-info__share-price share-price">
 						<div className="share-price__buttons buttons">
@@ -131,11 +209,9 @@ function ItemCard(props: { data: AppProps[] }) {
 							</h5>
 						</div>
 					</div>
-					<div className=""></div>
 				</div>
 			</div>
 		</div>
 	)
 }
-
 export default ItemCard
