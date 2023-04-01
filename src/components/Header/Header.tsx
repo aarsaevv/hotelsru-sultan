@@ -17,13 +17,13 @@ import ButtonLarge from "../UI/Buttons/ButtonLarge"
 import MobileButton from "../UI/Buttons/MobileButton"
 import RoundButtonSmall from "../UI/Buttons/RoundButtonSmall"
 import SearchLarge from "../UI/Forms/SearchLarge"
+import { AppProps } from "../../helpers/types"
 
-function Header(props: { cartData: any }) {
+function Header(props: { cartItems: any[] }) {
 	const [total, setTotal] = useState(0)
-	const cartData = props.cartData
 	useEffect(() => {
 		let orderSum: number = 0
-		cartData.map((el: { price: number; count: number }) => {
+		props.cartItems.map((el: { price: number; count: number }) => {
 			if (el.price && el.count) {
 				orderSum += el.price * el.count
 			}
@@ -120,7 +120,7 @@ function Header(props: { cartData: any }) {
 					</Link>
 				</div>
 				<div className="header-main__catalogue">
-					<a href="/catalogue">
+					<Link to="/catalogue">
 						<ButtonLarge
 							textContent="Каталог"
 							iconSrc={catalogue}
@@ -133,7 +133,7 @@ function Header(props: { cartData: any }) {
 							textContent="Поиск"
 							iconSrc={searchBlack}
 						/>
-					</a>
+					</Link>
 				</div>
 				<div className="header-main__search">
 					<SearchLarge

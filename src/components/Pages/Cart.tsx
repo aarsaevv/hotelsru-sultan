@@ -5,10 +5,9 @@ import bin from "../../assets/icons/bin.svg"
 import ButtonLarge from "../UI/Buttons/ButtonLarge"
 import CartItem from "../CartItem"
 import Modal from "../UI/Modals/Modal"
-import ScrollToTop from "../../helpers/ScrollToTop"
 
-function Cart(props: { cartData: any[] }) {
-	const [cartItems, setCartItems] = useState(props.cartData)
+function Cart(props: { cartItems: any; setCartItems: any }) {
+	const cartItems = props.cartItems
 	const [showModal, setShowModal] = useState(false)
 
 	useEffect(() => {
@@ -28,7 +27,7 @@ function Cart(props: { cartData: any[] }) {
 	}
 	const handleOrder = () => {
 		setShowModal(true)
-		setCartItems([])
+		props.setCartItems([])
 		window.scrollTo(0, 0)
 		const app = document.querySelector(".App")
 		const body = document.querySelector("body")
@@ -76,8 +75,8 @@ function Cart(props: { cartData: any[] }) {
 									description={el.description}
 									iconSrc={bin}
 									count={el.count}
-									cartItems={cartItems}
-									setCartItems={setCartItems}
+									cartItems={props.cartItems}
+									setCartItems={props.setCartItems}
 								/>
 							)
 						})}
@@ -97,11 +96,11 @@ function Cart(props: { cartData: any[] }) {
 					) : (
 						<div className="cart__empty empty">
 							<span className="empty__message">Корзина пуста.</span> <br />
-							<a
-								href="/catalogue"
+							<Link
+								to="/catalogue"
 								className="empty__link">
 								В каталог
-							</a>
+							</Link>
 						</div>
 					)}
 				</div>

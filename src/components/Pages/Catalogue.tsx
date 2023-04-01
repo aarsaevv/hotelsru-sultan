@@ -9,10 +9,10 @@ import PriceSelector from "../UI/Forms/PriceSelector"
 import RoundButtonLarge from "../UI/Buttons/RoundButtonLarge"
 import Manufacturers from "../Manufacturers"
 
-function Catalogue(props: { data: AppProps[]; cartData: any[] }) {
+function Catalogue(props: { data: AppProps[]; setData: any; cartItems: AppProps[]; setCartItems: any }) {
 	// ИНИЦИАЛИЗАЦИЯ
 	/** Стейт из пришедших данных */
-	const [items, setItems] = useState(props.data)
+	const [catalogueData, setCatalogueData] = useState(props.data)
 	// СОРТИРОВКА
 	let sortTypesArray: { value: string; textContent: string }[] = [
 		{ value: "priceAscend", textContent: "Цена по возрастанию ⏶" },
@@ -25,43 +25,43 @@ function Catalogue(props: { data: AppProps[]; cartData: any[] }) {
 		copyArr.sort((a, b) => {
 			return a.price > b.price ? 1 : -1
 		})
-		setItems(copyArr)
+		setCatalogueData(copyArr)
 	}
 	function priceDescend(arr: AppProps[]) {
 		let copyArr = [...arr]
 		copyArr.sort((a, b) => {
 			return a.price < b.price ? 1 : -1
 		})
-		setItems(copyArr)
+		setCatalogueData(copyArr)
 	}
 	function nameAscend(arr: AppProps[]) {
 		let copyArr = [...arr]
 		copyArr.sort((a, b) => {
 			return a.brand + " " + a.title > b.brand + " " + b.title ? 1 : -1
 		})
-		setItems(copyArr)
+		setCatalogueData(copyArr)
 	}
 	function nameDescend(arr: AppProps[]) {
 		let copyArr = [...arr]
 		copyArr.sort((a, b) => {
 			return a.brand + " " + a.title < b.brand + " " + b.title ? 1 : -1
 		})
-		setItems(copyArr)
+		setCatalogueData(copyArr)
 	}
 	/** Обработчик селекта сортировки */
 	function handleSortClick(e: React.MouseEvent<HTMLSelectElement>) {
 		const target = e.target as HTMLSelectElement
 		if (target.value == "priceAscend") {
-			priceAscend(items)
+			priceAscend(catalogueData)
 		}
 		if (target.value == "priceDescend") {
-			priceDescend(items)
+			priceDescend(catalogueData)
 		}
 		if (target.value == "nameAscend") {
-			nameAscend(items)
+			nameAscend(catalogueData)
 		}
 		if (target.value == "nameDescend") {
-			nameDescend(items)
+			nameDescend(catalogueData)
 		}
 		setCurrentPage(1)
 	}
@@ -76,7 +76,7 @@ function Catalogue(props: { data: AppProps[]; cartData: any[] }) {
 	function filterArrayByCare(arr: AppProps[], careType: string) {
 		let copyArr = [...arr]
 		copyArr = copyArr.filter((el) => el.careType.includes(careType))
-		setItems(copyArr)
+		setCatalogueData(copyArr)
 		return copyArr
 	}
 	/** Обработчик кнопки ухода */
@@ -113,7 +113,7 @@ function Catalogue(props: { data: AppProps[]; cartData: any[] }) {
 		if (numB) {
 			copyArr = copyArr.filter((el) => el.price <= numB)
 		}
-		setItems(copyArr)
+		setCatalogueData(copyArr)
 		return copyArr
 	}
 	/** Функция фильтра в зависимости от выбранных производителей. Принимает массив данных и массив строк - производителей */
@@ -127,7 +127,7 @@ function Catalogue(props: { data: AppProps[]; cartData: any[] }) {
 			}
 			return false
 		})
-		setItems(copyArr)
+		setCatalogueData(copyArr)
 		return copyArr
 	}
 	/** Обработчик кнопки ухода из левой панели */
@@ -202,11 +202,11 @@ function Catalogue(props: { data: AppProps[]; cartData: any[] }) {
 	/** Индекс первой вещи в разбитом массиве */
 	const firstItemIndex = lastItemIndex - itemsPerPage
 	/** Разбитый массив */
-	const currentItems = items.slice(firstItemIndex, lastItemIndex)
+	const currentItems = catalogueData.slice(firstItemIndex, lastItemIndex)
 
 	useEffect(() => {
 		/** Сортируем список по умолчанию */
-		priceAscend(props.data)
+		priceAscend(catalogueData)
 	}, [])
 
 	return (
@@ -309,7 +309,7 @@ function Catalogue(props: { data: AppProps[]; cartData: any[] }) {
 					</p>
 				</div>
 				{/** Непосредственно сам каталог */}
-				{items.length ? (
+				{currentItems.length ? (
 					<div className="catalogue__items items">
 						{/** Список товаров */}
 						<div className="items__list">
@@ -325,14 +325,15 @@ function Catalogue(props: { data: AppProps[]; cartData: any[] }) {
 										manufacturer={el.manufacturer}
 										price={el.price}
 										description={el.description}
-										cartData={props.cartData}
+										cartItems={props.cartItems}
+										setCartItems={props.setCartItems}
 									/>
 								)
 							})}
 						</div>
 						{/** Пагинация */}
 						<Paginator
-							totalItems={items.length}
+							totalItems={catalogueData.length}
 							itemsPerPage={itemsPerPage}
 							currentPage={currentPage}
 							setCurrentPage={setCurrentPage}

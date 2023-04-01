@@ -9,7 +9,7 @@ import share from "../../assets/icons/share.svg"
 import ButtonMedium from "../UI/Buttons/ButtonMedium"
 import SelectorButtonNarrow from "../UI/Buttons/SelectorButtonNarrow"
 
-function ItemCard(props: { data: AppProps[]; cartData: any }) {
+function ItemCard(props: { data: AppProps[]; cartItems: any }) {
 	const params = useParams()
 	const [itemCards, setItemCards] = useState(props.data)
 
@@ -23,7 +23,7 @@ function ItemCard(props: { data: AppProps[]; cartData: any }) {
 	const price = itemCards[0].price
 	const careType = itemCards[0].careType
 
-	const cartData = props.cartData
+	const cartItems = props.cartItems
 	const [inCart, setInCart] = useState(false)
 	let [count, setCount] = useState(1)
 
@@ -39,9 +39,9 @@ function ItemCard(props: { data: AppProps[]; cartData: any }) {
 		if (target.closest("._button-medium") || target.closest(".count-selector__plus")) {
 			setInCart(!inCart)
 
-			if (cartData.length) {
+			if (cartItems.length) {
 				let contains = false
-				cartData.map((el: { barcode: number; count: number }) => {
+				cartItems.map((el: { barcode: number; count: number }) => {
 					if (el.barcode == barcode) {
 						setCount(++count)
 						el.count = count
@@ -49,12 +49,12 @@ function ItemCard(props: { data: AppProps[]; cartData: any }) {
 					}
 				})
 				if (!contains) {
-					cartData.push({ imageSrc, size, sizeType, barcode, brand, title, description, price, count: 1 })
+					cartItems.push({ imageSrc, size, sizeType, barcode, brand, title, description, price, count: 1 })
 				}
 			} else {
-				cartData.push({ imageSrc, size, sizeType, barcode, brand, title, description, price, count: 1 })
+				cartItems.push({ imageSrc, size, sizeType, barcode, brand, title, description, price, count: 1 })
 			}
-			const stringifiedArr = JSON.stringify(cartData)
+			const stringifiedArr = JSON.stringify(cartItems)
 			localStorage.setItem("cart", stringifiedArr)
 			let cart: NodeListOf<HTMLDivElement> = document.querySelectorAll(".header-info-cart__price")
 			cart[0].textContent = (Number(cart[0].textContent) + Number(price)).toFixed(2)
@@ -64,15 +64,15 @@ function ItemCard(props: { data: AppProps[]; cartData: any }) {
 	function handleRemoveFromCart(e: React.MouseEvent<HTMLDivElement>) {
 		const target = e.target as Element
 		if (target.closest(".count-selector__minus")) {
-			const arr: any = localStorage.getItem("cart")
-			const parsedArr: any[] = JSON.parse(arr ? arr : "[]")
-			if (parsedArr.length) {
-				parsedArr.map((el: { barcode: number; count: number }) => {
+			const json: any = localStorage.getItem("cart")
+			const parsedJSON: any[] = JSON.parse(json ? json : "[]")
+			if (parsedJSON.length) {
+				parsedJSON.map((el: { barcode: number; count: number }) => {
 					if (el.barcode == barcode) {
 						if (count > 1) {
 							setCount(--count)
 							el.count = count
-							const stringifiedArr = JSON.stringify(parsedArr)
+							const stringifiedArr = JSON.stringify(parsedJSON)
 							localStorage.setItem("cart", stringifiedArr)
 							let cart: NodeListOf<HTMLDivElement> = document.querySelectorAll(".header-info-cart__price")
 							cart[0].textContent = (Number(cart[0].textContent) - price).toFixed(2)

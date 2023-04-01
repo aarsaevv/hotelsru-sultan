@@ -285,11 +285,11 @@ let data: AppProps[] = [
 	}
 })()
 
-let cartData
+let cartItems
 if (localStorage.getItem("cart")) {
-	cartData = JSON.parse(String(localStorage.getItem("cart")))
+	cartItems = JSON.parse(String(localStorage.getItem("cart")))
 } else {
-	cartData = []
+	cartItems = []
 }
 
 // Сбрасываем скролл при обновлении
@@ -303,7 +303,7 @@ root.render(
 		<Router>
 			<App
 				data={data}
-				cartData={cartData}
+				cartItems={cartItems}
 			/>
 		</Router>
 	</React.StrictMode>,

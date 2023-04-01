@@ -4,17 +4,18 @@ import box from "../assets/icons/box.svg"
 import cartSeparator from "../assets/images/cart-separator.png"
 import RoundButtonLarge from "./UI/Buttons/RoundButtonLarge"
 import SelectorButtonNarrow from "./UI/Buttons/SelectorButtonNarrow"
+import { AppProps } from "../helpers/types"
 
 function CartItem({
 	barcode,
 	brand,
 	cartItems,
-	setCartItems,
 	count,
 	description,
 	iconSrc,
 	imageSrc,
 	price,
+	setCartItems,
 	size,
 	sizeType,
 	title,
@@ -38,12 +39,11 @@ function CartItem({
 			} else {
 				cartItems.push({ imageSrc, size, sizeType, barcode, brand, title, description, price, count: 1 })
 			}
-
 			const stringifiedArr = JSON.stringify(cartItems)
 			localStorage.setItem("cart", stringifiedArr)
 			let cart: NodeListOf<HTMLDivElement> = document.querySelectorAll(".header-info-cart__price")
-			cart[0].textContent = (Number(cart[0].textContent) + price).toFixed(2)
-			cart[1].textContent = (Number(cart[1].textContent) + price).toFixed(2)
+			cart[0].textContent = (Number(cart[0].textContent) + Number(price)).toFixed(2)
+			cart[1].textContent = (Number(cart[1].textContent) + Number(price)).toFixed(2)
 		}
 	}
 	function handleSubtractFromCart(e: React.MouseEvent<HTMLDivElement>) {
@@ -58,8 +58,8 @@ function CartItem({
 							const stringifiedArr = JSON.stringify(cartItems)
 							localStorage.setItem("cart", stringifiedArr)
 							let cart: NodeListOf<HTMLDivElement> = document.querySelectorAll(".header-info-cart__price")
-							cart[0].textContent = (Number(cart[0].textContent) - price).toFixed(2)
-							cart[1].textContent = (Number(cart[1].textContent) - price).toFixed(2)
+							cart[0].textContent = (Number(cart[0].textContent) - Number(price)).toFixed(2)
+							cart[1].textContent = (Number(cart[1].textContent) - Number(price)).toFixed(2)
 						}
 					}
 				})
@@ -68,13 +68,13 @@ function CartItem({
 	}
 	function handleRemoveFromCart(e: React.MouseEvent<HTMLDivElement>) {
 		const target = e.target as Element
-		cartItems = cartItems.filter((el: any) => el.barcode != barcode)
+		cartItems = cartItems.filter((el: AppProps) => el.barcode != barcode)
 		setCartItems(cartItems)
 		const stringifiedArr = JSON.stringify(cartItems)
 		localStorage.setItem("cart", stringifiedArr)
 		let cart: NodeListOf<HTMLDivElement> = document.querySelectorAll(".header-info-cart__price, .order__price")
-		cart[0].textContent = (Number(cart[0].textContent) - price).toFixed(2)
-		cart[1].textContent = (Number(cart[1].textContent) - price).toFixed(2)
+		cart[0].textContent = (Number(cart[0].textContent) - Number(price)).toFixed(2)
+		cart[1].textContent = (Number(cart[1].textContent) - Number(price)).toFixed(2)
 		cart[2].textContent = ""
 	}
 
@@ -116,7 +116,7 @@ function CartItem({
 						</div>
 					</div>
 					<div className="buy__price">
-						<h2 className="price__value">{price.toFixed(2)} ₸</h2>
+						<h2 className="price__value">{Number(price.toFixed(2))} ₸</h2>
 					</div>
 					<div onClick={handleRemoveFromCart}>
 						<RoundButtonLarge iconSrc={iconSrc} />

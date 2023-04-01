@@ -6,7 +6,7 @@ import ButtonSmall from "./UI/Buttons/ButtonSmall"
 import { useState } from "react"
 import SelectorButtonNarrow from "./UI/Buttons/SelectorButtonNarrow"
 
-function Item({ imageSrc, size, brand, title, barcode, manufacturer, price, description, sizeType, cartData }: any) {
+function Item({ barcode, brand, cartItems, description, imageSrc, manufacturer, price, size, sizeType, title }: any) {
 	const [inCart, setInCart] = useState(false)
 	let [count, setCount] = useState(1)
 
@@ -14,9 +14,9 @@ function Item({ imageSrc, size, brand, title, barcode, manufacturer, price, desc
 		const target = e.target as Element
 		if (target.closest(".add-to-cart") || target.closest(".count-selector__plus")) {
 			setInCart(true)
-			if (cartData.length) {
+			if (cartItems.length) {
 				let contains = false
-				cartData.map((el: { barcode: number; count: number }) => {
+				cartItems.map((el: { barcode: number; count: number }) => {
 					if (el.barcode == barcode) {
 						setCount(++count)
 						el.count = count
@@ -24,35 +24,35 @@ function Item({ imageSrc, size, brand, title, barcode, manufacturer, price, desc
 					}
 				})
 				if (!contains) {
-					cartData.push({ imageSrc, size, sizeType, barcode, brand, title, description, price, count: 1 })
+					cartItems.push({ imageSrc, size, sizeType, barcode, brand, title, description, price, count: 1 })
 				}
 			} else {
-				cartData.push({ imageSrc, size, sizeType, barcode, brand, title, description, price, count: 1 })
+				cartItems.push({ imageSrc, size, sizeType, barcode, brand, title, description, price, count: 1 })
 			}
 
-			const stringifiedArr = JSON.stringify(cartData)
+			const stringifiedArr = JSON.stringify(cartItems)
 			localStorage.setItem("cart", stringifiedArr)
 			let cart: NodeListOf<HTMLDivElement> = document.querySelectorAll(".header-info-cart__price")
-			cart[0].textContent = (Number(cart[0].textContent) + price).toFixed(2)
-			cart[1].textContent = (Number(cart[1].textContent) + price).toFixed(2)
+			cart[0].textContent = (Number(cart[0].textContent) + Number(price)).toFixed(2)
+			cart[1].textContent = (Number(cart[1].textContent) + Number(price)).toFixed(2)
 		}
 	}
 	function handleSubtractFromCart(e: React.MouseEvent<HTMLDivElement>) {
 		const target = e.target as Element
 		if (target.closest(".count-selector__minus")) {
-			const arr: any = localStorage.getItem("cart")
-			const parsedArr: any[] = JSON.parse(arr ? arr : "[]")
-			if (parsedArr.length) {
-				parsedArr.map((el: { barcode: number; count: number }) => {
+			const json: any = localStorage.getItem("cart")
+			const parsedJSON: any[] = JSON.parse(json ? json : "[]")
+			if (parsedJSON.length) {
+				parsedJSON.map((el: { barcode: number; count: number }) => {
 					if (el.barcode == barcode) {
 						if (count > 1) {
 							setCount(--count)
 							el.count = count
-							const stringifiedArr = JSON.stringify(parsedArr)
+							const stringifiedArr = JSON.stringify(parsedJSON)
 							localStorage.setItem("cart", stringifiedArr)
 							let cart: NodeListOf<HTMLDivElement> = document.querySelectorAll(".header-info-cart__price")
-							cart[0].textContent = (Number(cart[0].textContent) - price).toFixed(2)
-							cart[1].textContent = (Number(cart[1].textContent) - price).toFixed(2)
+							cart[0].textContent = (Number(cart[0].textContent) - Number(price)).toFixed(2)
+							cart[1].textContent = (Number(cart[1].textContent) - Number(price)).toFixed(2)
 						}
 					}
 				})

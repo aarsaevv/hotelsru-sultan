@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react"
 import "./AdminPanel.scss"
+import { AppProps } from "../../helpers/types"
 
-function AdminPanel(props: { data: any }) {
-	const [data, setData] = useState(props.data)
+function AdminPanel(props: { data: AppProps[]; setData: any }) {
 	const [show, setShow] = useState(false)
 
 	const toggleShow = () => setShow(true)
 	const toggleHide = () => setShow(false)
 
 	useEffect(() => {
-		const stringifiedData = JSON.stringify(data)
+		const stringifiedData = JSON.stringify(props.data)
 		localStorage.setItem("catalogue", stringifiedData)
-	}, [data])
+		console.log(props.data)
+	}, [props.data])
 
 	function handleEditing(e: React.MouseEvent<HTMLButtonElement>) {
 		const target = e.target as Element
@@ -23,7 +24,7 @@ function AdminPanel(props: { data: any }) {
 			const siblings = target.parentElement?.parentElement?.querySelectorAll("div")
 			if (siblings) {
 				const id = Number(siblings[1].textContent)
-				setData((data: any) => data.filter((el: { barcode: number }) => el.barcode != id))
+				props.setData(() => props.data.filter((el: { barcode: number }) => el.barcode != id))
 			}
 		}
 	}
@@ -39,14 +40,14 @@ function AdminPanel(props: { data: any }) {
 			}
 		}
 		obj[select.id] = select.value
-		setData((data: any) => [...data, obj])
+		props.setData(() => [...props.data, obj])
 	}
 	return (
 		<div className="_container admin-panel">
-			<div className="admin-panel__heading">Список товаров ({data.length})</div>
+			<div className="admin-panel__heading">Список товаров ({props.data.length})</div>
 			<div className="admin-panel__roster roster">
-				{data.length &&
-					data.map((el: any, idx: number) => {
+				{props.data.length &&
+					props.data.map((el: any, idx: number) => {
 						return (
 							<div key={idx}>
 								<div className="roster__unit unit">

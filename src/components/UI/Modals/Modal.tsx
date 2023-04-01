@@ -2,7 +2,7 @@ import "./Modal.scss"
 import cross from "../../../assets/icons/cross-yellow.svg"
 import doubleTick from "../../../assets/icons/double-tick.svg"
 
-function Modal(props: { showModal: any; handleCloseModal: any }) {
+function Modal(props: { showModal: boolean; handleCloseModal: any }) {
 	return (
 		<div className="modal">
 			<button
