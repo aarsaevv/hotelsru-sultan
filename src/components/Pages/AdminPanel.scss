@@ -1,0 +1,80 @@
+@import "../../helpers/Media-mixin.scss";
+@import "../../helpers/Variables.scss";
+
+.admin-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 0 20px 0;
+    &__heading {
+        font-size: $--font-xl;
+        text-align: center;
+        margin: 20px 0;
+    }
+    &__legend {
+        display: grid;
+    }
+    &__roster {
+        border: 4px solid lightgray;
+        height: 500px;
+        overflow: hidden;
+        overflow-y: scroll;
+        margin: 0 0 15px 0;
+    }
+
+    &__add-item {
+        width: 360px;
+        height: 60px;
+        font-size: $--font-large;
+        font-weight: 700;
+        text-transform: uppercase;
+        border: 4px solid #ee82ee;
+        background: #ee82ee;
+        color: #fff;
+        margin: 5px 0;
+    }
+
+    &__add-form {
+        display: flex;
+        flex-direction: column;
+
+        label {
+            margin: 0 0 5px 0;
+        }
+
+        input {
+            margin: 0 0 5px 0;
+            height: 20px;
+        }
+
+        select {
+            height: 25px;
+            margin: 0 0 5px 0;
+        }
+    }
+}
+
+.unit {
+    display: grid;
+    grid-template-columns:
+        0.5fr
+        1.25fr
+        repeat(2, 1.1fr)
+        1.5fr
+        repeat(2, 0.5fr)
+        0.75fr
+        2fr
+        repeat(2, 1fr)
+        repeat(2, 0.25fr);
+    * {
+        border: 1px solid black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5px;
+    }
+
+    &__picture img {
+        width: 100%;
+    }
+}

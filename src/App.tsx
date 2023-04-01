@@ -6,6 +6,7 @@ import Catalogue from "./components/Pages/Catalogue"
 import ItemCard from "./components/Pages/ItemCard"
 import Cart from "./components/Pages/Cart"
 import Layout from "./router/Layout"
+import AdminPanel from "./components/Pages/AdminPanel"
 
 function App(props: { data: AppProps[]; cartData: any[] }) {
 	return (
@@ -47,6 +48,9 @@ function App(props: { data: AppProps[]; cartData: any[] }) {
 					<Route
 						path="cart"
 						element={<Cart cartData={props.cartData} />}></Route>
+					<Route
+						path="my_admin"
+						element={<AdminPanel data={props.data} />}></Route>
 				</Route>
 			</Routes>
 		</div>

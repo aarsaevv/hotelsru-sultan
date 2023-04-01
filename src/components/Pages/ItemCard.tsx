@@ -21,6 +21,7 @@ function ItemCard(props: { data: AppProps[]; cartData: any }) {
 	const title = itemCards[0].title
 	const description = itemCards[0].description
 	const price = itemCards[0].price
+	const careType = itemCards[0].careType
 
 	const cartData = props.cartData
 	const [inCart, setInCart] = useState(false)
@@ -56,8 +57,8 @@ function ItemCard(props: { data: AppProps[]; cartData: any }) {
 			const stringifiedArr = JSON.stringify(cartData)
 			localStorage.setItem("cart", stringifiedArr)
 			let cart: NodeListOf<HTMLDivElement> = document.querySelectorAll(".header-info-cart__price")
-			cart[0].textContent = (Number(cart[0].textContent) + price).toFixed(2)
-			cart[1].textContent = (Number(cart[1].textContent) + price).toFixed(2)
+			cart[0].textContent = (Number(cart[0].textContent) + Number(price)).toFixed(2)
+			cart[1].textContent = (Number(cart[1].textContent) + Number(price)).toFixed(2)
 		}
 	}
 	function handleRemoveFromCart(e: React.MouseEvent<HTMLDivElement>) {
@@ -114,7 +115,7 @@ function ItemCard(props: { data: AppProps[]; cartData: any }) {
 						{itemCards[0].size + " " + itemCards[0].sizeType.split(", ")[1]}
 					</h6>
 					<div className="product-info__cart cart">
-						<h2 className="cart__price">{itemCards[0].price.toFixed(2)} ₸</h2>
+						<h2 className="cart__price">{Number(itemCards[0].price).toFixed(2)} ₸</h2>
 						<div>
 							<div className="count-selector">
 								<div
@@ -187,7 +188,7 @@ function ItemCard(props: { data: AppProps[]; cartData: any }) {
 								Назначение: <span>{itemCards[0].manufacturer}</span>
 							</h5>
 							<h5 className="characteristics__type">
-								Тип: <span>{itemCards[0].manufacturer}</span>
+								Тип: <span>{itemCards[0].careType.join(", ")}</span>
 							</h5>
 							<h5 className="characteristics__manufacturer">
 								Производитель: <span>{itemCards[0].manufacturer}</span>

@@ -81,6 +81,11 @@ function Header(props: { cartData: any }) {
 						href="#">
 						Контакты
 					</a>
+					<Link
+						to="my_admin"
+						className="info-header__admin-panel">
+						MY_ADMIN
+					</Link>
 				</div>
 			</div>
 			<img

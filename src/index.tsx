@@ -269,7 +269,7 @@ let data: AppProps[] = [
 
 // Помещаем данные в локальное хранилище и пустую корзину, если их нет
 ;(function setJsonToLocalStorage() {
-	if (localStorage.getItem("catalogue") && localStorage.getItem("cart")) {
+	if (localStorage.getItem("catalogue") !== "[]" && localStorage.getItem("cart")) {
 		return
 	} else {
 		localStorage.setItem("catalogue", `${JSON.stringify(data)}`)
@@ -280,6 +280,7 @@ let data: AppProps[] = [
 ;(function readCatalogueFromLocalStorage() {
 	if (localStorage.getItem("catalogue")) {
 		data = JSON.parse(String(localStorage.getItem("catalogue")))
+		localStorage.setItem("catalogue", `${JSON.stringify(data)}`)
 		return data
 	}
 })()

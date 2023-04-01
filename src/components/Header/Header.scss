@@ -53,6 +53,14 @@
             font-size: $--font-secondary;
         }
     }
+
+    &__admin-panel {
+        text-decoration: none;
+        font-weight: 700;
+        background: #ee82ee;
+        outline: 10px solid #ee82ee;
+        color: white;
+    }
 }
 
 .header-main {
