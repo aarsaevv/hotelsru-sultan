@@ -1,6 +1,5 @@
 import "./Paginator.scss"
 import arrow from "../../../assets/icons/arrow.svg"
-import { SetStateAction } from "react"
 
 function Paginator({ totalItems, itemsPerPage, currentPage, setCurrentPage }: any) {
 	function toTopOnClick() {
