@@ -11,15 +11,18 @@ import Manufacturers from "../Manufacturers"
 
 function Catalogue(props: { data: AppProps[]; setData: any; cartItems: AppProps[]; setCartItems: any }) {
 	// ИНИЦИАЛИЗАЦИЯ
-	/** Стейт из пришедших данных */
+	/** Стейт из пришедших данных для удобства сортировки и фильтров */
 	const [catalogueData, setCatalogueData] = useState(props.data)
+
 	// СОРТИРОВКА
+	/** Массив типов сортировки */
 	let sortTypesArray: { value: string; textContent: string }[] = [
 		{ value: "priceAscend", textContent: "Цена по возрастанию ⏶" },
 		{ value: "priceDescend", textContent: "Цена по убыванию ⏷" },
 		{ value: "nameAscend", textContent: "Название по возрастанию ⏶" },
 		{ value: "nameDescend", textContent: "Название по убыванию ⏷" },
 	]
+	/** Различные функции сортировки. Надо переписать на более умную функцию. */
 	function priceAscend(arr: AppProps[]) {
 		let copyArr = [...arr]
 		copyArr.sort((a, b) => {
@@ -65,6 +68,7 @@ function Catalogue(props: { data: AppProps[]; setData: any; cartItems: AppProps[
 		}
 		setCurrentPage(1)
 	}
+
 	// ТИПЫ УХОДА СВЕРХУ
 	let careTypesArray: { name: string; id: string }[] = [
 		{ name: "Уход за телом", id: "care__body" },
@@ -100,6 +104,7 @@ function Catalogue(props: { data: AppProps[]; setData: any; cartItems: AppProps[
 			return priceAscend(filterArrayByCare(props.data, target.textContent))
 		}
 	}
+
 	// БОКОВАЯ ПАНЕЛЬ ФИЛЬТРОВ
 	/** Функция фильтра в зависимости от выбранной цены. Принимает массив данных и верхнюю-нижнюю границу цен. */
 	function filterArrayByPrice(arr: AppProps[], numA: number | null, numB: number | null) {
@@ -291,6 +296,7 @@ function Catalogue(props: { data: AppProps[]; setData: any; cartItems: AppProps[
 							)
 						})}
 					</div>
+					{/** Селекты сортировки */}
 					<p className="aside__sort sort">
 						Сортировка:
 						<span>

@@ -1,6 +1,7 @@
 import { useState } from "react"
 import "./CartItem.scss"
 import box from "../assets/icons/box.svg"
+import bin from "../assets/icons/bin.svg"
 import cartSeparator from "../assets/images/cart-separator.png"
 import RoundButtonLarge from "./UI/Buttons/RoundButtonLarge"
 import SelectorButtonNarrow from "./UI/Buttons/SelectorButtonNarrow"
@@ -12,7 +13,6 @@ function CartItem({
 	cartItems,
 	count,
 	description,
-	iconSrc,
 	imageSrc,
 	price,
 	setCartItems,
@@ -116,10 +116,10 @@ function CartItem({
 						</div>
 					</div>
 					<div className="buy__price">
-						<h2 className="price__value">{Number(price.toFixed(2))} ₸</h2>
+						<h2 className="price__value">{Number(price).toFixed(2)} ₸</h2>
 					</div>
 					<div onClick={handleRemoveFromCart}>
-						<RoundButtonLarge iconSrc={iconSrc} />
+						<RoundButtonLarge iconSrc={bin} />
 					</div>
 				</div>
 			</div>

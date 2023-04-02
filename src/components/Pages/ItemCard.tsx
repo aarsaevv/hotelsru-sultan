@@ -13,21 +13,28 @@ function ItemCard(props: { data: AppProps[]; cartItems: any }) {
 	const params = useParams()
 	const [itemCards, setItemCards] = useState(props.data)
 
-	const imageSrc = itemCards[0].imageSrc
-	const size = itemCards[0].size
-	const sizeType = itemCards[0].sizeType
+	/** создадим себе алиасов из приходящих пропсов */
 	const barcode = itemCards[0].barcode
 	const brand = itemCards[0].brand
-	const title = itemCards[0].title
-	const description = itemCards[0].description
-	const price = itemCards[0].price
 	const careType = itemCards[0].careType
+	const description = itemCards[0].description
+	const imageSrc = itemCards[0].imageSrc
+	const manufacturer = itemCards[0].manufacturer
+	const price = itemCards[0].price
+	const size = itemCards[0].size
+	const sizeType = itemCards[0].sizeType
+	const title = itemCards[0].title
 
 	const cartItems = props.cartItems
 	const [inCart, setInCart] = useState(false)
 	let [count, setCount] = useState(1)
 
 	useEffect(() => {
+		/** Через парамсы роутера заберем себе айди из адреса и отфильтруем приходящие пропсы от ненужных айди.
+		 * Немного накладно с точки зрения вычислений. Здесь и далее я собираюсь провести рефакторинг большей части того, что написано.
+		 * Естественно, за две недели сделать это все новичку сразу и круто нереально.
+		 * Тут мы меняем свойства объектов корзины: количество, и так далее.
+		 */
 		let id = Object.values(params).join("")
 		let copyItemCards = [...itemCards]
 		copyItemCards = copyItemCards.filter((el: { barcode: string | number }) => el.barcode == id)
@@ -98,24 +105,24 @@ function ItemCard(props: { data: AppProps[]; cartItems: any }) {
 			<div className="item-card__product product">
 				<div className="product__image">
 					<img
-						src={itemCards[0].imageSrc}
+						src={imageSrc}
 						alt="Картинка товара"
 					/>
 				</div>
 				<div className="product__product-info product-info">
 					<h5 className="product-info__available">В наличии</h5>
 					<h2 className="product-info__name">
-						<span>{itemCards[0].brand}</span> {itemCards[0].title}
+						<span>{brand}</span> {title}
 					</h2>
 					<h6 className="product-info__value-weight">
 						<img
 							src={box}
 							alt=""
 						/>
-						{itemCards[0].size + " " + itemCards[0].sizeType.split(", ")[1]}
+						{size + " " + sizeType.split(", ")[1]}
 					</h6>
 					<div className="product-info__cart cart">
-						<h2 className="cart__price">{Number(itemCards[0].price).toFixed(2)} ₸</h2>
+						<h2 className="cart__price">{Number(price).toFixed(2)} ₸</h2>
 						<div>
 							<div className="count-selector">
 								<div
@@ -167,46 +174,46 @@ function ItemCard(props: { data: AppProps[]; cartItems: any }) {
 					</div>
 					<div className="product-info__info info">
 						<h5 className="info__manufacturer">
-							Производитель: <span>{itemCards[0].manufacturer}</span>
+							Производитель: <span>{manufacturer}</span>
 						</h5>
 						<h5 className="info__brand">
-							Бренд: <span>{itemCards[0].brand}</span>
+							Бренд: <span>{brand}</span>
 						</h5>
 						<h5 className="info__vendor">
-							Артикул: <span>{itemCards[0].barcode}</span>
+							Артикул: <span>{barcode}</span>
 						</h5>
 						<h5 className="info__barcode">
-							Штрихкод: <span>{itemCards[0].barcode}</span>
+							Штрихкод: <span>{barcode}</span>
 						</h5>
 						<div className="info__description card-description">
 							<h3 className="card-description__heading">Описание</h3>
-							<p className="card-description__text">{itemCards[0].description}</p>
+							<p className="card-description__text">{description}</p>
 						</div>
 						<div className="info__characteristics characteristics">
 							<h3 className="characteristics__heading">Характеристики</h3>
 							<h5 className="characteristics__purpose">
-								Назначение: <span>{itemCards[0].manufacturer}</span>
+								Назначение: <span>{manufacturer}</span>
 							</h5>
 							<h5 className="characteristics__type">
-								Тип: <span>{itemCards[0].careType.join(", ")}</span>
+								Тип: <span>{careType.join(", ")}</span>
 							</h5>
 							<h5 className="characteristics__manufacturer">
-								Производитель: <span>{itemCards[0].manufacturer}</span>
+								Производитель: <span>{manufacturer}</span>
 							</h5>
 							<h5 className="characteristics__brand">
-								Бренд: <span>{itemCards[0].brand}</span>
+								Бренд: <span>{brand}</span>
 							</h5>
 							<h5 className="characteristics__vendor">
-								Артикул: <span>{itemCards[0].barcode}</span>
+								Артикул: <span>{barcode}</span>
 							</h5>
 							<h5 className="characteristics__barcode">
-								Штрихкод: <span>{itemCards[0].barcode}</span>
+								Штрихкод: <span>{barcode}</span>
 							</h5>
 							<h5 className="characteristics__value">
-								Вес: <span>{itemCards[0].size + " " + itemCards[0].sizeType.split(", ")[1]}</span>
+								Вес: <span>{size + " " + sizeType.split(", ")[1]}</span>
 							</h5>
 							<h5 className="characteristics__weight">
-								Объем: <span>{itemCards[0].size + " " + itemCards[0].sizeType.split(", ")[1]}</span>
+								Объем: <span>{size + " " + sizeType.split(", ")[1]}</span>
 							</h5>
 						</div>
 					</div>

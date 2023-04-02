@@ -1,8 +1,8 @@
+import React from "react"
+import ReactDOM from "react-dom/client"
 import { HashRouter as Router } from "react-router-dom"
 import { AppProps } from "./helpers/types"
 import App from "./App"
-import React from "react"
-import ReactDOM from "react-dom/client"
 
 let data: AppProps[] = [
 	{
@@ -267,7 +267,7 @@ let data: AppProps[] = [
 	},
 ]
 
-// Помещаем данные в локальное хранилище и пустую корзину, если их нет
+/** Помещаем данные в локальное хранилище и пустую корзину, если их нет */
 ;(function setJsonToLocalStorage() {
 	if (localStorage.getItem("catalogue") !== "[]" && localStorage.getItem("cart")) {
 		return
@@ -276,7 +276,7 @@ let data: AppProps[] = [
 		localStorage.setItem("cart", `[]`)
 	}
 })()
-// Сразу же читаем
+/** Сразу же читаем */
 ;(function readCatalogueFromLocalStorage() {
 	if (localStorage.getItem("catalogue")) {
 		data = JSON.parse(String(localStorage.getItem("catalogue")))
@@ -292,7 +292,7 @@ if (localStorage.getItem("cart")) {
 	cartItems = []
 }
 
-// Сбрасываем скролл при обновлении
+/** Сбрасываем скролл при обновлении */
 window.onbeforeunload = function () {
 	window.scrollTo(0, 0)
 }

@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom"
+import { AppProps } from "../helpers/types"
 import Footer from "../components/Footer/Footer"
 import Header from "../components/Header/Header"
-import { AppProps } from "../helpers/types"
 
 function Layout(props: { cartItems: AppProps[] }) {
 	return (

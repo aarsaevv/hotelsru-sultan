@@ -9,7 +9,7 @@ import Modal from "../UI/Modals/Modal"
 function Cart(props: { cartItems: any; setCartItems: any }) {
 	const cartItems = props.cartItems
 	const [showModal, setShowModal] = useState(false)
-
+	/** Здесь я тоже решил обойтись без библиотек и сделал через старый трюк с маской из псевдоэлемента before */
 	useEffect(() => {
 		const modal = document.querySelector(".modal") as HTMLDivElement
 		if (modal) {
@@ -25,6 +25,7 @@ function Cart(props: { cartItems: any; setCartItems: any }) {
 		}
 		app?.classList.remove("mask")
 	}
+	/** Показываем модалку, чистим стейт, чистим сторадж, запрещаем скролл. */
 	const handleOrder = () => {
 		setShowModal(true)
 		props.setCartItems([])

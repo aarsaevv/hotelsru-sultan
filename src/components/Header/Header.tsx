@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useState } from "react"
+import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import "./Header.scss"
 import avatar from "../../assets/images/avatar.png"
@@ -17,7 +17,6 @@ import ButtonLarge from "../UI/Buttons/ButtonLarge"
 import MobileButton from "../UI/Buttons/MobileButton"
 import RoundButtonSmall from "../UI/Buttons/RoundButtonSmall"
 import SearchLarge from "../UI/Forms/SearchLarge"
-import { AppProps } from "../../helpers/types"
 
 function Header(props: { cartItems: any[] }) {
 	const [total, setTotal] = useState(0)
