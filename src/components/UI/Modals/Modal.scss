@@ -13,7 +13,26 @@
     height: 430px;
     border-radius: 8px;
     background-color: $--0--white;
-    // z-index: 1000;
+
+    @include _979 {
+        width: 600px;
+        height: 380px;
+    }
+
+    @include _768 {
+        width: 500px;
+        height: 340px;
+        gap: 50px;
+    }
+
+    @include _600 {
+        width: 400px;
+    }
+
+    @include _480 {
+        width: 250px;
+        gap: 30px;
+    }
 
     &__cross {
         width: 24px;
@@ -36,6 +55,14 @@
         color: $--1--black-primary;
         text-transform: uppercase;
         margin: 25px 0 20px 0;
+
+        @include _768 {
+            font-size: $--font-xl;
+        }
+
+        @include _480 {
+            text-align: center;
+        }
     }
 
     &__text {
@@ -43,5 +70,13 @@
         font-weight: $--weight-light;
         color: $--2--black-secondary;
         margin: 0;
+
+        @include _768 {
+            font-size: $--font-primary;
+        }
+
+        @include _480 {
+            text-align: center;
+        }
     }
 }

@@ -13,22 +13,24 @@
 }
 
 .buy {
+    width: 470px;
     display: flex;
     align-items: center;
-    gap: 85px;
+    justify-content: space-between;
 
     @include _1400 {
-        gap: 50px;
+        width: 420px;
     }
 
     @include _1170 {
-        gap: 20px;
+        width: 320px;
     }
 
     @include _979 {
         flex-wrap: wrap;
         justify-content: center;
         width: 200px;
+        gap: 20px;
     }
 
     @include _768 {
