@@ -1,4 +1,4 @@
-import "./SelectorButton.scss"
+import "../../../scss/components/SelectorButton.scss"
 import BaseButton from "./BaseButton"
 
 function SelectorButtonNarrow({ textContent = "" }) {

@@ -1,5 +1,5 @@
-@import "../../../helpers/Media-mixin.scss";
-@import "../../../helpers/Variables.scss";
+@import "src/scss/Media-mixin";
+@import "src/scss/Variables";
 
 .pagination {
     display: flex;

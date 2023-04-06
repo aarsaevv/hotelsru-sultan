@@ -1,5 +1,5 @@
-@import "../../../helpers/Variables.scss";
-@import "../../../helpers/Media-mixin.scss";
+@import "src/scss/Variables";
+@import "src/scss/Media-mixin";
 
 .price-selector {
     display: flex;

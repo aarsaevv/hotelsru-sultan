@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react"
 import { useParams, Link } from "react-router-dom"
-import { AppProps } from "../../helpers/types"
-import "./ItemCard.scss"
-import basketWhite from "../../assets/icons/basket-white.svg"
-import box from "../../assets/icons/box.svg"
-import download from "../../assets/icons/download.svg"
-import share from "../../assets/icons/share.svg"
-import ButtonMedium from "../UI/Buttons/ButtonMedium"
-import SelectorButtonNarrow from "../UI/Buttons/SelectorButtonNarrow"
+import { CartProps, CatalogueProps } from "../types/types"
+import "../scss/components/ItemCard.scss"
+import basketWhite from "../assets/icons/basket-white.svg"
+import box from "../assets/icons/box.svg"
+import download from "../assets/icons/download.svg"
+import share from "../assets/icons/share.svg"
+import ButtonMedium from "../components/UI/Buttons/ButtonMedium"
+import SelectorButtonNarrow from "../components/UI/Buttons/SelectorButtonNarrow"
 
-function ItemCard(props: { data: AppProps[]; cartItems: any }) {
+function ItemCard(props: { data: CatalogueProps[]; cartItems: CartProps[] }) {
 	const params = useParams()
 	const [itemCards, setItemCards] = useState(props.data)
 
@@ -71,8 +71,9 @@ function ItemCard(props: { data: AppProps[]; cartItems: any }) {
 	function handleRemoveFromCart(e: React.MouseEvent<HTMLDivElement>) {
 		const target = e.target as Element
 		if (target.closest(".count-selector__minus")) {
-			const json: any = localStorage.getItem("cart")
-			const parsedJSON: any[] = JSON.parse(json ? json : "[]")
+			const json: string | null = localStorage.getItem("cart")
+			const parsedJSON: CartProps[] = JSON.parse(json ? json : "[]")
+			console.log(parsedJSON)
 			if (parsedJSON.length) {
 				parsedJSON.map((el: { barcode: number; count: number }) => {
 					if (el.barcode == barcode) {
@@ -161,7 +162,7 @@ function ItemCard(props: { data: AppProps[]; cartItems: any }) {
 							</div>
 							<div className="buttons__price price">
 								<a
-									href="#"
+									href="src/pages/ItemCard#"
 									className="price__anchor">
 									Прайс-лист
 								</a>

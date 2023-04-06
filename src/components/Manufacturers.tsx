@@ -1,11 +1,11 @@
-import "./Manufacturers.scss"
-import { AppProps } from "../helpers/types"
+import React, { useState, useEffect } from "react"
+import { CatalogueProps } from "../types/types"
+import "../scss/components/Manufacturers.scss"
 import search from "../assets/icons/search.svg"
 import ManufacturersList from "./ManufacturersList"
 import SearchMedium from "./UI/Forms/SearchMedium"
-import { useState, useEffect } from "react"
 
-function Manufacturers(props: { data: AppProps[] }) {
+function Manufacturers(props: { data: CatalogueProps[] }) {
 	const [manufacturers, setManufacturers] = useState([])
 
 	let clearButton = document.querySelector(".aside ._button-round-big") as HTMLButtonElement
@@ -26,7 +26,7 @@ function Manufacturers(props: { data: AppProps[] }) {
 			let checkboxes: any = Array.from(document.querySelectorAll(".manufacturers__list > div")).map(
 				(el) => el.lastChild?.textContent,
 			)
-			checkboxes = checkboxes.filter((el: String) => el?.toLowerCase().includes(target.value.toLowerCase()))
+			checkboxes = checkboxes.filter((el: string) => el?.toLowerCase().includes(target.value.toLowerCase()))
 			setManufacturers(checkboxes)
 		} else {
 			setManufacturers(collectManufacturers())

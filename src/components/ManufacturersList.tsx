@@ -1,7 +1,7 @@
 import { useState } from "react"
-import { AppProps } from "../helpers/types"
+import { CatalogueProps } from "../types/types"
 
-function ManufacturersList(props: { data: AppProps[] }) {
+function ManufacturersList(props: { data: string[] }) {
 	const [showAll, setShowAll] = useState(false)
 	const set = new Set()
 	for (let item of props.data) {
@@ -17,7 +17,7 @@ function ManufacturersList(props: { data: AppProps[] }) {
 	return (
 		<div className="manufacturers__list">
 			{arr.map((el: any, idx: number) => {
-				if (showAll == false) {
+				if (!showAll) {
 					while (idx < 3) {
 						return (
 							<div key={idx}>

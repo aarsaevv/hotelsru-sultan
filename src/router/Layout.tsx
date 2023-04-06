@@ -1,9 +1,9 @@
 import { Outlet } from "react-router-dom"
-import { AppProps } from "../helpers/types"
-import Footer from "../components/Footer/Footer"
-import Header from "../components/Header/Header"
+import { CartProps } from "../types/types"
+import Footer from "../components/Footer"
+import Header from "../components/Header"
 
-function Layout(props: { cartItems: AppProps[] }) {
+function Layout(props: { cartItems: CartProps[] }) {
 	return (
 		<div>
 			<Header cartItems={props.cartItems} />

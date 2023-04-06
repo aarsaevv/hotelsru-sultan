@@ -1,15 +1,15 @@
 import { useState } from "react"
 import { Route, Routes } from "react-router-dom"
-import { AppProps } from "./helpers/types"
-import "./App.scss"
-import AdminPanel from "./components/Pages/AdminPanel"
-import Cart from "./components/Pages/Cart"
-import Catalogue from "./components/Pages/Catalogue"
-import ItemCard from "./components/Pages/ItemCard"
+import {CartProps, CatalogueProps} from "./types/types"
+import "./scss/App.scss"
+import AdminPanel from "./pages/AdminPanel"
+import Cart from "./pages/Cart"
+import Catalogue from "./pages/Catalogue"
+import ItemCard from "./pages/ItemCard"
 import Layout from "./router/Layout"
-import ScrollToTop from "./helpers/ScrollToTop"
+import ScrollToTop from "./helpers/scrollToTop"
 
-function App(props: { data: AppProps[]; cartItems: AppProps[] }) {
+function App(props: { data: CatalogueProps[]; cartItems: CartProps[] }) {
 	/** Создаем себе копии для манипуляций с данными */
 	const [data, setData] = useState(props.data)
 	const [cartItems, setCartItems] = useState(props.cartItems)

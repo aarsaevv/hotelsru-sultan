@@ -1,4 +1,4 @@
-import "./BaseSearch.scss"
+import "../../../scss/components/BaseSearch.scss"
 import BaseButton from "../Buttons/BaseButton"
 
 function BaseSearch({ placeholder = "", iconSrc = "" }) {

@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react"
-import { AppProps } from "../../helpers/types"
-import "./Catalogue.scss"
-import bin from "../../assets/icons/bin.svg"
-import ButtonMedium from "../UI/Buttons/ButtonMedium"
-import Item from "../Item"
-import Paginator from "../UI/Buttons/Paginator"
-import PriceSelector from "../UI/Forms/PriceSelector"
-import RoundButtonLarge from "../UI/Buttons/RoundButtonLarge"
-import Manufacturers from "../Manufacturers"
+import { CartProps, CatalogueProps } from "../types/types"
+import "../scss/pages/Catalogue.scss"
+import bin from "../assets/icons/bin.svg"
+import ButtonMedium from "../components/UI/Buttons/ButtonMedium"
+import Item from "../components/Item"
+import Paginator from "../components/UI/Buttons/Paginator"
+import PriceSelector from "../components/UI/Forms/PriceSelector"
+import RoundButtonLarge from "../components/UI/Buttons/RoundButtonLarge"
+import Manufacturers from "../components/Manufacturers"
 
-function Catalogue(props: { data: AppProps[]; setData: any; cartItems: AppProps[]; setCartItems: any }) {
+function Catalogue(props: { data: CatalogueProps[]; setData: any; cartItems: CartProps[]; setCartItems: any }) {
 	// ИНИЦИАЛИЗАЦИЯ
 	/** Стейт из пришедших данных для удобства сортировки и фильтров */
 	const [catalogueData, setCatalogueData] = useState(props.data)
@@ -23,28 +23,28 @@ function Catalogue(props: { data: AppProps[]; setData: any; cartItems: AppProps[
 		{ value: "nameDescend", textContent: "Название по убыванию ⏷" },
 	]
 	/** Различные функции сортировки. Надо переписать на более умную функцию. */
-	function priceAscend(arr: AppProps[]) {
+	function priceAscend(arr: CatalogueProps[]) {
 		let copyArr = [...arr]
 		copyArr.sort((a, b) => {
 			return a.price > b.price ? 1 : -1
 		})
 		setCatalogueData(copyArr)
 	}
-	function priceDescend(arr: AppProps[]) {
+	function priceDescend(arr: CatalogueProps[]) {
 		let copyArr = [...arr]
 		copyArr.sort((a, b) => {
 			return a.price < b.price ? 1 : -1
 		})
 		setCatalogueData(copyArr)
 	}
-	function nameAscend(arr: AppProps[]) {
+	function nameAscend(arr: CatalogueProps[]) {
 		let copyArr = [...arr]
 		copyArr.sort((a, b) => {
 			return a.brand + " " + a.title > b.brand + " " + b.title ? 1 : -1
 		})
 		setCatalogueData(copyArr)
 	}
-	function nameDescend(arr: AppProps[]) {
+	function nameDescend(arr: CatalogueProps[]) {
 		let copyArr = [...arr]
 		copyArr.sort((a, b) => {
 			return a.brand + " " + a.title < b.brand + " " + b.title ? 1 : -1
@@ -77,7 +77,7 @@ function Catalogue(props: { data: AppProps[]; setData: any; cartItems: AppProps[
 		{ name: "Уход за лицом", id: "care__face" },
 	]
 	/** Функция фильтра в зависимости от типа ухода. Принимает массив данных и строку с типом ухода. */
-	function filterArrayByCare(arr: AppProps[], careType: string) {
+	function filterArrayByCare(arr: CatalogueProps[], careType: string) {
 		let copyArr = [...arr]
 		copyArr = copyArr.filter((el) => el.careType.includes(careType))
 		setCatalogueData(copyArr)
@@ -107,7 +107,7 @@ function Catalogue(props: { data: AppProps[]; setData: any; cartItems: AppProps[
 
 	// БОКОВАЯ ПАНЕЛЬ ФИЛЬТРОВ
 	/** Функция фильтра в зависимости от выбранной цены. Принимает массив данных и верхнюю-нижнюю границу цен. */
-	function filterArrayByPrice(arr: AppProps[], numA: number | null, numB: number | null) {
+	function filterArrayByPrice(arr: CatalogueProps[], numA: number | null, numB: number | null) {
 		let copyArr = [...arr]
 		if (numA && numB) {
 			copyArr = copyArr.filter((el) => el.price >= numA && el.price <= numB)
@@ -122,7 +122,7 @@ function Catalogue(props: { data: AppProps[]; setData: any; cartItems: AppProps[
 		return copyArr
 	}
 	/** Функция фильтра в зависимости от выбранных производителей. Принимает массив данных и массив строк - производителей */
-	function filterArrayByManufacturers(arr: AppProps[], arrayOfManufacturers: string[]) {
+	function filterArrayByManufacturers(arr: CatalogueProps[], arrayOfManufacturers: string[]) {
 		let copyArr = [...arr]
 		copyArr = copyArr.filter((el) => {
 			for (let item of arrayOfManufacturers) {
@@ -319,18 +319,11 @@ function Catalogue(props: { data: AppProps[]; setData: any; cartItems: AppProps[
 					<div className="catalogue__items items">
 						{/** Список товаров */}
 						<div className="items__list">
-							{currentItems.map((el: any, idx: number) => {
+							{currentItems.map((el: CatalogueProps, idx: number) => {
 								return (
 									<Item
 										key={idx}
-										imageSrc={el.imageSrc}
-										size={el.size + " " + el.sizeType.split(", ")[1]}
-										brand={el.brand + " "}
-										title={el.title}
-										barcode={el.barcode}
-										manufacturer={el.manufacturer}
-										price={el.price}
-										description={el.description}
+										el={el}
 										cartItems={props.cartItems}
 										setCartItems={props.setCartItems}
 									/>

@@ -1,4 +1,4 @@
-import "./BaseButton.scss"
+import "../../../scss/components/BaseButton.scss"
 
 function Button({ textContent = "", iconSrc = "" }) {
 	return (

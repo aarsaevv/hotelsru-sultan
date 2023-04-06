@@ -1,65 +1,73 @@
 import { useState } from "react"
-import "./CartItem.scss"
+import "../scss/components/CartItem.scss"
 import box from "../assets/icons/box.svg"
 import bin from "../assets/icons/bin.svg"
 import cartSeparator from "../assets/images/cart-separator.png"
 import RoundButtonLarge from "./UI/Buttons/RoundButtonLarge"
 import SelectorButtonNarrow from "./UI/Buttons/SelectorButtonNarrow"
-import { AppProps } from "../helpers/types"
+import { CartProps } from "../types/types"
 
-function CartItem({
-	barcode,
-	brand,
-	cartItems,
-	count,
-	description,
-	imageSrc,
-	price,
-	setCartItems,
-	size,
-	sizeType,
-	title,
-}: any) {
-	let [cartCount, setCartCount] = useState(count)
+function CartItem(props: { el: CartProps; cartItems: CartProps[]; setCartItems: any }) {
+	let [cartCount, setCartCount] = useState(props.el.count)
 	function handleAddToCart(e: React.MouseEvent<HTMLDivElement>) {
 		const target = e.target as Element
 		if (target.closest(".add-to-cart") || target.closest(".count-selector__plus")) {
-			if (cartItems.length) {
+			if (props.cartItems.length) {
 				let contains = false
-				cartItems.map((el: { barcode: number; count: number }) => {
-					if (el.barcode == barcode) {
+				props.cartItems.map((item: { barcode: number; count: number }) => {
+					if (props.el.barcode == item.barcode) {
 						setCartCount(++cartCount)
-						el.count = cartCount
+						props.el.count = cartCount
 						contains = true
 					}
 				})
 				if (!contains) {
-					cartItems.push({ imageSrc, size, sizeType, barcode, brand, title, description, price, count: 1 })
+					props.cartItems.push({
+						imageSrc: props.el.imageSrc,
+						size: props.el.size,
+						sizeType: props.el.sizeType,
+						barcode: props.el.barcode,
+						brand: props.el.brand,
+						title: props.el.title,
+						description: props.el.description,
+						price: props.el.price,
+						count: 1,
+					})
 				}
 			} else {
-				cartItems.push({ imageSrc, size, sizeType, barcode, brand, title, description, price, count: 1 })
+				props.cartItems.push({
+					imageSrc: props.el.imageSrc,
+					size: props.el.size,
+					sizeType: props.el.sizeType,
+					barcode: props.el.barcode,
+					brand: props.el.brand,
+					title: props.el.title,
+					description: props.el.description,
+					price: props.el.price,
+					count: 1,
+				})
 			}
-			const stringifiedArr = JSON.stringify(cartItems)
+			const stringifiedArr = JSON.stringify(props.cartItems)
 			localStorage.setItem("cart", stringifiedArr)
 			let cart: NodeListOf<HTMLDivElement> = document.querySelectorAll(".header-info-cart__price")
-			cart[0].textContent = (Number(cart[0].textContent) + Number(price)).toFixed(2)
-			cart[1].textContent = (Number(cart[1].textContent) + Number(price)).toFixed(2)
+			cart[0].textContent = (Number(cart[0].textContent) + Number(props.el.price)).toFixed(2)
+			cart[1].textContent = (Number(cart[1].textContent) + Number(props.el.price)).toFixed(2)
 		}
 	}
 	function handleSubtractFromCart(e: React.MouseEvent<HTMLDivElement>) {
 		const target = e.target as Element
 		if (target.closest(".count-selector__minus")) {
-			if (cartItems.length) {
-				cartItems.map((el: { barcode: number; count: number }) => {
-					if (el.barcode == barcode) {
+			if (props.cartItems.length) {
+				props.cartItems.map((item: { barcode: number; count: number }) => {
+					if (props.el.barcode == item.barcode) {
 						if (cartCount > 1) {
 							setCartCount(--cartCount)
-							el.count = cartCount
-							const stringifiedArr = JSON.stringify(cartItems)
+							props.el.count = cartCount
+							const stringifiedArr = JSON.stringify(props.cartItems)
 							localStorage.setItem("cart", stringifiedArr)
 							let cart: NodeListOf<HTMLDivElement> = document.querySelectorAll(".header-info-cart__price")
-							cart[0].textContent = (Number(cart[0].textContent) - Number(price)).toFixed(2)
-							cart[1].textContent = (Number(cart[1].textContent) - Number(price)).toFixed(2)
+							cart[0].textContent = (Number(cart[0].textContent) - Number(props.el.price)).toFixed(2)
+							cart[1].textContent = (Number(cart[1].textContent) - Number(props.el.price)).toFixed(2)
 						}
 					}
 				})
@@ -67,14 +75,15 @@ function CartItem({
 		}
 	}
 	function handleRemoveFromCart(e: React.MouseEvent<HTMLDivElement>) {
-		const target = e.target as Element
-		cartItems = cartItems.filter((el: AppProps) => el.barcode != barcode)
-		setCartItems(cartItems)
-		const stringifiedArr = JSON.stringify(cartItems)
-		localStorage.setItem("cart", stringifiedArr)
+		props.setCartItems((cartItems: CartProps[]) => {
+			const remainedItems = props.cartItems.filter((el: CartProps) => el.barcode != props.el.barcode)
+			const stringifiedCart = JSON.stringify(remainedItems)
+			localStorage.setItem("cart", stringifiedCart)
+			return remainedItems
+		})
 		let cart: NodeListOf<HTMLDivElement> = document.querySelectorAll(".header-info-cart__price, .order__price")
-		cart[0].textContent = (Number(cart[0].textContent) - Number(price)).toFixed(2)
-		cart[1].textContent = (Number(cart[1].textContent) - Number(price)).toFixed(2)
+		cart[0].textContent = (Number(cart[0].textContent) - Number(props.el.price)).toFixed(2)
+		cart[1].textContent = (Number(cart[1].textContent) - Number(props.el.price)).toFixed(2)
 		cart[2].textContent = ""
 	}
 
@@ -85,7 +94,7 @@ function CartItem({
 					<div className="cart-information__cart-image cart-image">
 						<img
 							className="cart-image__image"
-							src={imageSrc}
+							src={props.el.imageSrc}
 							alt="DOLCE MILK Крем для ног «Дикий инжир»"
 						/>
 					</div>
@@ -95,10 +104,10 @@ function CartItem({
 								src={box}
 								alt=""
 							/>
-							{size}
+							{props.el.size}
 						</h6>
-						<h2 className="cart-specification__name">{brand + title}</h2>
-						<p className="cart-specification__description">{description}</p>
+						<h2 className="cart-specification__name">{props.el.brand + " " + props.el.title}</h2>
+						<p className="cart-specification__description">{props.el.description}</p>
 					</div>
 				</div>
 				<div className="cart-item__buy buy">
@@ -116,7 +125,7 @@ function CartItem({
 						</div>
 					</div>
 					<div className="buy__price">
-						<h2 className="price__value">{Number(price).toFixed(2)} ₸</h2>
+						<h2 className="price__value">{Number(props.el.price).toFixed(2)} ₸</h2>
 					</div>
 					<div onClick={handleRemoveFromCart}>
 						<RoundButtonLarge iconSrc={bin} />

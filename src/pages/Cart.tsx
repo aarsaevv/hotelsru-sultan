@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-import "./Cart.scss"
-import bin from "../../assets/icons/bin.svg"
-import ButtonLarge from "../UI/Buttons/ButtonLarge"
-import CartItem from "../CartItem"
-import Modal from "../UI/Modals/Modal"
+import "../scss/pages/Cart.scss"
+import ButtonLarge from "../components/UI/Buttons/ButtonLarge"
+import CartItem from "../components/CartItem"
+import Modal from "../components/UI/Modals/Modal"
+import { CartProps } from "../types/types"
 
-function Cart(props: { cartItems: any; setCartItems: any }) {
+function Cart(props: { cartItems: CartProps[]; setCartItems: any }) {
 	const cartItems = props.cartItems
 	const [showModal, setShowModal] = useState(false)
 	/** Здесь я тоже решил обойтись без библиотек и сделал через старый трюк с маской из псевдоэлемента before */
@@ -62,20 +62,11 @@ function Cart(props: { cartItems: any; setCartItems: any }) {
 						<h1 className="heading__title">КОРЗИНА</h1>
 					</div>
 					<div className="cart__list">
-						{cartItems.map((el: any, idx: number) => {
+						{cartItems.map((el: CartProps, idx: number) => {
 							return (
 								<CartItem
+									el={el}
 									key={idx}
-									imageSrc={el.imageSrc}
-									size={el.size}
-									sizeType={el.sizeType}
-									brand={el.brand + " "}
-									title={el.title}
-									barcode={el.barcode}
-									price={el.price * el.count}
-									description={el.description}
-									iconSrc={bin}
-									count={el.count}
 									cartItems={props.cartItems}
 									setCartItems={props.setCartItems}
 								/>

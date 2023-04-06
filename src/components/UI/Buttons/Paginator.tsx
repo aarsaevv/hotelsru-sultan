@@ -1,7 +1,7 @@
-import "./Paginator.scss"
+import "../../../scss/components/Paginator.scss"
 import arrow from "../../../assets/icons/arrow.svg"
 
-function Paginator({ totalItems, itemsPerPage, currentPage, setCurrentPage }: any) {
+function Paginator(props: { totalItems: number; itemsPerPage: number; currentPage: number; setCurrentPage: any }) {
 	function toTopOnClick() {
 		window.scrollTo({
 			top: 260,
@@ -13,7 +13,7 @@ function Paginator({ totalItems, itemsPerPage, currentPage, setCurrentPage }: an
 	 * и кнопки-цифры.
 	 */
 	let pages: number[] = []
-	let allPages: number = Math.ceil(totalItems / itemsPerPage)
+	let allPages: number = Math.ceil(props.totalItems / props.itemsPerPage)
 	for (let pagenumber = 1; pagenumber <= allPages; pagenumber++) {
 		pages.push(pagenumber)
 	}
@@ -23,9 +23,9 @@ function Paginator({ totalItems, itemsPerPage, currentPage, setCurrentPage }: an
 			<div className="pagination">
 				<button
 					onClick={() => {
-						if (currentPage != 1) {
+						if (props.currentPage != 1) {
 							toTopOnClick()
-							return setCurrentPage(--currentPage)
+							return props.setCurrentPage(--props.currentPage)
 						}
 					}}
 					className="pagination__button button">
@@ -41,12 +41,12 @@ function Paginator({ totalItems, itemsPerPage, currentPage, setCurrentPage }: an
 							<button
 								key={idx}
 								onClick={() => {
-									if (currentPage != page) {
+									if (props.currentPage != page) {
 										toTopOnClick()
-										return setCurrentPage(page)
+										return props.setCurrentPage(page)
 									}
 								}}
-								className={`list__number ${page == currentPage ? "active" : ""}`}>
+								className={`list__number ${page == props.currentPage ? "active" : ""}`}>
 								{page}
 							</button>
 						)
@@ -54,9 +54,9 @@ function Paginator({ totalItems, itemsPerPage, currentPage, setCurrentPage }: an
 				</div>
 				<button
 					onClick={() => {
-						if (currentPage < allPages) {
+						if (props.currentPage < allPages) {
 							toTopOnClick()
-							return setCurrentPage(++currentPage)
+							return props.setCurrentPage(++props.currentPage)
 						}
 					}}
 					className="pagination__button">

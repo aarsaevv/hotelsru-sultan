@@ -1,10 +1,12 @@
 import React from "react"
 import ReactDOM from "react-dom/client"
-import { HashRouter as Router } from "react-router-dom"
-import { AppProps } from "./helpers/types"
 import App from "./App"
+import { HashRouter as Router } from "react-router-dom"
+import { CatalogueProps, CartProps } from "./types/types"
+import store from "./store/store"
+import { Provider } from "react-redux"
 
-let data: AppProps[] = [
+let data: CatalogueProps[] = [
 	{
 		imageSrc: require("../src/assets/images/spray.jpg"),
 		title: 'Парфюмированный спрей для тела "Капля росы',
@@ -285,26 +287,26 @@ let data: AppProps[] = [
 	}
 })()
 
-let cartItems
+let cartItems: CartProps[] = []
 if (localStorage.getItem("cart")) {
 	cartItems = JSON.parse(String(localStorage.getItem("cart")))
-} else {
-	cartItems = []
-}
 
-/** Сбрасываем скролл при обновлении */
-window.onbeforeunload = function () {
-	window.scrollTo(0, 0)
-}
+	/** Сбрасываем скролл при обновлении */
+	window.onbeforeunload = function () {
+		window.scrollTo(0, 0)
+	}
 
-const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
-root.render(
-	<React.StrictMode>
-		<Router>
-			<App
-				data={data}
-				cartItems={cartItems}
-			/>
-		</Router>
-	</React.StrictMode>,
-)
+	const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
+	root.render(
+		<React.StrictMode>
+			<Provider store={store}>
+				<Router>
+					<App
+						data={data}
+						cartItems={cartItems}
+					/>
+				</Router>
+			</Provider>
+		</React.StrictMode>,
+	)
+}

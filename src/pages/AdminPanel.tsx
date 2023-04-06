@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from "react"
 import Multiselect from "multiselect-react-dropdown"
-import { AppProps } from "../../helpers/types"
-import "./AdminPanel.scss"
+import { CatalogueProps } from "../types/types"
+import "../scss/pages/AdminPanel.scss"
 
-function AdminPanel(props: { data: AppProps[]; setData: any }) {
+function AdminPanel(props: { data: CatalogueProps[]; setData: any }) {
 	/** Показывает и скрывает форму добавления */
 	const [show, setShow] = useState(false)
 	/** Типы ухода для мультиселекта */
@@ -28,7 +28,7 @@ function AdminPanel(props: { data: AppProps[]; setData: any }) {
 	/** Массив выбранных типов ухода */
 	const [selectedValues, setSelectedValues] = useState([])
 	/** Стили мультиселекта */
-	let multiselectStyle: any = {
+	let multiselectStyle: object = {
 		multiselectContainer: {
 			width: "360px",
 			margin: "0 0 6px 0",
@@ -96,7 +96,7 @@ function AdminPanel(props: { data: AppProps[]; setData: any }) {
 		/** Создаем объект для последующего добавления */
 		const obj: any = {}
 		/** Создаем массив невалидных полей */
-		const invalidArr: any = []
+		const invalidArr: string[] = []
 		/** Собираем тут инпуты по айдишникам */
 		for (let input of inputs) {
 			if (input.value) {
@@ -138,7 +138,7 @@ function AdminPanel(props: { data: AppProps[]; setData: any }) {
 		}
 	}
 	/** Решил работать без Redux, поэтому стейт передаю в отрендеренный айтем */
-	function CatalogueItem(props: { el: any; idx: number; data: AppProps[]; setData: any }) {
+	function CatalogueItem(props: { el: CatalogueProps; idx: number; data: CatalogueProps[]; setData: any }) {
 		/** Текущий редактируемый элемент */
 		const [el, setEl] = useState(props.el)
 		const idx = props.idx
@@ -221,7 +221,16 @@ function AdminPanel(props: { data: AppProps[]; setData: any }) {
 				<div className="unit__caretype">
 					{isEdit ? <input id="edit_careType"></input> : el.careType && el.careType.join(", ")}
 				</div>
-				<div className="unit__picture">{isEdit ? <input id="edit_picture"></input> : <img src={el.imageSrc} />}</div>
+				<div className="unit__picture">
+					{isEdit ? (
+						<input id="edit_picture"></input>
+					) : (
+						<img
+							src={el.imageSrc}
+							alt="Picture"
+						/>
+					)}
+				</div>
 				<div className="unit__edit">
 					{isEdit ? <button onClick={save}>SAV</button> : <button onClick={edit}>EDIT</button>}
 				</div>
@@ -244,7 +253,7 @@ function AdminPanel(props: { data: AppProps[]; setData: any }) {
 
 			{props.data.length ? (
 				<div className="admin-panel__roster roster">
-					{props.data.map((el: any, idx: number) => {
+					{props.data.map((el: CatalogueProps, idx: number) => {
 						return (
 							<div key={idx}>
 								<CatalogueItem

@@ -1,21 +1,21 @@
 import React from "react"
-import "./Footer.scss"
-import arrowRightWhite from "../../assets/icons/arrow-right-white.svg"
-import download from "../../assets/icons/download-white.svg"
-import logoWhite from "../../assets/icons/logo-white.svg"
-import mastercard from "../../assets/icons/mastercard.svg"
-import telegram from "../../assets/icons/telegram.svg"
-import visa from "../../assets/icons/visa.svg"
-import whatsapp from "../../assets/icons/whatsapp.svg"
-import ButtonLarge from "../UI/Buttons/ButtonLarge"
-import SearchLarge from "../UI/Forms/SearchLarge"
+import "../scss/components/Footer.scss"
+import arrowRightWhite from "../assets/icons/arrow-right-white.svg"
+import download from "../assets/icons/download-white.svg"
+import logoWhite from "../assets/icons/logo-white.svg"
+import mastercard from "../assets/icons/mastercard.svg"
+import telegram from "../assets/icons/telegram.svg"
+import visa from "../assets/icons/visa.svg"
+import whatsapp from "../assets/icons/whatsapp.svg"
+import ButtonLarge from "./UI/Buttons/ButtonLarge"
+import SearchLarge from "./UI/Forms/SearchLarge"
 
 function Footer() {
 	return (
 		<footer className="footer-section">
 			<div className="_container footer">
 				<div className="footer__info-footer info-footer">
-					<a href="#">
+					<a href="src/components/Footer#">
 						<img
 							className="info-footer__logo"
 							src={logoWhite}
@@ -40,22 +40,22 @@ function Footer() {
 					<p className="menu-footer__title">Меню сайта:</p>
 					<a
 						className="menu-footer__link"
-						href="#">
+						href="src/components/Footer#">
 						О компании
 					</a>
 					<a
 						className="menu-footer__link"
-						href="#">
+						href="src/components/Footer#">
 						Доставка и оплата
 					</a>
 					<a
 						className="menu-footer__link"
-						href="#">
+						href="src/components/Footer#">
 						Возврат
 					</a>
 					<a
 						className="menu-footer__link"
-						href="#">
+						href="src/components/Footer#">
 						Контакты
 					</a>
 				</div>
@@ -63,27 +63,27 @@ function Footer() {
 					<p className="categories-footer__title">Категории:</p>
 					<a
 						className="categories-footer__link"
-						href="#">
+						href="src/components/Footer#">
 						Бытовая химия
 					</a>
 					<a
 						className="categories-footer__link"
-						href="#">
+						href="src/components/Footer#">
 						Косметика и гигиена
 					</a>
 					<a
 						className="categories-footer__link"
-						href="#">
+						href="src/components/Footer#">
 						Товары для дома
 					</a>
 					<a
 						className="categories-footer__link"
-						href="#">
+						href="src/components/Footer#">
 						Товары для детей и мам
 					</a>
 					<a
 						className="categories-footer__link"
-						href="#">
+						href="src/components/Footer#">
 						Посуда
 					</a>
 				</div>
@@ -97,14 +97,14 @@ function Footer() {
 					</div>
 					<p className="price-footer__social">Связь в мессенджерах:</p>
 					<div className="price-footer__icons icons">
-						<a href="#">
+						<a href="src/components/Footer#">
 							<img
 								className="icons__whatsapp"
 								src={whatsapp}
 								alt="whatsapp"
 							/>
 						</a>
-						<a href="#">
+						<a href="src/components/Footer#">
 							<img
 								className="icons__telegram"
 								src={telegram}
@@ -120,7 +120,7 @@ function Footer() {
 						<div className="call__schedule">время работы: 9:00-20:00</div>
 						<a
 							className="call__order"
-							href="#">
+							href="src/components/Footer#">
 							Заказать звонок
 						</a>
 					</div>

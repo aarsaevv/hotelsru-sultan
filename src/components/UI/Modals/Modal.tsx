@@ -1,4 +1,4 @@
-import "./Modal.scss"
+import "../../../scss/components/Modal.scss"
 import cross from "../../../assets/icons/cross-yellow.svg"
 import doubleTick from "../../../assets/icons/double-tick.svg"
 

@@ -1,24 +1,25 @@
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-import "./Header.scss"
-import avatar from "../../assets/images/avatar.png"
-import burger from "../../assets/icons/burger.svg"
-import cart from "../../assets/icons/cart.svg"
-import catalogue from "../../assets/icons/catalogue.svg"
-import download from "../../assets/icons/download-white.svg"
-import catalogueBlack from "../../assets/icons/catalogue-black.svg"
-import searchBlack from "../../assets/icons/search-black.svg"
-import inbox from "../../assets/icons/inbox.svg"
-import line from "../../assets/images/line.png"
-import location from "../../assets/icons/location.svg"
-import logo from "../../assets/icons/logo.svg"
-import search from "../../assets/icons/search.svg"
-import ButtonLarge from "../UI/Buttons/ButtonLarge"
-import MobileButton from "../UI/Buttons/MobileButton"
-import RoundButtonSmall from "../UI/Buttons/RoundButtonSmall"
-import SearchLarge from "../UI/Forms/SearchLarge"
+import "../scss/components/Header.scss"
+import avatar from "../assets/images/avatar.png"
+import burger from "../assets/icons/burger.svg"
+import cart from "../assets/icons/cart.svg"
+import catalogue from "../assets/icons/catalogue.svg"
+import download from "../assets/icons/download-white.svg"
+import catalogueBlack from "../assets/icons/catalogue-black.svg"
+import searchBlack from "../assets/icons/search-black.svg"
+import inbox from "../assets/icons/inbox.svg"
+import line from "../assets/images/line.png"
+import location from "../assets/icons/location.svg"
+import logo from "../assets/icons/logo.svg"
+import search from "../assets/icons/search.svg"
+import ButtonLarge from "./UI/Buttons/ButtonLarge"
+import MobileButton from "./UI/Buttons/MobileButton"
+import RoundButtonSmall from "./UI/Buttons/RoundButtonSmall"
+import SearchLarge from "./UI/Forms/SearchLarge"
+import {CartProps} from "../types/types";
 
-function Header(props: { cartItems: any[] }) {
+function Header(props: { cartItems: CartProps[] }) {
 	const [total, setTotal] = useState(0)
 	useEffect(() => {
 		let orderSum: number = 0
@@ -62,22 +63,22 @@ function Header(props: { cartItems: any[] }) {
 				<div className="header__info-header info-header">
 					<a
 						className="info-header__link"
-						href="#">
+						href="src/components/Header#">
 						О компании
 					</a>
 					<a
 						className="info-header__link"
-						href="#">
+						href="src/components/Header#">
 						Доставка и оплата
 					</a>
 					<a
 						className="info-header__link"
-						href="#">
+						href="src/components/Header#">
 						Возврат
 					</a>
 					<a
 						className="info-header__link"
-						href="#">
+						href="src/components/Header#">
 						Контакты
 					</a>
 					<Link
@@ -146,7 +147,7 @@ function Header(props: { cartItems: any[] }) {
 						<div className="info-contacts__schedule">время работы: 9:00-20:00</div>
 						<a
 							className="info-contacts__call"
-							href="#">
+							href="src/components/Header#">
 							Заказать звонок
 						</a>
 					</div>

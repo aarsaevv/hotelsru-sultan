@@ -1,4 +1,4 @@
-import "./PriceSelector.scss"
+import "../../../scss/components/PriceSelector.scss"
 
 function PriceSelector() {
 	return (
