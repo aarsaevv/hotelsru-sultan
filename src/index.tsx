@@ -3,8 +3,6 @@ import ReactDOM from "react-dom/client"
 import App from "./App"
 import { HashRouter as Router } from "react-router-dom"
 import { CatalogueProps, CartProps } from "./types/types"
-import store from "./store/store"
-import { Provider } from "react-redux"
 
 let data: CatalogueProps[] = [
 	{
@@ -299,14 +297,12 @@ if (localStorage.getItem("cart")) {
 	const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
 	root.render(
 		<React.StrictMode>
-			<Provider store={store}>
-				<Router>
-					<App
-						data={data}
-						cartItems={cartItems}
-					/>
-				</Router>
-			</Provider>
+			<Router>
+				<App
+					data={data}
+					cartItems={cartItems}
+				/>
+			</Router>
 		</React.StrictMode>,
 	)
 }
