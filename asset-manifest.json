@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/hotelsru-sultan/static/css/main.b45fd73b.css",
-    "main.js": "/hotelsru-sultan/static/js/main.9d6f4f4b.js",
+    "main.css": "/hotelsru-sultan/static/css/main.545f85e5.css",
+    "main.js": "/hotelsru-sultan/static/js/main.0c4e8221.js",
     "static/media/body-milk-strawberry.jpg": "/hotelsru-sultan/static/media/body-milk-strawberry.a2bcfba736d9d2791568.jpg",
     "static/media/foot-lotion.jpg": "/hotelsru-sultan/static/media/foot-lotion.15acfea48b29121a12c6.jpg",
     "static/media/cream-dolchemilk.jpg": "/hotelsru-sultan/static/media/cream-dolchemilk.3c70bb541b7122608bdc.jpg",
@@ -22,33 +22,36 @@
     "static/media/fluid-mea.jpg": "/hotelsru-sultan/static/media/fluid-mea.8065931ffa07a7906a1f.jpg",
     "static/media/body-balm.jpg": "/hotelsru-sultan/static/media/body-balm.c81214e54d7270e8e5e6.jpg",
     "static/media/spray.jpg": "/hotelsru-sultan/static/media/spray.27614a18eba6114c6584.jpg",
-    "static/media/logo.svg": "/hotelsru-sultan/static/media/logo.89fd22f86e71a2fdaa432b64d50f50c1.svg",
-    "static/media/logo-white.svg": "/hotelsru-sultan/static/media/logo-white.da5d22088ab2218253d4272b0a195505.svg",
+    "static/media/logo-white.svg": "/hotelsru-sultan/static/media/logo-white.7001e760583d80384c36d519653bb48a.svg",
+    "static/media/logo.svg": "/hotelsru-sultan/static/media/logo.d16b60f84c0893baed8c4016ebe3438a.svg",
     "static/media/mastercard.svg": "/hotelsru-sultan/static/media/mastercard.fd8928aafd9a3295af4c79d274941fca.svg",
     "static/media/whatsapp.svg": "/hotelsru-sultan/static/media/whatsapp.a91d93727fda3856d6648129cdb3ced8.svg",
     "static/media/basket-white.svg": "/hotelsru-sultan/static/media/basket-white.37c6cfb24c8cc5b80a8d56545c83cf5f.svg",
     "static/media/cart.svg": "/hotelsru-sultan/static/media/cart.994dac85d8448df9d56bf8eabb82f97e.svg",
     "static/media/bin.svg": "/hotelsru-sultan/static/media/bin.abed06236fb49fa63b1d6158eca8f8e2.svg",
     "static/media/visa.svg": "/hotelsru-sultan/static/media/visa.143cea08d8d8fa4f97410d8461e3cae8.svg",
-    "static/media/share.svg": "/hotelsru-sultan/static/media/share.89a07469cb92bbbf6055f1d13b75d03e.svg",
-    "static/media/cross-yellow.svg": "/hotelsru-sultan/static/media/cross-yellow.b0a939443ea41c1ab61682ac46eda7ae.svg",
+    "static/media/share.svg": "/hotelsru-sultan/static/media/share.6f18f342a21e3328ec15dc90611bf9d3.svg",
+    "static/media/cross-yellow.svg": "/hotelsru-sultan/static/media/cross-yellow.18d47f0a87ef6a623faeb49a63d736d2.svg",
     "static/media/inbox.svg": "/hotelsru-sultan/static/media/inbox.0e60b649d701ef93c4ab0a363299a236.svg",
     "static/media/box.svg": "/hotelsru-sultan/static/media/box.6131a241243b51eb206b3902e49f4e9b.svg",
     "static/media/telegram.svg": "/hotelsru-sultan/static/media/telegram.90fc7756b0976ee6736f20389e472056.svg",
     "static/media/location.svg": "/hotelsru-sultan/static/media/location.68c97af5ee7c94df86ffb6b19b5a02cf.svg",
+    "static/media/catalogue-black.svg": "/hotelsru-sultan/static/media/catalogue-black.a634c77332fa1b7fd03c8738f87aa31c.svg",
+    "static/media/catalogue.svg": "/hotelsru-sultan/static/media/catalogue.b6f03f0833e38dd92293eebda083d78b.svg",
     "index.html": "/hotelsru-sultan/index.html",
     "static/media/search-black.svg": "/hotelsru-sultan/static/media/search-black.3220935802512cc3a56d90ed1d23993a.svg",
     "static/media/search.svg": "/hotelsru-sultan/static/media/search.04cff820ff5fded8b8dddc0843ed8422.svg",
-    "static/media/double-tick.svg": "/hotelsru-sultan/static/media/double-tick.34077ce9d78c6a948dd14298d7da21dd.svg",
+    "static/media/double-tick.svg": "/hotelsru-sultan/static/media/double-tick.9fcb1e230c9bc91338807a43e77651ab.svg",
     "static/media/burger.svg": "/hotelsru-sultan/static/media/burger.de39418117121683750883215be869b2.svg",
-    "static/media/download.svg": "/hotelsru-sultan/static/media/download.16630390ef6939acf35bfc93da357ee5.svg",
-    "static/media/arrow.svg": "/hotelsru-sultan/static/media/arrow.d98b7fbc4aa11f78e558c20b83e95bdd.svg",
+    "static/media/download-white.svg": "/hotelsru-sultan/static/media/download-white.16630390ef6939acf35bfc93da357ee5.svg",
+    "static/media/download.svg": "/hotelsru-sultan/static/media/download.59a1fc03947edcac974b66e9337ad602.svg",
+    "static/media/arrow.svg": "/hotelsru-sultan/static/media/arrow.89403d33778fab72df04f133356fa82a.svg",
     "static/media/arrow-right-white.svg": "/hotelsru-sultan/static/media/arrow-right-white.8fe293a3f80ceb5af59dc5dafe70d49f.svg",
-    "main.b45fd73b.css.map": "/hotelsru-sultan/static/css/main.b45fd73b.css.map",
-    "main.9d6f4f4b.js.map": "/hotelsru-sultan/static/js/main.9d6f4f4b.js.map"
+    "main.545f85e5.css.map": "/hotelsru-sultan/static/css/main.545f85e5.css.map",
+    "main.0c4e8221.js.map": "/hotelsru-sultan/static/js/main.0c4e8221.js.map"
   },
   "entrypoints": [
-    "static/css/main.b45fd73b.css",
-    "static/js/main.9d6f4f4b.js"
+    "static/css/main.545f85e5.css",
+    "static/js/main.0c4e8221.js"
   ]
 }
